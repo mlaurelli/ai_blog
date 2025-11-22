@@ -6,6 +6,11 @@ import { getAuthorByName } from '@/lib/authors';
 import Layout from '@/components/Layout';
 import Link from 'next/link';
 
+// Enable ISR - revalidate every 60 seconds
+export const revalidate = 60;
+// Allow dynamic params for new posts
+export const dynamicParams = true;
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   

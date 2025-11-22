@@ -19,7 +19,7 @@ export type Category = {
 export const seoSettings: SEOSettings = {
   siteName: 'AI Blog - by Michele Laurelli',
   siteDescription: 'Artificial intelligence treated with scientific integrity, engineering precision, and human depth. Insights from an AI architect who builds systems that matter.',
-  siteUrl: 'https://michelelaurelli.it',
+  siteUrl: 'https://ai-blog.it',
   defaultOgImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop',
   twitterHandle: '@MicheleLaurelli',
   keywords: [

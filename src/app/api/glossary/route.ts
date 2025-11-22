@@ -56,9 +56,10 @@ export async function POST(request: Request) {
     fs.writeFileSync(glossaryPath, updatedContent, 'utf-8');
 
     // Revalidate glossary pages
-    revalidatePath('/glossary');
-    revalidatePath('/admin/glossary');
-    revalidatePath(`/glossary/${newTerm.slug}`);
+    revalidatePath('/glossary', 'page');
+    revalidatePath('/admin/glossary', 'page');
+    revalidatePath('/glossary/[slug]', 'page');
+    revalidatePath(`/glossary/${newTerm.slug}`, 'page');
 
     return NextResponse.json({ success: true, term: newTerm });
   } catch (error) {
@@ -128,8 +129,10 @@ export async function DELETE(request: Request) {
     fs.writeFileSync(glossaryPath, fileContent, 'utf-8');
 
     // Revalidate glossary pages
-    revalidatePath('/glossary');
-    revalidatePath('/admin/glossary');
+    revalidatePath('/glossary', 'page');
+    revalidatePath('/admin/glossary', 'page');
+    revalidatePath('/glossary/[slug]', 'page');
+    revalidatePath(`/glossary/${slug}`, 'page');
 
     return NextResponse.json({ success: true });
   } catch (error) {

@@ -103,8 +103,10 @@ export async function DELETE(
       delete require.cache[require.resolve('@/lib/posts')];
       
       // Revalidate Next.js cache for all relevant paths
-      revalidatePath('/blog', 'layout');
-      revalidatePath('/', 'layout');
+      revalidatePath('/', 'page');
+      revalidatePath('/blog/[slug]', 'page');
+      revalidatePath(`/blog/${slug}`, 'page');
+      revalidatePath('/admin/dashboard', 'page');
       
       return NextResponse.json({ success: true });
     } else {
@@ -244,10 +246,14 @@ export async function PUT(
       
       // Revalidate Next.js cache for all relevant paths
       try {
-        revalidatePath('/blog', 'layout');
+        revalidatePath('/', 'page');
+        revalidatePath('/blog/[slug]', 'page');
         revalidatePath(`/blog/${slug}`, 'page');
-        revalidatePath('/', 'layout');
-        revalidatePath('/api/posts');
+        // Also revalidate the old slug if it changed
+        if (slug !== updatedPost.slug) {
+          revalidatePath(`/blog/${updatedPost.slug}`, 'page');
+        }
+        revalidatePath('/admin/dashboard', 'page');
         console.log('✓ Cache invalidated for:', slug);
       } catch (error) {
         console.error('Cache revalidation error:', error);

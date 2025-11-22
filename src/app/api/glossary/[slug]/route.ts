@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getTermBySlug } from '@/lib/glossary';
 import { verifyToken, getTokenFromHeaders } from '@/lib/auth';
 import fs from 'fs';
@@ -82,6 +83,15 @@ export async function PUT(
     // Write back to file
     fs.writeFileSync(glossaryPath, updatedContent, 'utf-8');
 
+    // Revalidate glossary pages
+    revalidatePath('/glossary', 'page');
+    revalidatePath('/admin/glossary', 'page');
+    revalidatePath('/glossary/[slug]', 'page');
+    revalidatePath(`/glossary/${slug}`, 'page');
+    if (slug !== updatedTerm.slug) {
+      revalidatePath(`/glossary/${updatedTerm.slug}`, 'page');
+    }
+
     return NextResponse.json({ success: true, term: updatedTerm });
   } catch (error) {
     console.error('Error updating term:', error);
@@ -134,6 +144,12 @@ export async function DELETE(
 
     // Write back to file
     fs.writeFileSync(glossaryPath, updatedContent, 'utf-8');
+
+    // Revalidate glossary pages
+    revalidatePath('/glossary', 'page');
+    revalidatePath('/admin/glossary', 'page');
+    revalidatePath('/glossary/[slug]', 'page');
+    revalidatePath(`/glossary/${slug}`, 'page');
 
     return NextResponse.json({ success: true });
   } catch (error) {

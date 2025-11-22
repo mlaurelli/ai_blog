@@ -57,8 +57,10 @@ export async function POST(request: Request) {
     delete require.cache[require.resolve('@/lib/posts')];
 
     // Revalidate Next.js cache for all relevant paths
-    revalidatePath('/blog', 'layout');
-    revalidatePath('/', 'layout');
+    revalidatePath('/', 'page');
+    revalidatePath('/blog/[slug]', 'page');
+    revalidatePath(`/blog/${newPost.slug}`, 'page');
+    revalidatePath('/admin/dashboard', 'page');
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -108,9 +110,10 @@ export async function DELETE(request: Request) {
     delete require.cache[require.resolve('@/lib/posts')];
 
     // Revalidate paths
-    revalidatePath('/blog', 'layout');
-    revalidatePath('/', 'layout');
-    revalidatePath('/admin/dashboard', 'layout');
+    revalidatePath('/', 'page');
+    revalidatePath('/blog/[slug]', 'page');
+    revalidatePath(`/blog/${slug}`, 'page');
+    revalidatePath('/admin/dashboard', 'page');
 
     return NextResponse.json({ success: true });
   } catch (error) {
