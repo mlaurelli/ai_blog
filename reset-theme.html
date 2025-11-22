@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reset Theme</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        button {
+            background: #0070f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #0051cc;
+        }
+        .success {
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Theme Reset Tool</h1>
+    <p>Current theme in localStorage: <strong id="current">None</strong></p>
+    
+    <button onclick="clearTheme()">Clear Theme (Reset to Default)</button>
+    <button onclick="setLight()">Force Light Mode</button>
+    <button onclick="setDark()">Force Dark Mode</button>
+    
+    <p class="success" id="message"></p>
+    
+    <script>
+        function updateCurrent() {
+            const theme = localStorage.getItem('theme');
+            document.getElementById('current').textContent = theme || 'None (will default to light)';
+        }
+        
+        function clearTheme() {
+            localStorage.removeItem('theme');
+            document.getElementById('message').textContent = 'Theme cleared! Refresh your app.';
+            updateCurrent();
+        }
+        
+        function setLight() {
+            localStorage.setItem('theme', 'light');
+            document.getElementById('message').textContent = 'Theme set to light! Refresh your app.';
+            updateCurrent();
+        }
+        
+        function setDark() {
+            localStorage.setItem('theme', 'dark');
+            document.getElementById('message').textContent = 'Theme set to dark! Refresh your app.';
+            updateCurrent();
+        }
+        
+        updateCurrent();
+    </script>
+</body>
+</html>

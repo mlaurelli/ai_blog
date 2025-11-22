@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+    <div class="max-w-2xl mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            Dark Mode Test
+        </h1>
+        
+        <p class="text-gray-700 dark:text-gray-300 mb-6">
+            If this text is white/light gray and the background is dark, dark mode is working.
+            If this text is dark and the background is white, dark mode is NOT working.
+        </p>
+        
+        <button 
+            onclick="toggleTest()"
+            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+            Toggle Dark Mode (Manual Test)
+        </button>
+        
+        <div class="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                Current HTML class: <code id="htmlClass" class="font-mono"></code>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        function updateClass() {
+            document.getElementById('htmlClass').textContent = 
+                document.documentElement.className || '(none)';
+        }
+        
+        function toggleTest() {
+            document.documentElement.classList.toggle('dark');
+            updateClass();
+        }
+        
+        updateClass();
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@variant dark (.dark &);
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+}
+
+body {
+  font-family: var(--font-lora), 'Georgia', 'Times New Roman', serif;
+}
+
+/* Newspaper Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), 'Georgia', 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-family: var(--font-lora), 'Georgia', 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+/* Dropcap for first paragraph */
+.dropcap::first-letter {
+  float: left;
+  font-size: 4.5rem;
+  line-height: 0.75;
+  margin: 0.1em 0.15em 0 0;
+  font-weight: 700;
+  font-family: var(--font-playfair), 'Georgia', 'Times New Roman', serif;
+}
+
+/* Column dividers */
+.column-divider {
+  border-right: 1px solid #d1d5db;
+}
+
+/* Article cards */
+article h2 {
+  line-height: 1.2;
+}
+
+article p {
+  font-size: 1rem;
+}

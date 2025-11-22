@@ -1,0 +1,24 @@
+Aggiungo 20 nuovi termini importanti al glossario (40 entries totali con EN+IT):
+
+1. Deep Learning / Deep Learning
+2. Machine Learning / Machine Learning  
+3. Gradient Descent / Gradient Descent
+4. Large Language Model (LLM) / Large Language Model (LLM)
+5. Overfitting / Overfitting
+6. Activation Function / Activation Function
+7. Fine-tuning / Fine-tuning
+8. Token / Token
+9. Embedding / Embedding
+10. CNN (Convolutional Neural Network) / CNN (Rete Neurale Convoluzionale)
+11. RNN (Recurrent Neural Network) / RNN (Rete Neurale Ricorrente)
+12. Attention Mechanism / Meccanismo di Attention
+13. Loss Function / Funzione di Loss
+14. Epoch / Epoca
+15. Hyperparameter / Iperparametro
+16. Supervised Learning / Apprendimento Supervisionato
+17. Unsupervised Learning / Apprendimento Non Supervisionato  
+18. Reinforcement Learning / Apprendimento per Rinforzo
+19. Transfer Learning / Transfer Learning
+20. Dropout / Dropout
+
+Preparazione file multi-edit...

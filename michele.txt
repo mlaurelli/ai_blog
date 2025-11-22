@@ -1,0 +1,74 @@
+Michele Laurelli — AI Architect, Researcher, and Founder of Algoretico
+
+Michele Laurelli approaches artificial intelligence with a rare dual perspective: deep technical mastery and visionary product design. As Founder and CEO of Algoretico, he develops custom AI architectures, autonomous systems, and on-premise “private AI” solutions for organizations that require absolute control, performance, and intellectual property ownership. His work spans nuclear fusion, industrial automation, medical imaging, fintech, and advanced enterprise systems.
+
+Founder of Algoretico — Building Private AI, Not Just Using It
+
+Since 2018, Michele has led Algoretico in designing and developing state-of-the-art AI systems, including:
+
+Talents, a breakthrough concept introducing persistent neural layers that shape how AI models learn, specialize, and excel in specific domains
+
+Maestro, the first European patented architecture for orchestrating autonomous AI agents
+
+You Need No Data, a framework for self-supervised AI training that allow to train AI models with minimal or no data at all
+
+SPaaS – Software Production as a Service, a pioneering AI-driven software factory model
+
+Algoretico builds AI for real-world impact: controlling proton-boron fusion reactors, diagnosing medical images, automating industrial workflows, and powering enterprise-grade CRMs and RAG systems. Under Michele’s leadership, the company has partnered with major players in fusion energy, steel, dental imaging, and next-gen industrial robotics.
+
+AI Researcher and Innovator
+
+Michele’s scientific work bridges frontier research with applied engineering. He has published influential papers on:
+
+Autonomous control systems for nuclear fusion
+
+Concept erasure and GDPR-compliant LLMs (“Brain Surgery”)
+
+Adaptive Meta-Domain Transfer Learning (AMDTL)
+
+Novel AI architectures and training frameworks
+
+His innovations include PoAItry (world’s first Italian poetry neural network), DNART.io (AI art generated from human genome data), and multiple systems for emotion recognition, COVID-19 detection, and industrial sensor fusion.
+
+Professor of Artificial Intelligence
+
+Michele teaches Machine Learning, Deep Learning, and Natural Language Processing at:
+
+Università Vita-Salute San Raffaele (Milan)
+
+Istituto Italiano di Criminologia (Vibo Valentia)
+
+Università Europea di Roma (Rome)
+
+His teaching philosophy combines scientific rigor with hands-on engineering, preparing students to build — not just use — AI systems.
+
+Advisor in Energy, Industry, and Research
+
+Michele serves as:
+
+Consultant for AI & Fusion at the European Fusion Association
+
+CTO at Lagiste23, advising on investments in high-impact technologies
+
+Expert member at Institut EuropIA, supporting European projects in AI ethics and innovation
+
+He collaborates with stakeholders across Europe and Asia, bringing practical AI innovation into sectors historically resistant to technological transformation.
+
+Author
+
+Michele has written several books that make advanced AI accessible to a broader audience, including:
+
+Alchimia (2024)
+
+Intelligenza Artificiale e Criminologia (2023)
+
+La Matematica dell’Intelligenza Artificiale (2023)
+
+Beyond the Lab
+
+Born in 1991 in Albenga, Michele combines his passion for AI with sailing, fencing, and long walks with his Border Collie. 
+
+Contact
+
+Email: ciao@michelelaurelli.it
+Website: www.michelelaurelli.it

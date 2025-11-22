@@ -1,0 +1,41 @@
+export type GlossaryTerm = ];
+
+// Helper functions
+export function getAllTerms(lang: 'en' | 'it' = 'en'): GlossaryTerm[] {
+  return glossaryTerms
+    .filter(term => term.language === lang)
+    .sort((a, b) => a.term.localeCompare(b.term)); // Alphabetical order
+}
+
+export function getTermBySlug(slug: string, lang: 'en' | 'it' = 'en'): GlossaryTerm | undefined {
+  return glossaryTerms.find(term => term.slug === slug && term.language === lang);
+}
+
+export function getTermsByCategory(category: string, lang: 'en' | 'it' = 'en'): GlossaryTerm[] {
+  return glossaryTerms
+    .filter(term => term.language === lang && term.category === category)
+    .sort((a, b) => a.term.localeCompare(b.term));
+}
+
+export function getAllCategories(lang: 'en' | 'it' = 'en'): string[] {
+  const terms = glossaryTerms.filter(term => term.language === lang);
+  return [...new Set(terms.map(term => term.category))].sort();
+}
+
+export function searchTerms(query: string, lang: 'en' | 'it' = 'en'): GlossaryTerm[] {
+  const lowercaseQuery = query.toLowerCase();
+  return glossaryTerms
+    .filter(term => 
+      term.language === lang && (
+        term.term.toLowerCase().includes(lowercaseQuery) ||
+        term.definition.toLowerCase().includes(lowercaseQuery)
+      )
+    )
+    .sort((a, b) => a.term.localeCompare(b.term));
+}
+
+// For admin: get ALL terms without language filter
+export function getAllTermsAdmin(): GlossaryTerm[] {
+  return glossaryTerms
+    .sort((a, b) => a.term.localeCompare(b.term));
+}
