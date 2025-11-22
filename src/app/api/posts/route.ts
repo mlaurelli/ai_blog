@@ -20,41 +20,23 @@ export async function POST(request: Request) {
 
     const newPost = await request.json();
     
-    // Read current posts
-    const postsPath = path.join(process.cwd(), 'src', 'lib', 'posts.ts');
-    let fileContent = fs.readFileSync(postsPath, 'utf-8');
+    // Read current posts from JSON
+    const postsPath = path.join(process.cwd(), 'data', 'posts.json');
+    let posts = [];
     
-    // Find the posts array and insert the new post
-    const postsArrayMatch = fileContent.match(/export const posts: Post\[\] = \[([\s\S]*?)\];/);
-    if (!postsArrayMatch) {
-      return NextResponse.json({ error: 'Could not parse posts file' }, { status: 500 });
+    try {
+      const fileContent = fs.readFileSync(postsPath, 'utf-8');
+      posts = JSON.parse(fileContent);
+    } catch (e) {
+      console.error('Error reading posts.json:', e);
+      posts = [];
     }
 
-    const newPostString = `  {
-    slug: '${newPost.slug}',
-    language: '${newPost.language || 'both'}',
-    title: '${newPost.title.replace(/'/g, "\\'")}',
-    excerpt: '${newPost.excerpt.replace(/'/g, "\\'")}',
-    content: \`${newPost.content.replace(/`/g, '\\`')}\`,
-    date: '${newPost.date}',
-    author: {
-      name: '${newPost.author.name.replace(/'/g, "\\'")}',
-      avatar: '${newPost.author.avatar}'
-    },
-    coverImage: '${newPost.coverImage}',
-    tags: [${newPost.tags.map((tag: string) => `'${tag}'`).join(', ')}]
-  }`;
-
     // Add the new post at the beginning of the array
-    fileContent = fileContent.replace(
-      /export const posts: Post\[\] = \[/,
-      `export const posts: Post[] = [\n${newPostString},`
-    );
+    posts.unshift(newPost);
 
-    fs.writeFileSync(postsPath, fileContent, 'utf-8');
-
-    // Clear Node.js module cache to force reload
-    delete require.cache[require.resolve('@/lib/posts')];
+    // Write back to JSON file
+    fs.writeFileSync(postsPath, JSON.stringify(posts, null, 2), 'utf-8');
 
     // Revalidate Next.js cache for all relevant paths
     revalidatePath('/', 'page');
@@ -82,32 +64,28 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'Slug is required' }, { status: 400 });
     }
 
-    // Read current posts file
-    const postsPath = path.join(process.cwd(), 'src', 'lib', 'posts.ts');
-    let fileContent = fs.readFileSync(postsPath, 'utf-8');
+    // Read current posts from JSON
+    const postsPath = path.join(process.cwd(), 'data', 'posts.json');
+    let posts = [];
     
-    // Find and remove the post - more robust regex that handles multi-line content
-    // Match from opening brace with slug to the closing brace and comma
-    const postRegex = new RegExp(`{[\\s\\S]*?slug:\\s*'${slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'[\\s\\S]*?tags:\\s*\\[[\\s\\S]*?\\]\\s*}\\s*,?`, 'g');
+    try {
+      const fileContent = fs.readFileSync(postsPath, 'utf-8');
+      posts = JSON.parse(fileContent);
+    } catch (e) {
+      return NextResponse.json({ error: 'Error reading posts' }, { status: 500 });
+    }
+
+    // Find and remove the post
+    const postIndex = posts.findIndex((p: any) => p.slug === slug);
     
-    if (!postRegex.test(fileContent)) {
+    if (postIndex === -1) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
     }
 
-    // Remove the post
-    fileContent = fileContent.replace(postRegex, '');
+    posts.splice(postIndex, 1);
     
-    // Clean up double commas and empty lines
-    fileContent = fileContent.replace(/,(\s*),/g, ',');
-    fileContent = fileContent.replace(/,(\s*)\]/g, ']');
-    fileContent = fileContent.replace(/\[\s*,/g, '[');
-    fileContent = fileContent.replace(/\n\n\n+/g, '\n\n');
-    
-    // Write back to file
-    fs.writeFileSync(postsPath, fileContent, 'utf-8');
-
-    // Clear Node.js module cache
-    delete require.cache[require.resolve('@/lib/posts')];
+    // Write back to JSON file
+    fs.writeFileSync(postsPath, JSON.stringify(posts, null, 2), 'utf-8');
 
     // Revalidate paths
     revalidatePath('/', 'page');

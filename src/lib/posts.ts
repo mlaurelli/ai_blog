@@ -1536,27 +1536,26 @@ Optimization in deep learning funziona not despite the landscape's complexity, b
     tags: ['Architettura IA', 'Deep Learning', 'Ottimizzazione', 'Machine Learning']
   }];
 
-// Dynamic post loading to avoid Turbopack caching issues
+// Dynamic post loading from JSON file
 function loadPosts(): Post[] {
-  // In development, re-parse the file to get latest changes
-  if (typeof window === 'undefined' && process.env.NODE_ENV === 'development') {
+  // Only load from filesystem on server-side
+  if (typeof window === 'undefined') {
     try {
       const fs = require('fs');
       const path = require('path');
-      const postsPath = path.join(process.cwd(), 'src', 'lib', 'posts.ts');
-      const fileContent = fs.readFileSync(postsPath, 'utf-8');
+      const postsPath = path.join(process.cwd(), 'data', 'posts.json');
       
-      // Extract the posts array using regex
-      const match = fileContent.match(/export const posts: Post\[\] = (\[[\s\S]*?\n\]);/);
-      if (match) {
-        // Use eval to parse the array (safe in development server context)
-        const postsArray = eval(match[1]);
-        return postsArray;
-      }
+      // Read JSON file
+      const fileContent = fs.readFileSync(postsPath, 'utf-8');
+      const postsArray = JSON.parse(fileContent);
+      return postsArray;
     } catch (e) {
-      console.error('Error dynamically loading posts:', e);
+      console.error('Error loading posts from JSON:', e);
+      // Fallback to hardcoded posts if JSON file doesn't exist
+      return posts;
     }
   }
+  // Client-side: return hardcoded posts as fallback
   return posts;
 }
 

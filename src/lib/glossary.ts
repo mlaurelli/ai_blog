@@ -144,31 +144,54 @@ Il self attention trova applicazione in diverse aree, tra cui:
   }
 ];
 
+// Dynamic glossary loading from JSON file
+function loadGlossaryTerms(): GlossaryTerm[] {
+  // Only load from filesystem on server-side
+  if (typeof window === 'undefined') {
+    try {
+      const fs = require('fs');
+      const path = require('path');
+      const glossaryPath = path.join(process.cwd(), 'data', 'glossary.json');
+      
+      // Read JSON file
+      const fileContent = fs.readFileSync(glossaryPath, 'utf-8');
+      const termsArray = JSON.parse(fileContent);
+      return termsArray;
+    } catch (e) {
+      console.error('Error loading glossary from JSON:', e);
+      // Fallback to hardcoded terms if JSON file doesn't exist
+      return glossaryTerms;
+    }
+  }
+  // Client-side: return hardcoded terms as fallback
+  return glossaryTerms;
+}
+
 // Helper functions
 export function getAllTerms(lang: 'en' | 'it' = 'en'): GlossaryTerm[] {
-  return glossaryTerms
+  return loadGlossaryTerms()
     .filter(term => term.language === lang)
     .sort((a, b) => a.term.localeCompare(b.term));
 }
 
 export function getTermBySlug(slug: string, lang: 'en' | 'it' = 'en'): GlossaryTerm | undefined {
-  return glossaryTerms.find(term => term.slug === slug && term.language === lang);
+  return loadGlossaryTerms().find(term => term.slug === slug && term.language === lang);
 }
 
 export function getTermsByCategory(category: string, lang: 'en' | 'it' = 'en'): GlossaryTerm[] {
-  return glossaryTerms
+  return loadGlossaryTerms()
     .filter(term => term.language === lang && term.category === category)
     .sort((a, b) => a.term.localeCompare(b.term));
 }
 
 export function getAllCategories(lang: 'en' | 'it' = 'en'): string[] {
-  const terms = glossaryTerms.filter(term => term.language === lang);
+  const terms = loadGlossaryTerms().filter(term => term.language === lang);
   return [...new Set(terms.map(term => term.category))].sort();
 }
 
 export function searchTerms(query: string, lang: 'en' | 'it' = 'en'): GlossaryTerm[] {
   const lowercaseQuery = query.toLowerCase();
-  return glossaryTerms
+  return loadGlossaryTerms()
     .filter(term => 
       term.language === lang && (
         term.term.toLowerCase().includes(lowercaseQuery) ||
@@ -180,6 +203,6 @@ export function searchTerms(query: string, lang: 'en' | 'it' = 'en'): GlossaryTe
 
 // For admin: get ALL terms without language filter
 export function getAllTermsAdmin(): GlossaryTerm[] {
-  return glossaryTerms
+  return loadGlossaryTerms()
     .sort((a, b) => a.term.localeCompare(b.term));
 }

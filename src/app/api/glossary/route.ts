@@ -25,35 +25,23 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Read current glossary file
-    const glossaryPath = path.join(process.cwd(), 'src', 'lib', 'glossary.ts');
-    let fileContent = fs.readFileSync(glossaryPath, 'utf-8');
+    // Read current glossary from JSON
+    const glossaryPath = path.join(process.cwd(), 'data', 'glossary.json');
+    let terms = [];
     
-    // Find the glossaryTerms array
-    const termsArrayMatch = fileContent.match(/export const glossaryTerms: GlossaryTerm\[\] = \[([\s\S]*?)\];/);
-    if (!termsArrayMatch) {
-      return NextResponse.json({ error: 'Could not parse glossary file' }, { status: 500 });
+    try {
+      const fileContent = fs.readFileSync(glossaryPath, 'utf-8');
+      terms = JSON.parse(fileContent);
+    } catch (e) {
+      console.error('Error reading glossary.json:', e);
+      terms = [];
     }
 
-    // Format the new term as a string
-    const termString = `{
-    slug: '${newTerm.slug}',
-    language: '${newTerm.language}',
-    term: '${newTerm.term.replace(/'/g, "\\'")}',
-    category: '${newTerm.category}',${newTerm.pronunciation ? `\n    pronunciation: '${newTerm.pronunciation.replace(/'/g, "\\'")}',` : ''}
-    definition: \`${newTerm.definition.replace(/`/g, '\\`')}\`,
-    explanation: \`${newTerm.explanation.replace(/`/g, '\\`')}\`,${newTerm.examples && newTerm.examples.length > 0 ? `\n    examples: [\n${newTerm.examples.map((ex: string) => `      '${ex.replace(/'/g, "\\'").replace(/\n/g, ' ')}'`).join(',\n')}\n    ],` : ''}${newTerm.relatedTerms && newTerm.relatedTerms.length > 0 ? `\n    relatedTerms: [${newTerm.relatedTerms.map((rt: string) => `'${rt}'`).join(', ')}],` : ''}${newTerm.etymology ? `\n    etymology: '${newTerm.etymology.replace(/'/g, "\\'")}',` : ''}
-  }`;
+    // Add the new term
+    terms.push(newTerm);
 
-    // Insert the new term at the end of the array
-    const updatedArray = termsArrayMatch[1].trim() + (termsArrayMatch[1].trim() ? ',\n\n  ' : '  ') + termString;
-    const updatedContent = fileContent.replace(
-      termsArrayMatch[0],
-      `export const glossaryTerms: GlossaryTerm[] = [\n  ${updatedArray}\n];`
-    );
-
-    // Write back to file
-    fs.writeFileSync(glossaryPath, updatedContent, 'utf-8');
+    // Write back to JSON file
+    fs.writeFileSync(glossaryPath, JSON.stringify(terms, null, 2), 'utf-8');
 
     // Revalidate glossary pages
     revalidatePath('/glossary', 'page');
@@ -81,52 +69,28 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'Slug is required' }, { status: 400 });
     }
 
-    // Read current glossary file
-    const glossaryPath = path.join(process.cwd(), 'src', 'lib', 'glossary.ts');
-    let fileContent = fs.readFileSync(glossaryPath, 'utf-8');
+    // Read current glossary from JSON
+    const glossaryPath = path.join(process.cwd(), 'data', 'glossary.json');
+    let terms = [];
     
-    // Escape special regex characters in slug
-    const escapedSlug = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    
-    // Parse the file to find the term more safely
-    const termsArrayMatch = fileContent.match(/export const glossaryTerms: GlossaryTerm\[\] = \[([\s\S]*)\];/);
-    if (!termsArrayMatch) {
-      return NextResponse.json({ error: 'Could not parse glossary file' }, { status: 500 });
+    try {
+      const fileContent = fs.readFileSync(glossaryPath, 'utf-8');
+      terms = JSON.parse(fileContent);
+    } catch (e) {
+      return NextResponse.json({ error: 'Error reading glossary' }, { status: 500 });
     }
+
+    // Find and remove the term
+    const termIndex = terms.findIndex((t: any) => t.slug === slug);
     
-    const termsContent = termsArrayMatch[1];
-    
-    // More precise regex: match complete term object with proper boundaries
-    // Start with { followed by any content until we find our slug, then match until the closing }
-    // but stop before the next opening brace of another term
-    const termRegex = new RegExp(
-      `\\{[\\s\\S]*?slug:\\s*'${escapedSlug}'[\\s\\S]*?\\}(?=\\s*,?\\s*(?:\\{|\\]))`,
-      'g'
-    );
-    
-    if (!termRegex.test(termsContent)) {
+    if (termIndex === -1) {
       return NextResponse.json({ error: 'Term not found' }, { status: 404 });
     }
 
-    // Remove the term from the terms array content
-    const updatedTermsContent = termsContent.replace(termRegex, '').trim();
+    terms.splice(termIndex, 1);
     
-    // Clean up double commas and formatting
-    const cleanedContent = updatedTermsContent
-      .replace(/,(\s*),/g, ',')
-      .replace(/,(\s*)\]/g, '')
-      .replace(/\[\s*,/g, '')
-      .replace(/\n\n\n+/g, '\n\n')
-      .trim();
-    
-    // Rebuild the file
-    fileContent = fileContent.replace(
-      termsArrayMatch[0],
-      `export const glossaryTerms: GlossaryTerm[] = [\n  ${cleanedContent}\n];`
-    );
-    
-    // Write back to file
-    fs.writeFileSync(glossaryPath, fileContent, 'utf-8');
+    // Write back to JSON file
+    fs.writeFileSync(glossaryPath, JSON.stringify(terms, null, 2), 'utf-8');
 
     // Revalidate glossary pages
     revalidatePath('/glossary', 'page');
