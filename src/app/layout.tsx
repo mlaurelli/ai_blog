@@ -104,6 +104,33 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="AI Blog " />
         <link rel="manifest" href="/site.webmanifest" />
         
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-JNSG4HV95K"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              // Initialize with denied consent (GDPR compliant)
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'wait_for_update': 500
+              });
+              
+              gtag('config', 'G-JNSG4HV95K', {
+                'anonymize_ip': true,
+                'cookie_flags': 'SameSite=None;Secure'
+              });
+            `,
+          }}
+        />
+        
         {/* Theme Script */}
         <script
           dangerouslySetInnerHTML={{

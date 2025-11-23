@@ -6,6 +6,7 @@ import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import CookieConsent from './CookieConsent';
 import NewsletterModal from './NewsletterModal';
+import GoogleAnalytics from './GoogleAnalytics';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -192,6 +193,9 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
       
       {/* Newsletter Modal */}
       <NewsletterModal />
+      
+      {/* Google Analytics Page Tracking */}
+      <GoogleAnalytics />
     </div>
   );
 }

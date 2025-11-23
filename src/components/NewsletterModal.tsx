@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { usePathname } from 'next/navigation';
+import { trackEvent } from './GoogleAnalytics';
 
 export default function NewsletterModal() {
   const { t } = useLanguage();
@@ -25,6 +26,10 @@ export default function NewsletterModal() {
     // Show modal after 10 seconds on each page visit
     const timer = setTimeout(() => {
       setShowModal(true);
+      // Track modal appearance
+      trackEvent('newsletter_modal_shown', {
+        page: pathname,
+      });
     }, 10000); // 10 seconds
 
     return () => clearTimeout(timer);
@@ -86,6 +91,12 @@ export default function NewsletterModal() {
       localStorage.setItem('newsletter_email', email.toLowerCase().trim());
       localStorage.setItem('newsletter_date', new Date().toISOString());
       
+      // Track successful subscription
+      trackEvent('newsletter_subscription', {
+        method: 'modal',
+        page: pathname,
+      });
+      
       setSuccess(true);
       
       // Close modal after showing success message
@@ -101,6 +112,10 @@ export default function NewsletterModal() {
   };
 
   const handleClose = () => {
+    // Track modal dismissal
+    trackEvent('newsletter_modal_dismissed', {
+      page: pathname,
+    });
     setShowModal(false);
   };
 
