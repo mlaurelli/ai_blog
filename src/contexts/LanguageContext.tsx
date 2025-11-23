@@ -63,6 +63,25 @@ const translations = {
     'cookie.marketingDesc': 'These cookies are used to track visitors across websites and display ads that are relevant and engaging.',
     'cookie.cookiePolicy': 'Cookie Policy',
     'cookie.savePreferences': 'Save Preferences',
+    
+    // Newsletter Modal
+    'newsletter.title': 'Stay Updated!',
+    'newsletter.subtitle': 'Subscribe to get the latest AI insights and articles delivered to your inbox.',
+    'newsletter.emailLabel': 'Email Address',
+    'newsletter.emailPlaceholder': 'your.email@example.com',
+    'newsletter.privacyText': 'I have read and accept the',
+    'newsletter.privacyLink': 'Privacy Policy',
+    'newsletter.gdprTitle': 'GDPR Compliance',
+    'newsletter.gdprText': 'Your email will be used solely for sending newsletter updates. You can unsubscribe at any time. We will never share your data with third parties.',
+    'newsletter.subscribe': 'Subscribe',
+    'newsletter.subscribing': 'Subscribing...',
+    'newsletter.noThanks': 'No thanks, maybe later',
+    'newsletter.successTitle': 'Thank You!',
+    'newsletter.successMessage': 'You have been successfully subscribed to our newsletter.',
+    'newsletter.errorEmail': 'Please enter your email address.',
+    'newsletter.errorEmailInvalid': 'Please enter a valid email address.',
+    'newsletter.errorPrivacy': 'You must accept the Privacy Policy to subscribe.',
+    'newsletter.errorGeneric': 'An error occurred. Please try again later.',
   },
   it: {
     // Navigation
@@ -114,6 +133,25 @@ const translations = {
     'cookie.marketingDesc': 'Questi cookie vengono utilizzati per tracciare i visitatori attraverso i siti web e visualizzare annunci pertinenti e coinvolgenti.',
     'cookie.cookiePolicy': 'Policy sui Cookie',
     'cookie.savePreferences': 'Salva Preferenze',
+    
+    // Newsletter Modal
+    'newsletter.title': 'Resta Aggiornato!',
+    'newsletter.subtitle': 'Iscriviti per ricevere gli ultimi insights sull\'AI e gli articoli direttamente nella tua casella di posta.',
+    'newsletter.emailLabel': 'Indirizzo Email',
+    'newsletter.emailPlaceholder': 'tua.email@esempio.it',
+    'newsletter.privacyText': 'Ho letto e accetto la',
+    'newsletter.privacyLink': 'Privacy Policy',
+    'newsletter.gdprTitle': 'Conformità GDPR',
+    'newsletter.gdprText': 'La tua email sarà utilizzata esclusivamente per l\'invio della newsletter. Puoi disiscriverti in qualsiasi momento. Non condivideremo mai i tuoi dati con terze parti.',
+    'newsletter.subscribe': 'Iscriviti',
+    'newsletter.subscribing': 'Iscrizione in corso...',
+    'newsletter.noThanks': 'No grazie, forse più tardi',
+    'newsletter.successTitle': 'Grazie!',
+    'newsletter.successMessage': 'Ti sei iscritto con successo alla nostra newsletter.',
+    'newsletter.errorEmail': 'Inserisci il tuo indirizzo email.',
+    'newsletter.errorEmailInvalid': 'Inserisci un indirizzo email valido.',
+    'newsletter.errorPrivacy': 'Devi accettare la Privacy Policy per iscriverti.',
+    'newsletter.errorGeneric': 'Si è verificato un errore. Riprova più tardi.',
   }
 };
 

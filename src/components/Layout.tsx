@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import CookieConsent from './CookieConsent';
+import NewsletterModal from './NewsletterModal';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -188,6 +189,9 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
 
       {/* Cookie Consent Banner */}
       <CookieConsent />
+      
+      {/* Newsletter Modal */}
+      <NewsletterModal />
     </div>
   );
 }
