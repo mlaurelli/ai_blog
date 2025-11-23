@@ -3024,5 +3024,105 @@
     "explanation": "L'inference avviene dopo il training. Il modello processa input e genera output. Può essere real-time o batch. Ottimizzato per velocità.",
     "examples": ["Classificazione immagini real-time", "Predizione batch su 1000 campioni", "Deployment modello"],
     "relatedTerms": ["prediction", "deployment", "serving"]
+  },
+  {
+    "slug": "neuron",
+    "language": "en",
+    "term": "Neuron",
+    "category": "Concept",
+    "definition": "Basic computational unit in neural networks that receives inputs, applies weights and activation, produces output.",
+    "explanation": "Inspired by biological neurons. Computes weighted sum of inputs plus bias, then applies activation function. Building block of neural networks.",
+    "examples": ["Single neuron in hidden layer", "Output neuron", "Perceptron"],
+    "relatedTerms": ["neural-network", "activation-function", "perceptron"]
+  },
+  {
+    "slug": "neuron-it",
+    "language": "it",
+    "term": "Neurone",
+    "category": "Concetto",
+    "definition": "Unità computazionale base nelle reti neurali che riceve input, applica pesi e attivazione, produce output.",
+    "explanation": "Ispirato dai neuroni biologici. Calcola somma pesata degli input più bias, poi applica funzione di attivazione. Building block delle reti neurali.",
+    "examples": ["Singolo neurone in hidden layer", "Neurone output", "Perceptron"],
+    "relatedTerms": ["neural-network", "activation-function", "perceptron"]
+  },
+  {
+    "slug": "weight",
+    "language": "en",
+    "term": "Weight",
+    "category": "Concept",
+    "definition": "Learnable parameters in neural networks that determine the strength of connections between neurons.",
+    "explanation": "Weights are adjusted during training to minimize loss. Multiplied with inputs in each neuron. Core of what model learns.",
+    "examples": ["Connection weight: 0.5", "Weight matrix", "Learned parameters"],
+    "relatedTerms": ["parameter", "training", "neural-network"]
+  },
+  {
+    "slug": "weight-it",
+    "language": "it",
+    "term": "Peso",
+    "category": "Concetto",
+    "definition": "Parametri apprendibili nelle reti neurali che determinano la forza delle connessioni tra neuroni.",
+    "explanation": "I pesi sono aggiustati durante il training per minimizzare la loss. Moltiplicati con input in ogni neurone. Core di ciò che il modello apprende.",
+    "examples": ["Peso connessione: 0.5", "Matrice pesi", "Parametri appresi"],
+    "relatedTerms": ["parameter", "training", "neural-network"]
+  },
+  {
+    "slug": "parameter",
+    "language": "en",
+    "term": "Parameter",
+    "category": "Concept",
+    "definition": "Learnable values in a model that are optimized during training (weights and biases).",
+    "explanation": "Parameters define the model. Number of parameters indicates model capacity. Large models have billions of parameters.",
+    "examples": ["GPT-3: 175B parameters", "Weight and bias parameters", "Model size"],
+    "relatedTerms": ["weight", "bias-term", "model-size"]
+  },
+  {
+    "slug": "parameter-it",
+    "language": "it",
+    "term": "Parametro",
+    "category": "Concetto",
+    "definition": "Valori apprendibili in un modello che sono ottimizzati durante il training (pesi e bias).",
+    "explanation": "I parametri definiscono il modello. Numero di parametri indica capacità modello. Modelli grandi hanno miliardi di parametri.",
+    "examples": ["GPT-3: 175B parametri", "Parametri peso e bias", "Dimensione modello"],
+    "relatedTerms": ["weight", "bias-term", "model-size"]
+  },
+  {
+    "slug": "algorithm",
+    "language": "en",
+    "term": "Algorithm",
+    "category": "Concept",
+    "definition": "A step-by-step procedure or formula for solving a problem or performing a task.",
+    "explanation": "In ML: learning algorithms (gradient descent), optimization algorithms, search algorithms. Defines how model learns or makes decisions.",
+    "examples": ["Gradient descent algorithm", "K-means clustering", "Backpropagation"],
+    "relatedTerms": ["gradient-descent", "optimization", "procedure"]
+  },
+  {
+    "slug": "algorithm-it",
+    "language": "it",
+    "term": "Algoritmo",
+    "category": "Concetto",
+    "definition": "Una procedura o formula step-by-step per risolvere un problema o eseguire un task.",
+    "explanation": "In ML: algoritmi di apprendimento (gradient descent), algoritmi di ottimizzazione, algoritmi di ricerca. Definisce come il modello apprende o prende decisioni.",
+    "examples": ["Algoritmo gradient descent", "K-means clustering", "Backpropagation"],
+    "relatedTerms": ["gradient-descent", "optimization", "procedure"]
+  },
+  {
+    "slug": "error",
+    "language": "en",
+    "term": "Error",
+    "category": "Concept",
+    "definition": "The difference between predicted output and true label, indicating model's mistakes.",
+    "explanation": "Error guides learning. High error means poor predictions. Training aims to minimize error. Related to loss function.",
+    "examples": ["Prediction error: 0.5", "Classification error rate", "Mean squared error"],
+    "relatedTerms": ["loss-function", "residual", "mistake"]
+  },
+  {
+    "slug": "error-it",
+    "language": "it",
+    "term": "Errore",
+    "category": "Concetto",
+    "definition": "La differenza tra output predetto e etichetta vera, indicando errori del modello.",
+    "explanation": "L'errore guida l'apprendimento. Errore alto significa predizioni scarse. Il training mira a minimizzare l'errore. Correlato alla funzione di loss.",
+    "examples": ["Errore predizione: 0.5", "Tasso errore classificazione", "Mean squared error"],
+    "relatedTerms": ["loss-function", "residual", "mistake"]
   }
 ]
