@@ -1,0 +1,25 @@
+[
+  {
+    "id": "michele-laurelli",
+    "name": "Michele Laurelli",
+    "bio": "AI Architect & Researcher specializing in private AI models and systems, autonomous agents, and AI architectures. Founder of Algoretico. University professor adj and author. ",
+    "avatar": "/uploads/1763752568910-michele-laurelli.jpg",
+    "role": "Founder & AI Architect",
+    "email": "m.laurelli@algoretico.com",
+    "website": "https://michelelaurelli.com",
+    "linkedin": "michelelaurelli",
+    "github": "mlaurelli",
+    "seo": {
+      "title": "Michele Laurelli - AI Expert",
+      "description": "Expert in private AI systems, autonomous agents, and deep learning architectures. University Professor and Author. ",
+      "keywords": [
+        "AI Architect",
+        "Machine Learning",
+        "Deep Learning",
+        "Private AI",
+        "Autonomous Agents",
+        "AI Research"
+      ]
+    }
+  }
+]

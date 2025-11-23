@@ -19,33 +19,23 @@ export async function POST(request: Request) {
 
     const newAuthor = await request.json();
     
-    // Read current authors
-    const authorsPath = path.join(process.cwd(), 'src', 'lib', 'authors.ts');
-    let fileContent = fs.readFileSync(authorsPath, 'utf-8');
+    // Read current authors from JSON
+    const authorsPath = path.join(process.cwd(), 'data', 'authors.json');
+    let authors = [];
     
-    const newAuthorString = `  {
-    id: '${newAuthor.id}',
-    name: '${newAuthor.name.replace(/'/g, "\\'")}',
-    bio: '${newAuthor.bio.replace(/'/g, "\\'")}',
-    avatar: '${newAuthor.avatar}',
-    role: '${newAuthor.role.replace(/'/g, "\\'")}',${newAuthor.email ? `\n    email: '${newAuthor.email}',` : ''}${newAuthor.website ? `\n    website: '${newAuthor.website}',` : ''}${newAuthor.twitter ? `\n    twitter: '${newAuthor.twitter}',` : ''}${newAuthor.linkedin ? `\n    linkedin: '${newAuthor.linkedin}',` : ''}${newAuthor.github ? `\n    github: '${newAuthor.github}',` : ''}
-    seo: {
-      title: '${newAuthor.seo.title.replace(/'/g, "\\'")}',
-      description: '${newAuthor.seo.description.replace(/'/g, "\\'")}',
-      keywords: [${newAuthor.seo.keywords.map((kw: string) => `'${kw}'`).join(', ')}]
+    try {
+      const fileContent = fs.readFileSync(authorsPath, 'utf-8');
+      authors = JSON.parse(fileContent);
+    } catch (e) {
+      console.error('Error reading authors.json:', e);
+      authors = [];
     }
-  }`;
 
-    // Add the new author at the beginning of the array
-    fileContent = fileContent.replace(
-      /export const authors: Author\[\] = \[/,
-      `export const authors: Author[] = [\n${newAuthorString},`
-    );
+    // Add the new author
+    authors.push(newAuthor);
 
-    fs.writeFileSync(authorsPath, fileContent, 'utf-8');
-
-    // Clear Node.js module cache to force reload
-    delete require.cache[require.resolve('@/lib/authors')];
+    // Write back to JSON file
+    fs.writeFileSync(authorsPath, JSON.stringify(authors, null, 2), 'utf-8');
 
     // Revalidate Next.js cache
     revalidatePath('/authors', 'layout');

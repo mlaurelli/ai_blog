@@ -35,31 +35,26 @@ export const authors: Author[] = [
   },
 ];
 
-// Dynamic author loading to avoid Turbopack caching issues
+// Dynamic author loading from JSON file
 function loadAuthors(): Author[] {
-  // In development, re-parse the file to get latest changes
-  if (typeof window === 'undefined' && process.env.NODE_ENV === 'development') {
+  // Only load from filesystem on server-side
+  if (typeof window === 'undefined') {
     try {
       const fs = require('fs');
       const path = require('path');
-      const authorsPath = path.join(process.cwd(), 'src', 'lib', 'authors.ts');
-      const fileContent = fs.readFileSync(authorsPath, 'utf-8');
+      const authorsPath = path.join(process.cwd(), 'data', 'authors.json');
       
-      // Extract the authors array using regex
-      const match = fileContent.match(/export const authors: Author\[\] = (\[[\s\S]*?\n\]);/);
-      if (match) {
-        const authorsArray = eval(match[1]);
-        console.log('[loadAuthors] Loaded', authorsArray.length, 'authors dynamically from file');
-        if (authorsArray[0]) {
-          console.log('[loadAuthors] First author avatar:', authorsArray[0].avatar.substring(0, 60) + '...');
-        }
-        return authorsArray;
-      }
+      // Read JSON file
+      const fileContent = fs.readFileSync(authorsPath, 'utf-8');
+      const authorsArray = JSON.parse(fileContent);
+      return authorsArray;
     } catch (e) {
-      console.error('Error dynamically loading authors:', e);
+      console.error('Error loading authors from JSON:', e);
+      // Fallback to hardcoded authors if JSON file doesn't exist
+      return authors;
     }
   }
-  console.log('[loadAuthors] Using static authors array');
+  // Client-side: return hardcoded authors as fallback
   return authors;
 }
 
