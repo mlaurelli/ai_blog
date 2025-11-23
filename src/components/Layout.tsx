@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
+import CookieConsent from './CookieConsent';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -160,12 +161,33 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
 
       <footer className="border-t-2 border-black dark:border-gray-600 mt-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center text-xs text-gray-600 dark:text-gray-400">
-            <p className="mb-2">© {new Date().getFullYear()} Michele Laurelli. All rights reserved.</p>
-            <p className="italic">Artificial intelligence treated with scientific integrity, engineering precision, and human depth.</p>
+          <div className="text-center">
+            {/* Policy Links */}
+            <div className="mb-4 flex flex-wrap justify-center gap-4 text-xs">
+              <Link href="/privacy-policy" className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white underline font-semibold uppercase tracking-wide">
+                Privacy Policy
+              </Link>
+              <span className="text-gray-400">•</span>
+              <Link href="/cookie-policy" className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white underline font-semibold uppercase tracking-wide">
+                Cookie Policy
+              </Link>
+              <span className="text-gray-400">•</span>
+              <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white underline font-semibold uppercase tracking-wide">
+                About
+              </Link>
+            </div>
+            
+            {/* Copyright */}
+            <div className="text-xs text-gray-600 dark:text-gray-400">
+              <p className="mb-2">© {new Date().getFullYear()} Michele Laurelli. All rights reserved.</p>
+              <p className="italic">Artificial intelligence treated with scientific integrity, engineering precision, and human depth.</p>
+            </div>
           </div>
         </div>
       </footer>
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
     </div>
   );
 }
