@@ -1974,5 +1974,125 @@
     "explanation": "Converte float 32-bit a interi 8-bit o meno. Riduce dimensione modello 4x con perdita minima accuracy. Essenziale per edge deployment.",
     "examples": ["Quantizzazione INT8", "Deployment mobile", "Quantizzazione 4-bit LLM"],
     "relatedTerms": ["model-compression", "edge-ai", "inference"]
+  },
+  {
+    "slug": "pruning",
+    "language": "en",
+    "term": "Pruning",
+    "category": "Technique",
+    "definition": "Removing unnecessary weights/neurons to reduce model size and computational cost.",
+    "explanation": "Identifies and removes weights with small magnitudes. Can be structured (neurons/filters) or unstructured (individual weights). Often combined with fine-tuning.",
+    "examples": ["Weight pruning by magnitude", "Structured filter pruning", "Lottery ticket hypothesis"],
+    "relatedTerms": ["model-compression", "sparsity", "efficiency"]
+  },
+  {
+    "slug": "pruning-it",
+    "language": "it",
+    "term": "Pruning",
+    "category": "Tecnica",
+    "definition": "Rimuovere pesi/neuroni non necessari per ridurre dimensione modello e costo computazionale.",
+    "explanation": "Identifica e rimuove pesi con magnitudine piccola. Può essere strutturato (neuroni/filtri) o non strutturato (pesi individuali). Spesso combinato con fine-tuning.",
+    "examples": ["Pruning pesi per magnitudine", "Pruning strutturato filtri", "Lottery ticket hypothesis"],
+    "relatedTerms": ["model-compression", "sparsity", "efficiency"]
+  },
+  {
+    "slug": "lora",
+    "language": "en",
+    "term": "LoRA (Low-Rank Adaptation)",
+    "category": "Technique",
+    "definition": "Parameter-efficient fine-tuning adding trainable low-rank matrices to frozen weights.",
+    "explanation": "Adds small trainable matrices A and B where ΔW = BA. Reduces trainable parameters to 0.1-1% while maintaining performance. Enables efficient adapter-based fine-tuning.",
+    "examples": ["Fine-tuning LLMs with LoRA", "Adapter modules", "Multi-task learning"],
+    "relatedTerms": ["fine-tuning", "peft", "adapters"]
+  },
+  {
+    "slug": "lora-it",
+    "language": "it",
+    "term": "LoRA (Low-Rank Adaptation)",
+    "category": "Tecnica",
+    "definition": "Fine-tuning parameter-efficient aggiungendo matrici trainabili low-rank a pesi congelati.",
+    "explanation": "Aggiunge piccole matrici trainabili A e B dove ΔW = BA. Riduce parametri trainabili a 0.1-1% mantenendo performance. Permette fine-tuning basato su adapter efficiente.",
+    "examples": ["Fine-tuning LLM con LoRA", "Moduli adapter", "Multi-task learning"],
+    "relatedTerms": ["fine-tuning", "peft", "adapters"]
+  },
+  {
+    "slug": "self-supervised-learning",
+    "language": "en",
+    "term": "Self-Supervised Learning",
+    "category": "Paradigm",
+    "definition": "Learning paradigm where models create supervision signal from unlabeled data.",
+    "explanation": "Predicts parts of input from other parts (masked LM, image inpainting, next frame). Enables pre-training on massive unlabeled datasets. Foundation of BERT, GPT.",
+    "examples": ["BERT masked language modeling", "GPT next token prediction", "Image rotation prediction"],
+    "relatedTerms": ["unsupervised-learning", "pre-training", "representation-learning"]
+  },
+  {
+    "slug": "self-supervised-learning-it",
+    "language": "it",
+    "term": "Self-Supervised Learning",
+    "category": "Paradigma",
+    "definition": "Paradigma di apprendimento dove i modelli creano segnale di supervisione da dati non etichettati.",
+    "explanation": "Predice parti dell'input da altre parti (masked LM, image inpainting, next frame). Permette pre-training su dataset non etichettati massivi. Fondamento di BERT, GPT.",
+    "examples": ["BERT masked language modeling", "GPT predizione next token", "Predizione rotazione immagine"],
+    "relatedTerms": ["unsupervised-learning", "pre-training", "representation-learning"]
+  },
+  {
+    "slug": "temperature-sampling",
+    "language": "en",
+    "term": "Temperature (Sampling)",
+    "category": "Technique",
+    "definition": "Parameter controlling randomness in text generation by scaling logits before softmax.",
+    "explanation": "Temperature T divides logits. T < 1 makes distribution sharper (deterministic), T > 1 flatter (random). T = 0 is greedy, T = 1 unmodified.",
+    "examples": ["Temperature 0.7 for creative text", "Temperature 0.1 for factual", "Greedy decoding T=0"],
+    "relatedTerms": ["text-generation", "sampling", "llm"]
+  },
+  {
+    "slug": "temperature-sampling-it",
+    "language": "it",
+    "term": "Temperature (Sampling)",
+    "category": "Tecnica",
+    "definition": "Parametro controllante randomicità in generazione testo scalando logit prima di softmax.",
+    "explanation": "Temperature T divide logit. T < 1 rende distribuzione sharp (deterministica), T > 1 flat (random). T = 0 è greedy, T = 1 non modificata.",
+    "examples": ["Temperature 0.7 per testo creativo", "Temperature 0.1 per fattuale", "Greedy decoding T=0"],
+    "relatedTerms": ["text-generation", "sampling", "llm"]
+  },
+  {
+    "slug": "chain-of-thought",
+    "language": "en",
+    "term": "Chain-of-Thought Prompting",
+    "category": "Technique",
+    "definition": "Prompting technique encouraging LLMs to show intermediate reasoning steps before answering.",
+    "explanation": "Adding 'Let's think step by step' or reasoning examples improves complex task performance. Enables solving problems impossible with direct prompting.",
+    "examples": ["Math word problems", "Logical reasoning", "Multi-step planning"],
+    "relatedTerms": ["prompt-engineering", "reasoning", "llm"]
+  },
+  {
+    "slug": "chain-of-thought-it",
+    "language": "it",
+    "term": "Chain-of-Thought Prompting",
+    "category": "Tecnica",
+    "definition": "Tecnica di prompting incoraggiante LLM a mostrare step di ragionamento intermedi prima di rispondere.",
+    "explanation": "Aggiungere 'Pensiamo passo dopo passo' o esempi di ragionamento migliora performance su task complessi. Permette risolvere problemi impossibili con prompting diretto.",
+    "examples": ["Problemi matematici con parole", "Ragionamento logico", "Pianificazione multi-step"],
+    "relatedTerms": ["prompt-engineering", "reasoning", "llm"]
+  },
+  {
+    "slug": "mse",
+    "language": "en",
+    "term": "MSE (Mean Squared Error)",
+    "category": "Metric",
+    "definition": "Loss function measuring average squared difference between predicted and actual values.",
+    "explanation": "MSE = (1/n) * Σ(y_true - y_pred)². Heavily penalizes large errors. Common for regression. Lower is better.",
+    "examples": ["Regression loss function", "Neural network training", "Error measurement"],
+    "relatedTerms": ["loss-function", "regression", "mae"]
+  },
+  {
+    "slug": "mse-it",
+    "language": "it",
+    "term": "MSE (Mean Squared Error)",
+    "category": "Metrica",
+    "definition": "Funzione di loss misurando differenza quadratica media tra valori predetti e reali.",
+    "explanation": "MSE = (1/n) * Σ(y_true - y_pred)². Penalizza pesantemente errori grandi. Comune per regressione. Più basso è meglio.",
+    "examples": ["Funzione loss regressione", "Training rete neurale", "Misurazione errore"],
+    "relatedTerms": ["loss-function", "regression", "mae"]
   }
 ]
