@@ -27,6 +27,7 @@ export default function RichTextEditor({
   editable = true 
 }: RichTextEditorProps) {
   const editor = useEditor({
+    immediatelyRender: false, // Fix SSR hydration issues
     extensions: [
       StarterKit.configure({
         codeBlock: false, // We'll use CodeBlockLowlight instead
