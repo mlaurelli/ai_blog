@@ -2634,5 +2634,95 @@
     "explanation": "QA estrattivo: risposte sono span dal contesto. SQuAD 2.0 include domande senza risposta. Benchmark per modelli question answering.",
     "examples": ["Fine-tuning BERT per QA", "Question answering estrattivo", "Reading comprehension"],
     "relatedTerms": ["question-answering", "nlp", "benchmark"]
+  },
+  {
+    "slug": "batch-normalization-en",
+    "language": "en",
+    "term": "Batch Normalization",
+    "category": "Technique",
+    "definition": "Normalizes layer inputs using batch statistics to stabilize and accelerate training.",
+    "explanation": "Normalizes using batch mean/variance, then scales/shifts with learnable parameters. Reduces internal covariate shift. Allows higher learning rates.",
+    "examples": ["After conv layers", "Before activation", "Stabilizing deep networks"],
+    "relatedTerms": ["layer-normalization", "normalization", "training"]
+  },
+  {
+    "slug": "instance-normalization",
+    "language": "en",
+    "term": "Instance Normalization",
+    "category": "Technique",
+    "definition": "Normalizes each sample independently, commonly used in style transfer.",
+    "explanation": "Normalizes across spatial dimensions per instance. Removes style information while preserving content. Popular in GANs and style transfer.",
+    "examples": ["Style transfer networks", "GAN generators", "Real-time image stylization"],
+    "relatedTerms": ["batch-normalization", "style-transfer", "normalization"]
+  },
+  {
+    "slug": "instance-normalization-it",
+    "language": "it",
+    "term": "Instance Normalization",
+    "category": "Tecnica",
+    "definition": "Normalizza ogni campione indipendentemente, comunemente usata in style transfer.",
+    "explanation": "Normalizza attraverso dimensioni spaziali per instance. Rimuove informazioni di stile preservando contenuto. Popolare in GAN e style transfer.",
+    "examples": ["Reti style transfer", "Generator GAN", "Stylization immagini real-time"],
+    "relatedTerms": ["batch-normalization", "style-transfer", "normalization"]
+  },
+  {
+    "slug": "group-normalization",
+    "language": "en",
+    "term": "Group Normalization",
+    "category": "Technique",
+    "definition": "Normalizes by dividing channels into groups and normalizing within each group.",
+    "explanation": "Independent of batch size, unlike batch norm. Divides channels into groups. Good for small batches and video tasks.",
+    "examples": ["Small batch training", "Video understanding", "Object detection"],
+    "relatedTerms": ["batch-normalization", "normalization", "small-batch"]
+  },
+  {
+    "slug": "group-normalization-it",
+    "language": "it",
+    "term": "Group Normalization",
+    "category": "Tecnica",
+    "definition": "Normalizza dividendo canali in gruppi e normalizzando all'interno di ogni gruppo.",
+    "explanation": "Indipendente da batch size, a differenza di batch norm. Divide canali in gruppi. Buona per batch piccoli e task video.",
+    "examples": ["Training batch piccoli", "Comprensione video", "Object detection"],
+    "relatedTerms": ["batch-normalization", "normalization", "small-batch"]
+  },
+  {
+    "slug": "dilated-convolution",
+    "language": "en",
+    "term": "Dilated Convolution",
+    "category": "Technique",
+    "definition": "Convolution with gaps between kernel elements, increasing receptive field without adding parameters.",
+    "explanation": "Dilation rate controls spacing. Expands receptive field exponentially with depth. Used in semantic segmentation and audio generation.",
+    "examples": ["DeepLab segmentation", "WaveNet audio", "Large receptive fields"],
+    "relatedTerms": ["convolution", "receptive-field", "segmentation"]
+  },
+  {
+    "slug": "dilated-convolution-it",
+    "language": "it",
+    "term": "Dilated Convolution",
+    "category": "Tecnica",
+    "definition": "Convoluzione con gap tra elementi kernel, aumentando receptive field senza aggiungere parametri.",
+    "explanation": "Dilation rate controlla spaziatura. Espande receptive field esponenzialmente con profondità. Usata in segmentazione semantica e generazione audio.",
+    "examples": ["Segmentazione DeepLab", "Audio WaveNet", "Receptive field grandi"],
+    "relatedTerms": ["convolution", "receptive-field", "segmentation"]
+  },
+  {
+    "slug": "depthwise-separable-convolution",
+    "language": "en",
+    "term": "Depthwise Separable Convolution",
+    "category": "Technique",
+    "definition": "Factorizes standard convolution into depthwise and pointwise convolutions for efficiency.",
+    "explanation": "Depthwise convolves each channel separately. Pointwise (1x1) combines channels. Drastically reduces computation. Core of MobileNet.",
+    "examples": ["MobileNet architecture", "Efficient CNNs", "Mobile deployment"],
+    "relatedTerms": ["mobilenet", "efficient-architecture", "convolution"]
+  },
+  {
+    "slug": "depthwise-separable-convolution-it",
+    "language": "it",
+    "term": "Depthwise Separable Convolution",
+    "category": "Tecnica",
+    "definition": "Fattorizza convoluzione standard in convoluzioni depthwise e pointwise per efficienza.",
+    "explanation": "Depthwise convolve ogni canale separatamente. Pointwise (1x1) combina canali. Riduce drasticamente computazione. Core di MobileNet.",
+    "examples": ["Architettura MobileNet", "CNN efficienti", "Deployment mobile"],
+    "relatedTerms": ["mobilenet", "efficient-architecture", "convolution"]
   }
 ]
