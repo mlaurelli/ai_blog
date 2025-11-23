@@ -423,5 +423,195 @@
     "explanation": "LSTM usa celle di memoria e gate (input, forget, output) per gestire il flusso di informazioni. Risolve il problema del vanishing gradient delle RNN standard. Ora spesso sostituita da Transformer.",
     "examples": ["Previsioni serie temporali", "Generazione di testo", "Riconoscimento vocale"],
     "relatedTerms": ["rnn", "gru", "sequence-modeling"]
+  },
+  {
+    "slug": "batch-size",
+    "language": "en",
+    "term": "Batch Size",
+    "category": "Training",
+    "pronunciation": "/bætʃ saɪz/",
+    "definition": "The number of training examples used in one iteration of model training.",
+    "explanation": "Batch size affects training speed, memory usage, and model convergence. Small batches provide noisier gradients, large batches are more stable but memory-intensive. Common values: 32, 64, 128, 256.",
+    "examples": ["Batch size 32 for limited GPU memory", "Batch size 256 for faster training", "Mini-batch gradient descent"],
+    "relatedTerms": ["gradient-descent", "training", "optimization"]
+  },
+  {
+    "slug": "learning-rate",
+    "language": "en",
+    "term": "Learning Rate",
+    "category": "Training",
+    "pronunciation": "/ˈlɜːrnɪŋ reɪt/",
+    "definition": "A hyperparameter controlling how much model weights are updated during training.",
+    "explanation": "Learning rate determines the step size in gradient descent. Too high causes instability, too low slows training. Common strategies: fixed, decay, cyclical, adaptive (Adam).",
+    "examples": ["Learning rate 0.001 for Adam", "Learning rate decay schedule", "Warm-up then decay strategy"],
+    "relatedTerms": ["gradient-descent", "optimization", "hyperparameter"]
+  },
+  {
+    "slug": "epoch",
+    "language": "en",
+    "term": "Epoch",
+    "category": "Training",
+    "pronunciation": "/ˈɛpɒk/",
+    "definition": "One complete pass through the entire training dataset during model training.",
+    "explanation": "Multiple epochs allow the model to learn patterns iteratively. Too few epochs lead to underfitting, too many to overfitting. Monitored with validation loss for early stopping.",
+    "examples": ["Training for 100 epochs", "Early stopping at epoch 45", "Learning curves over epochs"],
+    "relatedTerms": ["training", "overfitting", "early-stopping"]
+  },
+  {
+    "slug": "feature-extraction",
+    "language": "en",
+    "term": "Feature Extraction",
+    "category": "Technique",
+    "pronunciation": "/ˈfiːtʃər ɪkˈstrækʃən/",
+    "definition": "The process of transforming raw data into numerical features that machine learning models can process.",
+    "explanation": "Feature extraction identifies relevant information from data. In deep learning, this happens automatically through learned representations. Traditional ML requires manual feature engineering.",
+    "examples": ["Edge detection in images", "TF-IDF for text", "Convolutional features in CNNs"],
+    "relatedTerms": ["feature-engineering", "representation-learning", "cnn"]
+  },
+  {
+    "slug": "computer-vision",
+    "language": "en",
+    "term": "Computer Vision",
+    "category": "Field",
+    "pronunciation": "/kəmˈpjuːtər ˈvɪʒən/",
+    "definition": "A field of AI enabling computers to derive meaningful information from visual inputs like images and videos.",
+    "explanation": "Computer vision tasks include image classification, object detection, segmentation, and pose estimation. Powered by CNNs and transformer-based models like Vision Transformers (ViT).",
+    "examples": ["Facial recognition systems", "Autonomous vehicle perception", "Medical image analysis"],
+    "relatedTerms": ["cnn", "object-detection", "segmentation"]
+  },
+  {
+    "slug": "object-detection",
+    "language": "en",
+    "term": "Object Detection",
+    "category": "Task",
+    "pronunciation": "/ˈɒbdʒɪkt dɪˈtɛkʃən/",
+    "definition": "A computer vision task that identifies and localizes objects within an image using bounding boxes.",
+    "explanation": "Object detection combines classification and localization. Popular architectures include YOLO (real-time), Faster R-CNN (accurate), and DETR (transformer-based).",
+    "examples": ["YOLO for real-time detection", "Faster R-CNN for high accuracy", "Pedestrian detection in autonomous driving"],
+    "relatedTerms": ["computer-vision", "cnn", "bounding-box"]
+  },
+  {
+    "slug": "semantic-segmentation",
+    "language": "en",
+    "term": "Semantic Segmentation",
+    "category": "Task",
+    "pronunciation": "/sɪˈmæntɪk ˌsɛɡmɛnˈteɪʃən/",
+    "definition": "A computer vision task that assigns a class label to every pixel in an image.",
+    "explanation": "Semantic segmentation creates dense predictions, useful for understanding scene layout. Common architectures include U-Net, DeepLab, and Mask R-CNN for instance segmentation.",
+    "examples": ["Medical image segmentation", "Autonomous driving scene understanding", "Satellite image analysis"],
+    "relatedTerms": ["computer-vision", "u-net", "instance-segmentation"]
+  },
+  {
+    "slug": "multimodal",
+    "language": "en",
+    "term": "Multimodal AI",
+    "category": "Concept",
+    "pronunciation": "/ˌmʌltɪˈmoʊdəl/",
+    "definition": "AI systems that can process and relate information from multiple modalities like text, images, audio, and video.",
+    "explanation": "Multimodal models learn joint representations across modalities. Examples include CLIP (vision-language), Flamingo (visual question answering), and GPT-4V (vision understanding).",
+    "examples": ["CLIP matching images to text", "GPT-4V describing images", "Image captioning systems"],
+    "relatedTerms": ["clip", "vision-language", "cross-modal"]
+  },
+  {
+    "slug": "few-shot-learning",
+    "language": "en",
+    "term": "Few-Shot Learning",
+    "category": "Concept",
+    "pronunciation": "/fjuː ʃɒt ˈlɜːrnɪŋ/",
+    "definition": "A model's ability to learn from a small number of examples, typically 1-10 examples per class.",
+    "explanation": "Few-shot learning leverages pre-trained knowledge and meta-learning. LLMs demonstrate this through in-context learning with examples in the prompt.",
+    "examples": ["GPT-3 with 5 examples in prompt", "One-shot image classification", "Meta-learning algorithms"],
+    "relatedTerms": ["zero-shot-learning", "meta-learning", "prompt-engineering"]
+  },
+  {
+    "slug": "foundation-model",
+    "language": "en",
+    "term": "Foundation Model",
+    "category": "Concept",
+    "pronunciation": "/faʊnˈdeɪʃən ˈmɒdəl/",
+    "definition": "Large-scale models trained on broad data that can be adapted to a wide range of downstream tasks.",
+    "explanation": "Foundation models like GPT, BERT, and CLIP are pre-trained on massive datasets and fine-tuned for specific applications. They represent a paradigm shift in AI development.",
+    "examples": ["GPT-4 as a foundation for many applications", "BERT for NLP tasks", "SAM for image segmentation"],
+    "relatedTerms": ["llm", "pre-training", "transfer-learning"]
+  },
+  {
+    "slug": "federated-learning",
+    "language": "it",
+    "term": "Federated Learning",
+    "category": "Paradigma",
+    "definition": "Un approccio di machine learning che addestra modelli su dati distribuiti senza centralizzarli, preservando la privacy.",
+    "explanation": "Il federated learning permette di addestrare modelli su dispositivi edge (smartphone, ospedali) senza trasferire dati sensibili. Il modello globale aggrega gli aggiornamenti locali.",
+    "examples": ["Keyboard prediction su smartphone", "Modelli medici tra ospedali", "Google Gboard"],
+    "relatedTerms": ["privacy", "distributed-learning", "edge-computing"]
+  },
+  {
+    "slug": "generazione-linguaggio",
+    "language": "it",
+    "term": "Generazione del Linguaggio",
+    "category": "Task",
+    "definition": "Il task di produrre testo coerente e contestualmente appropriato da parte di un modello AI.",
+    "explanation": "La generazione del linguaggio usa modelli autoregressivi come GPT che predicono token successivi. Tecniche includono beam search, temperature sampling, e nucleus sampling.",
+    "examples": ["ChatGPT che genera risposte", "Completamento automatico", "Summarization"],
+    "relatedTerms": ["gpt", "llm", "autoregressive"]
+  },
+  {
+    "slug": "knowledge-distillation",
+    "language": "it",
+    "term": "Knowledge Distillation",
+    "category": "Tecnica",
+    "definition": "Tecnica per trasferire conoscenza da un modello grande (teacher) a uno più piccolo (student) mantenendo performance simili.",
+    "explanation": "Il knowledge distillation crea modelli compatti che possono girare su dispositivi con risorse limitate. Lo student impara dalle soft predictions del teacher.",
+    "examples": ["DistilBERT da BERT", "Modelli mobile da modelli cloud", "Edge deployment"],
+    "relatedTerms": ["model-compression", "transfer-learning", "edge-ai"]
+  },
+  {
+    "slug": "attention-heads",
+    "language": "it",
+    "term": "Multi-Head Attention",
+    "category": "Tecnica",
+    "definition": "Meccanismo che permette al modello di focalizzarsi su diverse parti dell'input simultaneamente attraverso molteplici teste di attenzione.",
+    "explanation": "Il multi-head attention usa più meccanismi di attenzione in parallelo, ognuno che impara pattern diversi. Fondamentale nei Transformer. Tipicamente 8-16 heads.",
+    "examples": ["BERT con 12 attention heads", "GPT con 96 heads (large)", "Transformer encoder-decoder"],
+    "relatedTerms": ["transformer", "self-attention", "bert"]
+  },
+  {
+    "slug": "residual-connection",
+    "language": "it",
+    "term": "Residual Connection",
+    "category": "Tecnica",
+    "definition": "Una connessione skip che permette al gradiente di fluire direttamente attraverso la rete, facilitando il training di reti profonde.",
+    "explanation": "Le residual connections (o skip connections) sommano l'input di un layer al suo output. Risolvono il problema del vanishing gradient e permettono reti molto profonde (ResNet).",
+    "examples": ["ResNet con 152 layers", "Transformer con residual connections", "U-Net skip connections"],
+    "relatedTerms": ["resnet", "vanishing-gradient", "deep-learning"]
+  },
+  {
+    "slug": "layer-normalization",
+    "language": "it",
+    "term": "Layer Normalization",
+    "category": "Tecnica",
+    "definition": "Tecnica di normalizzazione che opera su tutti i neuroni in un layer, usata principalmente nei Transformer.",
+    "explanation": "Layer normalization normalizza le attivazioni attraverso le features invece che attraverso il batch. Più stabile per sequenze di lunghezza variabile. Usata in GPT e BERT.",
+    "examples": ["Layer norm nei Transformer", "GPT pre-norm vs post-norm", "Stabilizzazione training"],
+    "relatedTerms": ["batch-normalization", "transformer", "normalization"]
+  },
+  {
+    "slug": "gradient-clipping",
+    "language": "it",
+    "term": "Gradient Clipping",
+    "category": "Tecnica",
+    "definition": "Tecnica che limita la magnitudine dei gradienti durante il training per prevenire exploding gradients.",
+    "explanation": "Il gradient clipping tronca i gradienti a un valore massimo. Essenziale per addestrare RNN e LSTM. Previene aggiornamenti troppo grandi che destabilizzano il training.",
+    "examples": ["Clipping a norma 1.0", "Training LSTM stabili", "Prevenzione gradient explosion"],
+    "relatedTerms": ["lstm", "gradient-descent", "training"]
+  },
+  {
+    "slug": "autoregressive",
+    "language": "it",
+    "term": "Autoregressive Model",
+    "category": "Concetto",
+    "definition": "Modelli che generano output sequenzialmente, dove ogni elemento dipende da quelli precedenti.",
+    "explanation": "I modelli autoregressivi come GPT predicono un token alla volta condizionato sui token precedenti. Usano causal masking per prevenire di vedere il futuro durante il training.",
+    "examples": ["GPT per generazione testo", "PixelCNN per immagini", "WaveNet per audio"],
+    "relatedTerms": ["gpt", "causal-masking", "generation"]
   }
 ]
