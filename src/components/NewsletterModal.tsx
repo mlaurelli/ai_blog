@@ -58,13 +58,32 @@ export default function NewsletterModal() {
     setIsSubmitting(true);
 
     try {
-      // Here you would normally send the email to your newsletter service
-      // For now, we just simulate the API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Save to localStorage that user has subscribed
+      // Call Mailchimp API via our secure endpoint
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.toLowerCase().trim() }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Handle specific error codes
+        if (data.code === 'ALREADY_SUBSCRIBED') {
+          setError(t('newsletter.errorAlreadySubscribed'));
+        } else if (data.error) {
+          setError(data.error);
+        } else {
+          setError(t('newsletter.errorGeneric'));
+        }
+        return;
+      }
+
+      // Success - Save to localStorage
       localStorage.setItem('newsletter_subscribed', 'true');
-      localStorage.setItem('newsletter_email', email);
+      localStorage.setItem('newsletter_email', email.toLowerCase().trim());
       localStorage.setItem('newsletter_date', new Date().toISOString());
       
       setSuccess(true);
@@ -72,8 +91,9 @@ export default function NewsletterModal() {
       // Close modal after showing success message
       setTimeout(() => {
         setShowModal(false);
-      }, 2000);
+      }, 2500);
     } catch (err) {
+      console.error('Newsletter subscription error:', err);
       setError(t('newsletter.errorGeneric'));
     } finally {
       setIsSubmitting(false);

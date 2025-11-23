@@ -81,6 +81,7 @@ const translations = {
     'newsletter.errorEmail': 'Please enter your email address.',
     'newsletter.errorEmailInvalid': 'Please enter a valid email address.',
     'newsletter.errorPrivacy': 'You must accept the Privacy Policy to subscribe.',
+    'newsletter.errorAlreadySubscribed': 'This email is already subscribed to our newsletter.',
     'newsletter.errorGeneric': 'An error occurred. Please try again later.',
   },
   it: {
@@ -151,6 +152,7 @@ const translations = {
     'newsletter.errorEmail': 'Inserisci il tuo indirizzo email.',
     'newsletter.errorEmailInvalid': 'Inserisci un indirizzo email valido.',
     'newsletter.errorPrivacy': 'Devi accettare la Privacy Policy per iscriverti.',
+    'newsletter.errorAlreadySubscribed': 'Questa email è già iscritta alla nostra newsletter.',
     'newsletter.errorGeneric': 'Si è verificato un errore. Riprova più tardi.',
   }
 };
