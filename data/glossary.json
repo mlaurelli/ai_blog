@@ -3124,5 +3124,105 @@
     "explanation": "L'errore guida l'apprendimento. Errore alto significa predizioni scarse. Il training mira a minimizzare l'errore. Correlato alla funzione di loss.",
     "examples": ["Errore predizione: 0.5", "Tasso errore classificazione", "Mean squared error"],
     "relatedTerms": ["loss-function", "residual", "mistake"]
+  },
+  {
+    "slug": "training-data",
+    "language": "en",
+    "term": "Training Data",
+    "category": "Concept",
+    "definition": "The subset of data used to train a machine learning model.",
+    "explanation": "Model learns patterns from training data. Typically 60-80% of total dataset. Quality and quantity affect model performance.",
+    "examples": ["10,000 labeled images for training", "Training corpus of text", "Historical sales data"],
+    "relatedTerms": ["dataset", "validation-set", "test-set"]
+  },
+  {
+    "slug": "training-data-it",
+    "language": "it",
+    "term": "Dati di Training",
+    "category": "Concetto",
+    "definition": "Il sottoinsieme di dati usato per addestrare un modello machine learning.",
+    "explanation": "Il modello apprende pattern dai dati di training. Tipicamente 60-80% del dataset totale. Qualità e quantità influenzano performance modello.",
+    "examples": ["10.000 immagini etichettate per training", "Corpus training di testo", "Dati storici vendite"],
+    "relatedTerms": ["dataset", "validation-set", "test-set"]
+  },
+  {
+    "slug": "test-data",
+    "language": "en",
+    "term": "Test Data",
+    "category": "Concept",
+    "definition": "Data held out for final evaluation of a trained model, never seen during training.",
+    "explanation": "Used to assess real-world performance. Should only be used once at the end. Prevents overfitting to validation set.",
+    "examples": ["20% holdout test set", "Final evaluation data", "Unseen examples"],
+    "relatedTerms": ["training-data", "validation-set", "holdout"]
+  },
+  {
+    "slug": "test-data-it",
+    "language": "it",
+    "term": "Dati di Test",
+    "category": "Concetto",
+    "definition": "Dati tenuti da parte per valutazione finale di un modello trained, mai visti durante training.",
+    "explanation": "Usati per valutare performance real-world. Dovrebbero essere usati solo una volta alla fine. Previene overfitting su validation set.",
+    "examples": ["20% holdout test set", "Dati valutazione finale", "Esempi non visti"],
+    "relatedTerms": ["training-data", "validation-set", "holdout"]
+  },
+  {
+    "slug": "input",
+    "language": "en",
+    "term": "Input",
+    "category": "Concept",
+    "definition": "Data fed into a model or neural network for processing.",
+    "explanation": "Can be images, text, numbers, audio. Transformed through network layers. Also called features or input data.",
+    "examples": ["Input image 224x224", "Text input sequence", "Numerical features"],
+    "relatedTerms": ["feature", "data", "input-layer"]
+  },
+  {
+    "slug": "input-it",
+    "language": "it",
+    "term": "Input",
+    "category": "Concetto",
+    "definition": "Dati forniti a un modello o rete neurale per elaborazione.",
+    "explanation": "Possono essere immagini, testo, numeri, audio. Trasformati attraverso layer della rete. Chiamati anche feature o dati di input.",
+    "examples": ["Immagine input 224x224", "Sequenza input testo", "Feature numeriche"],
+    "relatedTerms": ["feature", "data", "input-layer"]
+  },
+  {
+    "slug": "output",
+    "language": "en",
+    "term": "Output",
+    "category": "Concept",
+    "definition": "The result produced by a model after processing input data.",
+    "explanation": "In classification: class probabilities. In regression: numerical values. In generation: text/images. Final prediction.",
+    "examples": ["Classification output: [0.8, 0.2]", "Generated text output", "Predicted price: 150"],
+    "relatedTerms": ["prediction", "output-layer", "result"]
+  },
+  {
+    "slug": "output-it",
+    "language": "it",
+    "term": "Output",
+    "category": "Concetto",
+    "definition": "Il risultato prodotto da un modello dopo aver elaborato dati di input.",
+    "explanation": "Nella classificazione: probabilità classi. Nella regressione: valori numerici. Nella generazione: testo/immagini. Predizione finale.",
+    "examples": ["Output classificazione: [0.8, 0.2]", "Output testo generato", "Prezzo predetto: 150"],
+    "relatedTerms": ["prediction", "output-layer", "result"]
+  },
+  {
+    "slug": "perceptron",
+    "language": "en",
+    "term": "Perceptron",
+    "category": "Architecture",
+    "definition": "Simplest neural network with single layer, binary classifier invented in 1950s.",
+    "explanation": "Single neuron with weights, bias, and activation. Foundation of modern neural networks. Can only learn linearly separable patterns.",
+    "examples": ["Binary AND gate", "Simple linear classifier", "Historical neural network"],
+    "relatedTerms": ["neuron", "neural-network", "linear-classifier"]
+  },
+  {
+    "slug": "perceptron-it",
+    "language": "it",
+    "term": "Perceptron",
+    "category": "Architettura",
+    "definition": "Rete neurale più semplice con singolo layer, classificatore binario inventato negli anni '50.",
+    "explanation": "Singolo neurone con pesi, bias e attivazione. Fondamento delle reti neurali moderne. Può apprendere solo pattern linearmente separabili.",
+    "examples": ["Gate AND binario", "Classificatore lineare semplice", "Rete neurale storica"],
+    "relatedTerms": ["neuron", "neural-network", "linear-classifier"]
   }
 ]
