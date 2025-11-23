@@ -1874,5 +1874,105 @@
     "explanation": "I termini di bias permettono ai neuroni di attivarsi anche quando tutti gli input sono zero. Ogni neurone ha tipicamente un bias. Aumentano la flessibilità del modello e sono cruciali per fittare dati non centrati sullo zero.",
     "examples": ["Trasformazione lineare: y = Wx + b", "Bias in ogni layer", "Parametro offset"],
     "relatedTerms": ["neural-network", "weight", "parameter"]
+  },
+  {
+    "slug": "f1-score",
+    "language": "en",
+    "term": "F1 Score",
+    "category": "Metric",
+    "definition": "The harmonic mean of precision and recall, providing a single balanced metric.",
+    "explanation": "F1 = 2 * (precision * recall) / (precision + recall). Useful for imbalanced datasets. Weighs precision and recall equally.",
+    "examples": ["Binary classification evaluation", "Imbalanced datasets", "Medical diagnosis metrics"],
+    "relatedTerms": ["precision-recall", "classification", "confusion-matrix"]
+  },
+  {
+    "slug": "f1-score-it",
+    "language": "it",
+    "term": "F1 Score",
+    "category": "Metrica",
+    "definition": "La media armonica di precision e recall, fornendo una singola metrica bilanciata.",
+    "explanation": "F1 = 2 * (precision * recall) / (precision + recall). Utile per dataset sbilanciati. Pesa precision e recall equamente.",
+    "examples": ["Valutazione classificazione binaria", "Dataset sbilanciati", "Metriche diagnosi medica"],
+    "relatedTerms": ["precision-recall", "classification", "confusion-matrix"]
+  },
+  {
+    "slug": "auc-roc",
+    "language": "en",
+    "term": "AUC-ROC",
+    "category": "Metric",
+    "definition": "Area under ROC curve, measuring binary classifier quality across all thresholds.",
+    "explanation": "ROC plots true positive rate vs false positive rate. AUC = 1 is perfect, 0.5 is random. Threshold-independent metric.",
+    "examples": ["Binary classification evaluation", "Model comparison", "Imbalanced classes"],
+    "relatedTerms": ["classification", "threshold", "binary-classifier"]
+  },
+  {
+    "slug": "auc-roc-it",
+    "language": "it",
+    "term": "AUC-ROC",
+    "category": "Metrica",
+    "definition": "Area sotto curva ROC, misurando qualità classificatori binari attraverso tutte le soglie.",
+    "explanation": "ROC plotta true positive rate vs false positive rate. AUC = 1 è perfetto, 0.5 è random. Metrica threshold-independent.",
+    "examples": ["Valutazione classificazione binaria", "Comparazione modelli", "Classi sbilanciate"],
+    "relatedTerms": ["classification", "threshold", "binary-classifier"]
+  },
+  {
+    "slug": "cross-validation",
+    "language": "en",
+    "term": "Cross-Validation",
+    "category": "Technique",
+    "definition": "Resampling technique evaluating model performance by splitting data into multiple train-test folds.",
+    "explanation": "K-fold CV divides data into k parts, trains on k-1 and tests on 1, repeating k times. Provides robust performance estimates.",
+    "examples": ["5-fold cross-validation", "Leave-one-out CV", "Stratified k-fold"],
+    "relatedTerms": ["validation-set", "overfitting", "model-evaluation"]
+  },
+  {
+    "slug": "cross-validation-it",
+    "language": "it",
+    "term": "Cross-Validation",
+    "category": "Tecnica",
+    "definition": "Tecnica di resampling per valutare performance dividendo dati in multipli fold train-test.",
+    "explanation": "K-fold CV divide dati in k parti, addestra su k-1 e testa su 1, ripetendo k volte. Fornisce stime performance robuste.",
+    "examples": ["Cross-validation 5-fold", "Leave-one-out CV", "K-fold stratificato"],
+    "relatedTerms": ["validation-set", "overfitting", "model-evaluation"]
+  },
+  {
+    "slug": "contrastive-learning",
+    "language": "en",
+    "term": "Contrastive Learning",
+    "category": "Paradigm",
+    "definition": "Self-supervised learning contrasting positive pairs against negative pairs.",
+    "explanation": "Learns to pull similar items together and push dissimilar items apart. No labels required. Powers CLIP, SimCLR.",
+    "examples": ["CLIP vision-language learning", "SimCLR image representations", "Self-supervised pre-training"],
+    "relatedTerms": ["self-supervised", "clip", "representation-learning"]
+  },
+  {
+    "slug": "contrastive-learning-it",
+    "language": "it",
+    "term": "Contrastive Learning",
+    "category": "Paradigma",
+    "definition": "Apprendimento self-supervised contrastando coppie positive contro coppie negative.",
+    "explanation": "Apprende ad avvicinare item simili e allontanare item dissimili. Non servono etichette. Alimenta CLIP, SimCLR.",
+    "examples": ["CLIP apprendimento vision-language", "SimCLR rappresentazioni immagini", "Pre-training self-supervised"],
+    "relatedTerms": ["self-supervised", "clip", "representation-learning"]
+  },
+  {
+    "slug": "quantization",
+    "language": "en",
+    "term": "Quantization",
+    "category": "Technique",
+    "definition": "Reducing precision of weights/activations to lower memory and computation.",
+    "explanation": "Converts 32-bit floats to 8-bit integers or lower. Reduces model size 4x with minimal accuracy loss. Essential for edge deployment.",
+    "examples": ["INT8 quantization", "Mobile deployment", "4-bit LLM quantization"],
+    "relatedTerms": ["model-compression", "edge-ai", "inference"]
+  },
+  {
+    "slug": "quantization-it",
+    "language": "it",
+    "term": "Quantizzazione",
+    "category": "Tecnica",
+    "definition": "Ridurre precisione pesi/attivazioni per abbassare memoria e computazione.",
+    "explanation": "Converte float 32-bit a interi 8-bit o meno. Riduce dimensione modello 4x con perdita minima accuracy. Essenziale per edge deployment.",
+    "examples": ["Quantizzazione INT8", "Deployment mobile", "Quantizzazione 4-bit LLM"],
+    "relatedTerms": ["model-compression", "edge-ai", "inference"]
   }
 ]
