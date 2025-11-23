@@ -2334,5 +2334,105 @@
     "explanation": "Classificazione binaria: 50% consecutive, 50% coppie random. Originalmente usato in BERT ma poi trovato meno utile di MLM solo.",
     "examples": ["Task pre-training BERT", "Relazione frasi", "Comprensione discorso"],
     "relatedTerms": ["bert", "pre-training", "sentence-embeddings"]
+  },
+  {
+    "slug": "named-entity-recognition",
+    "language": "en",
+    "term": "NER (Named Entity Recognition)",
+    "category": "Task",
+    "definition": "NLP task identifying and classifying named entities (persons, organizations, locations) in text.",
+    "explanation": "Sequence labeling task using BIO tagging (Begin, Inside, Outside). Common with BERT-based models. Essential for information extraction.",
+    "examples": ["Extract person names", "Identify organizations", "Location detection"],
+    "relatedTerms": ["nlp", "sequence-labeling", "information-extraction"]
+  },
+  {
+    "slug": "named-entity-recognition-it",
+    "language": "it",
+    "term": "NER (Named Entity Recognition)",
+    "category": "Task",
+    "definition": "Task NLP identificando e classificando entità nominate (persone, organizzazioni, luoghi) nel testo.",
+    "explanation": "Task sequence labeling usando BIO tagging (Begin, Inside, Outside). Comune con modelli basati su BERT. Essenziale per information extraction.",
+    "examples": ["Estrarre nomi persone", "Identificare organizzazioni", "Rilevamento luoghi"],
+    "relatedTerms": ["nlp", "sequence-labeling", "information-extraction"]
+  },
+  {
+    "slug": "sentiment-analysis",
+    "language": "en",
+    "term": "Sentiment Analysis",
+    "category": "Task",
+    "definition": "NLP task determining emotional tone or opinion expressed in text.",
+    "explanation": "Classification into positive/negative/neutral or finer emotions. Used for review analysis, social media monitoring. Common with fine-tuned BERT.",
+    "examples": ["Product review analysis", "Social media sentiment", "Customer feedback"],
+    "relatedTerms": ["nlp", "classification", "text-classification"]
+  },
+  {
+    "slug": "sentiment-analysis-it",
+    "language": "it",
+    "term": "Sentiment Analysis",
+    "category": "Task",
+    "definition": "Task NLP determinando tono emotivo o opinione espressa nel testo.",
+    "explanation": "Classificazione in positivo/negativo/neutrale o emozioni più fini. Usata per analisi recensioni, monitoraggio social media. Comune con BERT fine-tuned.",
+    "examples": ["Analisi recensioni prodotti", "Sentiment social media", "Feedback clienti"],
+    "relatedTerms": ["nlp", "classification", "text-classification"]
+  },
+  {
+    "slug": "question-answering",
+    "language": "en",
+    "term": "Question Answering",
+    "category": "Task",
+    "definition": "NLP task where model extracts or generates answers to questions based on context.",
+    "explanation": "Extractive QA (SQuAD) selects span from context. Generative QA produces free-form answers. Powered by BERT, GPT for different variants.",
+    "examples": ["SQuAD dataset", "Reading comprehension", "Open-domain QA"],
+    "relatedTerms": ["nlp", "bert", "extractive-qa"]
+  },
+  {
+    "slug": "question-answering-it",
+    "language": "it",
+    "term": "Question Answering",
+    "category": "Task",
+    "definition": "Task NLP dove il modello estrae o genera risposte a domande basandosi sul contesto.",
+    "explanation": "QA estrattivo (SQuAD) seleziona span dal contesto. QA generativo produce risposte libere. Alimentato da BERT, GPT per varianti diverse.",
+    "examples": ["Dataset SQuAD", "Reading comprehension", "QA open-domain"],
+    "relatedTerms": ["nlp", "bert", "extractive-qa"]
+  },
+  {
+    "slug": "text-summarization",
+    "language": "en",
+    "term": "Text Summarization",
+    "category": "Task",
+    "definition": "NLP task condensing long text while preserving key information.",
+    "explanation": "Extractive summarization selects important sentences. Abstractive summarization generates new text. T5, BART excel at abstractive.",
+    "examples": ["News article summarization", "Document condensation", "Abstract generation"],
+    "relatedTerms": ["nlp", "seq2seq", "abstractive-summarization"]
+  },
+  {
+    "slug": "text-summarization-it",
+    "language": "it",
+    "term": "Text Summarization",
+    "category": "Task",
+    "definition": "Task NLP condensando testo lungo preservando informazioni chiave.",
+    "explanation": "Summarization estrattiva seleziona frasi importanti. Summarization astrattiva genera nuovo testo. T5, BART eccellono in astrattiva.",
+    "examples": ["Summarization articoli news", "Condensazione documenti", "Generazione abstract"],
+    "relatedTerms": ["nlp", "seq2seq", "abstractive-summarization"]
+  },
+  {
+    "slug": "machine-translation",
+    "language": "en",
+    "term": "Machine Translation",
+    "category": "Task",
+    "definition": "Automatic translation of text from one language to another.",
+    "explanation": "Sequence-to-sequence task. Neural MT (NMT) uses encoder-decoder with attention. Transformers (like mT5, mBART) are state-of-the-art.",
+    "examples": ["Google Translate", "English to French", "Multilingual models"],
+    "relatedTerms": ["seq2seq", "transformer", "encoder-decoder"]
+  },
+  {
+    "slug": "machine-translation-it",
+    "language": "it",
+    "term": "Machine Translation",
+    "category": "Task",
+    "definition": "Traduzione automatica di testo da una lingua all'altra.",
+    "explanation": "Task sequence-to-sequence. Neural MT (NMT) usa encoder-decoder con attention. Transformer (come mT5, mBART) sono state-of-the-art.",
+    "examples": ["Google Translate", "Inglese a Francese", "Modelli multilingua"],
+    "relatedTerms": ["seq2seq", "transformer", "encoder-decoder"]
   }
 ]
