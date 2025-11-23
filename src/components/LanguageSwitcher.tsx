@@ -6,28 +6,33 @@ export default function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="flex gap-1 items-center">
+    <div className="flex gap-0.5 items-center border-2 border-gray-400 dark:border-gray-600 rounded overflow-hidden">
       <button
         onClick={() => setLanguage('en')}
-        className={`px-2.5 py-1.5 sm:px-3 sm:py-1 text-xs sm:text-sm font-bold uppercase tracking-wide transition-all active:scale-95 touch-manipulation ${
+        className={`px-3 py-1.5 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wide transition-all active:scale-95 touch-manipulation flex items-center gap-1.5 ${
           language === 'en'
             ? 'bg-black dark:bg-white text-white dark:text-black'
-            : 'border-2 border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white'
+            : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
         }`}
         aria-label="Switch to English"
+        title="English"
       >
-        EN
+        <span className="text-base">🇬🇧</span>
+        <span>EN</span>
       </button>
+      <div className="w-px bg-gray-400 dark:bg-gray-600 h-6"></div>
       <button
         onClick={() => setLanguage('it')}
-        className={`px-2.5 py-1.5 sm:px-3 sm:py-1 text-xs sm:text-sm font-bold uppercase tracking-wide transition-all active:scale-95 touch-manipulation ${
+        className={`px-3 py-1.5 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wide transition-all active:scale-95 touch-manipulation flex items-center gap-1.5 ${
           language === 'it'
             ? 'bg-black dark:bg-white text-white dark:text-black'
-            : 'border-2 border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white'
+            : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
         }`}
         aria-label="Cambia in Italiano"
+        title="Italiano"
       >
-        IT
+        <span className="text-base">🇮🇹</span>
+        <span>IT</span>
       </button>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -11,6 +12,7 @@ interface CookiePreferences {
 }
 
 export default function CookieConsent() {
+  const { t } = useLanguage();
   const [showBanner, setShowBanner] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
@@ -138,12 +140,11 @@ export default function CookieConsent() {
             // Simple banner
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex-1">
-                <h3 className="text-lg font-bold mb-2">🍪 We value your privacy</h3>
+                <h3 className="text-lg font-bold mb-2">🍪 {t('cookie.title')}</h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300">
-                  We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
-                  By clicking "Accept All", you consent to our use of cookies. 
+                  {t('cookie.description')}
                   <Link href="/privacy-policy" className="underline ml-1 hover:text-blue-600">
-                    Learn more
+                    {t('cookie.learnMore')}
                   </Link>
                 </p>
               </div>
@@ -153,19 +154,19 @@ export default function CookieConsent() {
                   onClick={() => setShowSettings(true)}
                   className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white transition-colors text-sm font-semibold uppercase tracking-wide"
                 >
-                  Customize
+                  {t('cookie.customize')}
                 </button>
                 <button
                   onClick={acceptNecessary}
                   className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white transition-colors text-sm font-semibold uppercase tracking-wide"
                 >
-                  Necessary Only
+                  {t('cookie.necessaryOnly')}
                 </button>
                 <button
                   onClick={acceptAll}
                   className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors text-sm font-semibold uppercase tracking-wide"
                 >
-                  Accept All
+                  {t('cookie.acceptAll')}
                 </button>
               </div>
             </div>
@@ -173,7 +174,7 @@ export default function CookieConsent() {
             // Detailed settings
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold">Cookie Settings</h3>
+                <h3 className="text-lg font-bold">{t('cookie.settings')}</h3>
                 <button
                   onClick={() => setShowSettings(false)}
                   className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
@@ -189,11 +190,11 @@ export default function CookieConsent() {
                 <div className="flex items-start justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded border-2 border-gray-300 dark:border-gray-700">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-bold">Necessary Cookies</h4>
-                      <span className="text-xs bg-gray-300 dark:bg-gray-700 px-2 py-0.5 rounded">Always Active</span>
+                      <h4 className="font-bold">{t('cookie.necessary')}</h4>
+                      <span className="text-xs bg-gray-300 dark:bg-gray-700 px-2 py-0.5 rounded">{t('cookie.alwaysActive')}</span>
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      These cookies are essential for the website to function properly. They enable basic features like page navigation and access to secure areas.
+                      {t('cookie.necessaryDesc')}
                     </p>
                   </div>
                   <input
@@ -207,9 +208,9 @@ export default function CookieConsent() {
                 {/* Analytics Cookies */}
                 <div className="flex items-start justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded border-2 border-gray-300 dark:border-gray-700">
                   <div className="flex-1">
-                    <h4 className="font-bold mb-1">Analytics Cookies</h4>
+                    <h4 className="font-bold mb-1">{t('cookie.analytics')}</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.
+                      {t('cookie.analyticsDesc')}
                     </p>
                   </div>
                   <input
@@ -223,9 +224,9 @@ export default function CookieConsent() {
                 {/* Marketing Cookies */}
                 <div className="flex items-start justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded border-2 border-gray-300 dark:border-gray-700">
                   <div className="flex-1">
-                    <h4 className="font-bold mb-1">Marketing Cookies</h4>
+                    <h4 className="font-bold mb-1">{t('cookie.marketing')}</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      These cookies are used to track visitors across websites and display ads that are relevant and engaging.
+                      {t('cookie.marketingDesc')}
                     </p>
                   </div>
                   <input
@@ -242,19 +243,19 @@ export default function CookieConsent() {
                   href="/cookie-policy"
                   className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white transition-colors text-sm font-semibold uppercase tracking-wide text-center"
                 >
-                  Cookie Policy
+                  {t('cookie.cookiePolicy')}
                 </Link>
                 <button
                   onClick={acceptNecessary}
                   className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white transition-colors text-sm font-semibold uppercase tracking-wide"
                 >
-                  Necessary Only
+                  {t('cookie.necessaryOnly')}
                 </button>
                 <button
                   onClick={saveCustomPreferences}
                   className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors text-sm font-semibold uppercase tracking-wide"
                 >
-                  Save Preferences
+                  {t('cookie.savePreferences')}
                 </button>
               </div>
             </div>

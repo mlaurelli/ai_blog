@@ -45,6 +45,24 @@ const translations = {
     // Meta
     'meta.defaultTitle': 'AI Blog - by Michele Laurelli',
     'meta.defaultDescription': 'Insights on AI architecture, machine learning, and private AI systems',
+    
+    // Cookie Banner
+    'cookie.title': 'We value your privacy',
+    'cookie.description': 'We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.',
+    'cookie.learnMore': 'Learn more',
+    'cookie.customize': 'Customize',
+    'cookie.necessaryOnly': 'Necessary Only',
+    'cookie.acceptAll': 'Accept All',
+    'cookie.settings': 'Cookie Settings',
+    'cookie.necessary': 'Necessary Cookies',
+    'cookie.alwaysActive': 'Always Active',
+    'cookie.necessaryDesc': 'These cookies are essential for the website to function properly. They enable basic features like page navigation and access to secure areas.',
+    'cookie.analytics': 'Analytics Cookies',
+    'cookie.analyticsDesc': 'These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.',
+    'cookie.marketing': 'Marketing Cookies',
+    'cookie.marketingDesc': 'These cookies are used to track visitors across websites and display ads that are relevant and engaging.',
+    'cookie.cookiePolicy': 'Cookie Policy',
+    'cookie.savePreferences': 'Save Preferences',
   },
   it: {
     // Navigation
@@ -78,6 +96,24 @@ const translations = {
     // Meta
     'meta.defaultTitle': 'Blog AI - di Michele Laurelli',
     'meta.defaultDescription': 'Approfondimenti su architettura AI, machine learning e sistemi AI privati',
+    
+    // Cookie Banner
+    'cookie.title': 'Rispettiamo la tua privacy',
+    'cookie.description': 'Utilizziamo i cookie per migliorare la tua esperienza di navigazione, fornire contenuti personalizzati e analizzare il nostro traffico. Cliccando "Accetta Tutti", acconsenti all\'uso dei cookie.',
+    'cookie.learnMore': 'Scopri di più',
+    'cookie.customize': 'Personalizza',
+    'cookie.necessaryOnly': 'Solo Necessari',
+    'cookie.acceptAll': 'Accetta Tutti',
+    'cookie.settings': 'Impostazioni Cookie',
+    'cookie.necessary': 'Cookie Necessari',
+    'cookie.alwaysActive': 'Sempre Attivi',
+    'cookie.necessaryDesc': 'Questi cookie sono essenziali per il corretto funzionamento del sito web. Abilitano funzionalità di base come la navigazione delle pagine e l\'accesso alle aree protette.',
+    'cookie.analytics': 'Cookie Analitici',
+    'cookie.analyticsDesc': 'Questi cookie ci aiutano a capire come i visitatori interagiscono con il nostro sito raccogliendo e comunicando informazioni in forma anonima.',
+    'cookie.marketing': 'Cookie Marketing',
+    'cookie.marketingDesc': 'Questi cookie vengono utilizzati per tracciare i visitatori attraverso i siti web e visualizzare annunci pertinenti e coinvolgenti.',
+    'cookie.cookiePolicy': 'Policy sui Cookie',
+    'cookie.savePreferences': 'Salva Preferenze',
   }
 };
 
@@ -85,10 +121,20 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('en');
 
   useEffect(() => {
-    // Load language from localStorage
+    // Load language from localStorage or auto-detect
     const saved = localStorage.getItem('language') as Language;
     if (saved && (saved === 'en' || saved === 'it')) {
       setLanguageState(saved);
+    } else {
+      // Auto-detect browser language
+      const browserLang = navigator.language.toLowerCase();
+      if (browserLang.startsWith('it')) {
+        setLanguageState('it');
+        localStorage.setItem('language', 'it');
+      } else {
+        setLanguageState('en');
+        localStorage.setItem('language', 'en');
+      }
     }
   }, []);
 
