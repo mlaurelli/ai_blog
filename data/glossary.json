@@ -254,5 +254,174 @@
     "explanation": "L'AI generativa usa modelli come GPT (testo), DALL-E (immagini), Stable Diffusion (immagini). Apprende pattern dai dati di training e genera contenuti nuovi ma realistici.",
     "examples": ["ChatGPT per scrittura creativa", "Midjourney per arte digitale", "Suno per generazione musicale"],
     "relatedTerms": ["gpt", "diffusion-models", "gan"]
+  },
+  {
+    "slug": "cnn",
+    "language": "en",
+    "term": "CNN (Convolutional Neural Network)",
+    "category": "Architecture",
+    "pronunciation": "/siː ɛn ɛn/",
+    "definition": "A deep learning architecture specialized for processing grid-like data such as images, using convolutional layers.",
+    "explanation": "CNNs use convolution operations to automatically learn spatial hierarchies of features. Key components include convolutional layers, pooling layers, and fully connected layers. Revolutionized computer vision.",
+    "examples": ["ResNet for image classification", "YOLO for object detection", "U-Net for image segmentation"],
+    "relatedTerms": ["convolution", "pooling", "computer-vision"]
+  },
+  {
+    "slug": "gan",
+    "language": "en",
+    "term": "GAN (Generative Adversarial Network)",
+    "category": "Architecture",
+    "pronunciation": "/ɡæn/",
+    "definition": "A framework where two neural networks compete: a generator creates fake data and a discriminator tries to distinguish real from fake.",
+    "explanation": "GANs consist of a generator and discriminator trained adversarially. The generator improves at creating realistic data while the discriminator improves at detection. Used for image generation, style transfer, and data augmentation.",
+    "examples": ["StyleGAN for face generation", "CycleGAN for image-to-image translation", "Pix2Pix for paired image translation"],
+    "relatedTerms": ["generator", "discriminator", "generative-ai"]
+  },
+  {
+    "slug": "activation-function",
+    "language": "en",
+    "term": "Activation Function",
+    "category": "Concept",
+    "pronunciation": "/ˌæktɪˈveɪʃən ˈfʌŋkʃən/",
+    "definition": "A mathematical function applied to a neuron's output to introduce non-linearity into the network.",
+    "explanation": "Activation functions enable neural networks to learn complex patterns. Common functions include ReLU, sigmoid, tanh, and softmax. They determine whether a neuron should be activated based on input.",
+    "examples": ["ReLU for hidden layers", "Sigmoid for binary classification", "Softmax for multi-class classification"],
+    "relatedTerms": ["relu", "sigmoid", "neural-network"]
+  },
+  {
+    "slug": "loss-function",
+    "language": "en",
+    "term": "Loss Function",
+    "category": "Concept",
+    "pronunciation": "/lɒs ˈfʌŋkʃən/",
+    "definition": "A function that measures the difference between predicted and actual values, guiding model optimization.",
+    "explanation": "Loss functions quantify model error. Common types include Mean Squared Error (MSE) for regression, Cross-Entropy for classification. Optimization minimizes loss through gradient descent.",
+    "examples": ["MSE for regression tasks", "Cross-entropy for classification", "Huber loss for robust regression"],
+    "relatedTerms": ["gradient-descent", "optimization", "backpropagation"]
+  },
+  {
+    "slug": "regularization",
+    "language": "en",
+    "term": "Regularization",
+    "category": "Technique",
+    "pronunciation": "/ˌrɛɡjʊləraɪˈzeɪʃən/",
+    "definition": "Techniques to prevent overfitting by adding constraints or penalties to the model during training.",
+    "explanation": "Regularization methods include L1 (Lasso), L2 (Ridge), dropout, and early stopping. They reduce model complexity and improve generalization to new data.",
+    "examples": ["L2 regularization in linear regression", "Dropout in neural networks", "Early stopping to prevent overtraining"],
+    "relatedTerms": ["overfitting", "dropout", "generalization"]
+  },
+  {
+    "slug": "encoder-decoder",
+    "language": "en",
+    "term": "Encoder-Decoder",
+    "category": "Architecture",
+    "pronunciation": "/ɪnˈkoʊdər dɪˈkoʊdər/",
+    "definition": "An architecture where an encoder processes input into a representation and a decoder generates output from it.",
+    "explanation": "Encoder-decoder architectures are used for sequence-to-sequence tasks. The encoder compresses input into a context vector, the decoder generates output. Common in machine translation and summarization.",
+    "examples": ["Seq2Seq for translation", "Transformer encoder-decoder", "VAE (Variational Autoencoder)"],
+    "relatedTerms": ["transformer", "sequence-to-sequence", "attention-mechanism"]
+  },
+  {
+    "slug": "tokenization",
+    "language": "en",
+    "term": "Tokenization",
+    "category": "Technique",
+    "pronunciation": "/ˌtoʊkənaɪˈzeɪʃən/",
+    "definition": "The process of breaking text into smaller units (tokens) like words, subwords, or characters for processing.",
+    "explanation": "Tokenization is the first step in NLP pipelines. Methods include word-level, character-level, and subword tokenization (BPE, WordPiece). Balances vocabulary size and representation quality.",
+    "examples": ["BPE in GPT models", "WordPiece in BERT", "SentencePiece for multilingual models"],
+    "relatedTerms": ["nlp", "bert", "gpt"]
+  },
+  {
+    "slug": "zero-shot-learning",
+    "language": "en",
+    "term": "Zero-Shot Learning",
+    "category": "Concept",
+    "pronunciation": "/ˈzɪroʊ ʃɒt ˈlɜːrnɪŋ/",
+    "definition": "A model's ability to perform tasks it wasn't explicitly trained on, using only task descriptions or examples.",
+    "explanation": "Zero-shot learning leverages pre-trained knowledge to handle new tasks without additional training. Large language models excel at this through prompt engineering.",
+    "examples": ["GPT-3 translating to languages not in training", "CLIP matching images to unseen concepts", "ChatGPT solving novel reasoning tasks"],
+    "relatedTerms": ["few-shot-learning", "prompt-engineering", "llm"]
+  },
+  {
+    "slug": "prompt-engineering",
+    "language": "en",
+    "term": "Prompt Engineering",
+    "category": "Technique",
+    "pronunciation": "/prɒmpt ˌɛndʒɪˈnɪərɪŋ/",
+    "definition": "The practice of designing effective text prompts to guide large language models toward desired outputs.",
+    "explanation": "Prompt engineering involves crafting instructions, examples, and context to optimize LLM performance. Techniques include few-shot prompting, chain-of-thought, and role-playing.",
+    "examples": ["Few-shot prompting with examples", "Chain-of-thought for reasoning", "System prompts for chatbot behavior"],
+    "relatedTerms": ["llm", "gpt", "zero-shot-learning"]
+  },
+  {
+    "slug": "rete-neurale",
+    "language": "it",
+    "term": "Rete Neurale",
+    "category": "Architettura",
+    "definition": "Un modello computazionale ispirato alle reti neurali biologiche, composto da nodi interconnessi (neuroni) che elaborano informazioni.",
+    "explanation": "Le reti neurali sono modelli di machine learning ispirati alla struttura del cervello umano. Consistono di layer di nodi interconnessi che processano e trasformano dati di input per produrre predizioni.",
+    "examples": ["Classificazione di immagini", "Riconoscimento vocale", "Elaborazione del linguaggio naturale"],
+    "relatedTerms": ["deep-learning", "backpropagation", "activation-function"]
+  },
+  {
+    "slug": "ottimizzazione",
+    "language": "it",
+    "term": "Ottimizzazione",
+    "category": "Concetto",
+    "definition": "Il processo di regolazione dei parametri del modello per minimizzare la funzione di loss e migliorare le performance.",
+    "explanation": "L'ottimizzazione usa algoritmi come gradient descent, Adam, e RMSprop per aggiornare i pesi del modello. L'obiettivo è trovare i parametri ottimali che minimizzano l'errore di predizione.",
+    "examples": ["Adam optimizer per training veloce", "SGD con momentum", "Learning rate scheduling"],
+    "relatedTerms": ["gradient-descent", "loss-function", "training"]
+  },
+  {
+    "slug": "data-augmentation",
+    "language": "it",
+    "term": "Data Augmentation",
+    "category": "Tecnica",
+    "definition": "Tecniche per aumentare artificialmente la dimensione del dataset di training attraverso trasformazioni dei dati esistenti.",
+    "explanation": "Il data augmentation crea variazioni dei dati originali (rotazioni, crop, flip per immagini; sinonimi, back-translation per testo) per migliorare la generalizzazione e ridurre overfitting.",
+    "examples": ["Rotazione e flip di immagini", "Sinonimi e parafrasamento per testo", "Noise injection per audio"],
+    "relatedTerms": ["overfitting", "training", "generalization"]
+  },
+  {
+    "slug": "pre-training",
+    "language": "it",
+    "term": "Pre-training",
+    "category": "Addestramento",
+    "definition": "Il processo di addestrare un modello su un grande dataset generico prima di fine-tuning su task specifici.",
+    "explanation": "Il pre-training permette ai modelli di apprendere rappresentazioni generali da grandi quantità di dati non etichettati. Fondamentale per transfer learning e modelli foundation come BERT e GPT.",
+    "examples": ["BERT pre-trained su Wikipedia", "GPT pre-trained su web text", "ResNet pre-trained su ImageNet"],
+    "relatedTerms": ["fine-tuning", "transfer-learning", "foundation-models"]
+  },
+  {
+    "slug": "tensore",
+    "language": "it",
+    "term": "Tensore",
+    "category": "Concetto",
+    "definition": "Una struttura dati multi-dimensionale utilizzata per rappresentare dati in deep learning (scalari, vettori, matrici, tensori n-dimensionali).",
+    "explanation": "I tensori sono la struttura dati fondamentale in framework come TensorFlow e PyTorch. Un tensore 0D è uno scalare, 1D è un vettore, 2D è una matrice, e così via.",
+    "examples": ["Tensore 2D per immagine grayscale", "Tensore 3D per immagine RGB", "Tensore 4D per batch di immagini"],
+    "relatedTerms": ["pytorch", "tensorflow", "array"]
+  },
+  {
+    "slug": "cross-entropy",
+    "language": "it",
+    "term": "Cross-Entropy",
+    "category": "Concetto",
+    "definition": "Una funzione di loss comunemente usata per problemi di classificazione che misura la differenza tra distribuzioni di probabilità.",
+    "explanation": "La cross-entropy quantifica quanto le predizioni del modello divergono dalle etichette reali. Valori più bassi indicano predizioni migliori. Usata con softmax per classificazione multi-classe.",
+    "examples": ["Classificazione di immagini", "Sentiment analysis", "Named Entity Recognition"],
+    "relatedTerms": ["loss-function", "softmax", "classification"]
+  },
+  {
+    "slug": "lstm",
+    "language": "it",
+    "term": "LSTM (Long Short-Term Memory)",
+    "category": "Architettura",
+    "definition": "Un tipo di rete neurale ricorrente capace di apprendere dipendenze a lungo termine in sequenze temporali.",
+    "explanation": "LSTM usa celle di memoria e gate (input, forget, output) per gestire il flusso di informazioni. Risolve il problema del vanishing gradient delle RNN standard. Ora spesso sostituita da Transformer.",
+    "examples": ["Previsioni serie temporali", "Generazione di testo", "Riconoscimento vocale"],
+    "relatedTerms": ["rnn", "gru", "sequence-modeling"]
   }
 ]
