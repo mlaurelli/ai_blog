@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -10,6 +11,8 @@ interface LayoutProps {
 }
 
 export default function Layout({ children, title = 'AI Blog - by Michele Laurelli' }: LayoutProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
   const today = new Date().toLocaleDateString('en-US', { 
     weekday: 'long', 
     year: 'numeric', 
@@ -24,32 +27,37 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
         <div className="border-b border-gray-300 dark:border-gray-700 py-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center text-xs">
-              <span className="text-gray-600 dark:text-gray-400">{today}</span>
-              <div className="flex items-center gap-4">
+              {/* Date - hidden on mobile */}
+              <span className="text-gray-600 dark:text-gray-400 hidden sm:block">{today}</span>
+              <span className="text-gray-600 dark:text-gray-400 sm:hidden">AI Blog</span>
+              
+              {/* Right side controls */}
+              <div className="flex items-center gap-2 sm:gap-4">
                 <LanguageSwitcher />
                 <ThemeToggle />
-                <span className="text-gray-600 dark:text-gray-400">Vol. 1, No. 1</span>
+                {/* Vol info - hidden on mobile */}
+                <span className="text-gray-600 dark:text-gray-400 hidden sm:block">Vol. 1, No. 1</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Masthead */}
-        <div className="py-8 border-b border-gray-300 dark:border-gray-700">
+        <div className="py-6 sm:py-8 border-b border-gray-300 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Link href="/">
-              <h1 className="text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-2">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-2">
                 AI Blog
               </h1>
             </Link>
-            <p className="text-sm italic text-gray-600 dark:text-gray-400 border-t border-b border-gray-300 dark:border-gray-700 py-1 inline-block px-4">
+            <p className="text-xs sm:text-sm italic text-gray-600 dark:text-gray-400 border-t border-b border-gray-300 dark:border-gray-700 py-1 inline-block px-4">
               by Michele Laurelli
             </p>
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="bg-gray-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
+        {/* Navigation - Desktop */}
+        <nav className="hidden md:block bg-gray-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ul className="flex justify-center space-x-8 py-3 text-sm font-semibold uppercase tracking-wide">
               <li>
@@ -76,6 +84,72 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
                 </Link>
               </li>
             </ul>
+          </div>
+        </nav>
+
+        {/* Navigation - Mobile */}
+        <nav className="md:hidden bg-gray-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Mobile menu button */}
+            <div className="flex items-center justify-between py-3">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
+                aria-label="Toggle menu"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+                <span>Menu</span>
+              </button>
+              <span className="text-xs text-gray-600 dark:text-gray-400">{today.split(',')[0]}</span>
+            </div>
+
+            {/* Mobile menu items */}
+            {mobileMenuOpen && (
+              <ul className="pb-4 space-y-2 border-t border-gray-300 dark:border-gray-700 pt-4">
+                <li>
+                  <Link 
+                    href="/" 
+                    className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/categories" 
+                    className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Categories
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/glossary" 
+                    className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Glossary
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/about" 
+                    className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    About
+                  </Link>
+                </li>
+              </ul>
+            )}
           </div>
         </nav>
       </header>
