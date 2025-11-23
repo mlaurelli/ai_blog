@@ -2724,5 +2724,105 @@
     "explanation": "Depthwise convolve ogni canale separatamente. Pointwise (1x1) combina canali. Riduce drasticamente computazione. Core di MobileNet.",
     "examples": ["Architettura MobileNet", "CNN efficienti", "Deployment mobile"],
     "relatedTerms": ["mobilenet", "efficient-architecture", "convolution"]
+  },
+  {
+    "slug": "focal-loss",
+    "language": "en",
+    "term": "Focal Loss",
+    "category": "Technique",
+    "definition": "Loss function addressing class imbalance by down-weighting easy examples.",
+    "explanation": "Adds modulating factor (1-p)^γ to cross-entropy. Focuses training on hard examples. Used in object detection (RetinaNet) for handling background class imbalance.",
+    "examples": ["RetinaNet object detection", "Imbalanced classification", "Hard example mining"],
+    "relatedTerms": ["loss-function", "class-imbalance", "object-detection"]
+  },
+  {
+    "slug": "focal-loss-it",
+    "language": "it",
+    "term": "Focal Loss",
+    "category": "Tecnica",
+    "definition": "Funzione di loss affrontando sbilanciamento classi down-weighting esempi facili.",
+    "explanation": "Aggiunge fattore modulante (1-p)^γ a cross-entropy. Focalizza training su esempi difficili. Usata in object detection (RetinaNet) per gestire sbilanciamento classe background.",
+    "examples": ["Object detection RetinaNet", "Classificazione sbilanciata", "Hard example mining"],
+    "relatedTerms": ["loss-function", "class-imbalance", "object-detection"]
+  },
+  {
+    "slug": "dice-loss",
+    "language": "en",
+    "term": "Dice Loss",
+    "category": "Technique",
+    "definition": "Loss function based on Dice coefficient, commonly used for segmentation tasks.",
+    "explanation": "Measures overlap between predicted and ground truth masks. Range 0-1. Handles class imbalance better than cross-entropy for segmentation.",
+    "examples": ["Medical image segmentation", "Semantic segmentation", "Binary masks"],
+    "relatedTerms": ["segmentation", "loss-function", "iou"]
+  },
+  {
+    "slug": "dice-loss-it",
+    "language": "it",
+    "term": "Dice Loss",
+    "category": "Tecnica",
+    "definition": "Funzione di loss basata su coefficiente Dice, comunemente usata per task di segmentazione.",
+    "explanation": "Misura sovrapposizione tra mask predette e ground truth. Range 0-1. Gestisce sbilanciamento classi meglio di cross-entropy per segmentazione.",
+    "examples": ["Segmentazione immagini mediche", "Segmentazione semantica", "Mask binarie"],
+    "relatedTerms": ["segmentation", "loss-function", "iou"]
+  },
+  {
+    "slug": "triplet-loss",
+    "language": "en",
+    "term": "Triplet Loss",
+    "category": "Technique",
+    "definition": "Loss function learning embeddings by minimizing distance between anchor-positive and maximizing anchor-negative.",
+    "explanation": "Uses triplets: anchor, positive (same class), negative (different class). Learns discriminative embeddings. Used in face recognition and metric learning.",
+    "examples": ["Face recognition (FaceNet)", "Image retrieval", "Metric learning"],
+    "relatedTerms": ["metric-learning", "embedding", "contrastive-learning"]
+  },
+  {
+    "slug": "triplet-loss-it",
+    "language": "it",
+    "term": "Triplet Loss",
+    "category": "Tecnica",
+    "definition": "Funzione di loss apprendendo embedding minimizzando distanza anchor-positive e massimizzando anchor-negative.",
+    "explanation": "Usa triple: anchor, positive (stessa classe), negative (classe diversa). Apprende embedding discriminativi. Usata in face recognition e metric learning.",
+    "examples": ["Face recognition (FaceNet)", "Image retrieval", "Metric learning"],
+    "relatedTerms": ["metric-learning", "embedding", "contrastive-learning"]
+  },
+  {
+    "slug": "adversarial-training",
+    "language": "en",
+    "term": "Adversarial Training",
+    "category": "Technique",
+    "definition": "Training technique improving model robustness by including adversarial examples.",
+    "explanation": "Augments training with adversarially perturbed examples. Models learn to be robust to small input perturbations. Improves security against adversarial attacks.",
+    "examples": ["Defending against adversarial attacks", "Robust image classification", "Security enhancement"],
+    "relatedTerms": ["adversarial-examples", "robustness", "security"]
+  },
+  {
+    "slug": "adversarial-training-it",
+    "language": "it",
+    "term": "Adversarial Training",
+    "category": "Tecnica",
+    "definition": "Tecnica di training migliorando robustezza modello includendo esempi adversarial.",
+    "explanation": "Aumenta training con esempi perturbati adversarially. I modelli apprendono ad essere robusti a piccole perturbazioni input. Migliora sicurezza contro attacchi adversarial.",
+    "examples": ["Difesa contro attacchi adversarial", "Classificazione immagini robusta", "Miglioramento sicurezza"],
+    "relatedTerms": ["adversarial-examples", "robustness", "security"]
+  },
+  {
+    "slug": "mixup",
+    "language": "en",
+    "term": "Mixup",
+    "category": "Technique",
+    "definition": "Data augmentation creating synthetic examples by mixing pairs of training samples.",
+    "explanation": "Linearly interpolates between two samples and their labels: x = λx₁ + (1-λ)x₂. Improves generalization and calibration. Simple yet effective regularization.",
+    "examples": ["Image classification augmentation", "Regularization technique", "Improved generalization"],
+    "relatedTerms": ["data-augmentation", "regularization", "cutmix"]
+  },
+  {
+    "slug": "mixup-it",
+    "language": "it",
+    "term": "Mixup",
+    "category": "Tecnica",
+    "definition": "Data augmentation creando esempi sintetici mixando coppie di campioni training.",
+    "explanation": "Interpola linearmente tra due campioni e loro etichette: x = λx₁ + (1-λ)x₂. Migliora generalizzazione e calibrazione. Regolarizzazione semplice ma efficace.",
+    "examples": ["Augmentation classificazione immagini", "Tecnica regolarizzazione", "Generalizzazione migliorata"],
+    "relatedTerms": ["data-augmentation", "regularization", "cutmix"]
   }
 ]
