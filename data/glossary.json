@@ -613,5 +613,177 @@
     "explanation": "I modelli autoregressivi come GPT predicono un token alla volta condizionato sui token precedenti. Usano causal masking per prevenire di vedere il futuro durante il training.",
     "examples": ["GPT per generazione testo", "PixelCNN per immagini", "WaveNet per audio"],
     "relatedTerms": ["gpt", "causal-masking", "generation"]
+  },
+  {
+    "slug": "transformer-it",
+    "language": "it",
+    "term": "Transformer",
+    "category": "Architettura",
+    "pronunciation": "/trænsˈfɔːrmər/",
+    "definition": "Un'architettura di rete neurale basata interamente su meccanismi di attention, senza layer ricorrenti o convoluzionali.",
+    "explanation": "I Transformer hanno rivoluzionato l'NLP processando intere sequenze in parallelo usando self-attention. Componenti chiave includono multi-head attention, positional encoding, e feed-forward networks. GPT e BERT si basano su questa architettura.",
+    "examples": ["GPT (Generative Pre-trained Transformer)", "BERT (Bidirectional Encoder Representations from Transformers)", "T5 (Text-to-Text Transfer Transformer)"],
+    "relatedTerms": ["self-attention", "bert", "gpt"]
+  },
+  {
+    "slug": "gpt-it",
+    "language": "it",
+    "term": "GPT (Generative Pre-trained Transformer)",
+    "category": "Modello",
+    "pronunciation": "/dʒiː piː tiː/",
+    "definition": "Una famiglia di large language model sviluppati da OpenAI che usano l'architettura transformer per la generazione di testo.",
+    "explanation": "I modelli GPT sono addestrati su enormi corpus testuali usando unsupervised learning, poi fine-tuned per task specifici. Eccellono in generazione testo, traduzione, summarization e question-answering. GPT-4 è uno dei modelli più avanzati.",
+    "examples": ["ChatGPT per AI conversazionale", "Generazione codice con GitHub Copilot", "Assistenza scrittura creativa"],
+    "relatedTerms": ["transformer", "llm", "bert"]
+  },
+  {
+    "slug": "llm-it",
+    "language": "it",
+    "term": "LLM (Large Language Model)",
+    "category": "Modello",
+    "pronunciation": "/ɛl ɛl ɛm/",
+    "definition": "Una rete neurale con miliardi di parametri addestrata su enormi dataset testuali per comprendere e generare linguaggio umano.",
+    "explanation": "Gli LLM come GPT-4, Claude e LLaMA sono addestrati su testi diversificati da internet. Dimostrano abilità emergenti come ragionamento, few-shot learning e generalizzazione dei task. La scala è fondamentale - modelli più grandi mostrano performance migliori.",
+    "examples": ["GPT-4 con 1.76 trilioni di parametri", "LLaMA 2 per applicazioni open-source", "Claude per comprensione long-context"],
+    "relatedTerms": ["gpt", "transformer", "fine-tuning"]
+  },
+  {
+    "slug": "overfitting-it",
+    "language": "it",
+    "term": "Overfitting",
+    "category": "Concetto",
+    "pronunciation": "/ˌoʊvərˈfɪtɪŋ/",
+    "definition": "Quando un modello apprende i dati di training troppo bene, incluso il rumore, risultando in scarsa generalizzazione su nuovi dati.",
+    "explanation": "L'overfitting si verifica quando i modelli sono troppo complessi rispetto alla dimensione dei dati di training. Le soluzioni includono regolarizzazione, dropout, early stopping e data augmentation. Cruciale trovare il bilancio tra underfitting e overfitting.",
+    "examples": ["Decision tree che memorizza tutti gli esempi", "Rete neurale con troppi parametri", "Modello con 100% su training ma 60% su test"],
+    "relatedTerms": ["regularization", "dropout", "generalization"]
+  },
+  {
+    "slug": "cnn-it",
+    "language": "it",
+    "term": "CNN (Convolutional Neural Network)",
+    "category": "Architettura",
+    "pronunciation": "/siː ɛn ɛn/",
+    "definition": "Un'architettura di deep learning specializzata per processare dati a griglia come immagini, usando layer convoluzionali.",
+    "explanation": "Le CNN usano operazioni di convoluzione per apprendere automaticamente gerarchie spaziali di features. Componenti chiave includono layer convoluzionali, pooling e fully connected. Hanno rivoluzionato la computer vision.",
+    "examples": ["ResNet per classificazione immagini", "YOLO per object detection", "U-Net per segmentazione"],
+    "relatedTerms": ["convolution", "pooling", "computer-vision"]
+  },
+  {
+    "slug": "gan-it",
+    "language": "it",
+    "term": "GAN (Generative Adversarial Network)",
+    "category": "Architettura",
+    "pronunciation": "/ɡæn/",
+    "definition": "Un framework dove due reti neurali competono: un generator crea dati falsi e un discriminator cerca di distinguere vero da falso.",
+    "explanation": "Le GAN consistono di generator e discriminator addestrati in modo adversarial. Il generator migliora nel creare dati realistici mentre il discriminator migliora nel rilevarli. Usate per generazione immagini, style transfer e data augmentation.",
+    "examples": ["StyleGAN per generazione volti", "CycleGAN per traduzione immagine-immagine", "Pix2Pix per traduzioni paired"],
+    "relatedTerms": ["generator", "discriminator", "generative-ai"]
+  },
+  {
+    "slug": "rag-it",
+    "language": "it",
+    "term": "RAG (Retrieval-Augmented Generation)",
+    "category": "Tecnica",
+    "pronunciation": "/ræɡ/",
+    "definition": "Una tecnica che migliora gli output degli LLM recuperando informazioni rilevanti da knowledge base esterne.",
+    "explanation": "RAG combina sistemi di retrieval con modelli generativi. Prima recupera documenti rilevanti, poi li usa come contesto per la generazione. Riduce le allucinazioni e permette aggiornamenti della conoscenza senza retraining.",
+    "examples": ["Question answering con retrieval documenti", "Chatbot supporto clienti", "Assistenti di ricerca"],
+    "relatedTerms": ["llm", "vector-database", "semantic-search"]
+  },
+  {
+    "slug": "reinforcement-learning-it",
+    "language": "it",
+    "term": "Reinforcement Learning",
+    "category": "Paradigma",
+    "pronunciation": "/ˌriːɪnˈfɔːrsmənt ˈlɜːrnɪŋ/",
+    "definition": "Un paradigma di machine learning dove gli agenti apprendono interagendo con un ambiente e ricevendo ricompense o penalità.",
+    "explanation": "Gli agenti RL apprendono policy ottimali attraverso trial and error. Concetti chiave includono stati, azioni, ricompense e Q-learning. Usato in game playing (AlphaGo), robotica e sistemi autonomi.",
+    "examples": ["AlphaGo che batte campioni mondiali", "Sistemi di controllo robotico", "Decisioni guida autonoma"],
+    "relatedTerms": ["q-learning", "policy-gradient", "deep-q-network"]
+  },
+  {
+    "slug": "tokenization-it",
+    "language": "it",
+    "term": "Tokenization",
+    "category": "Tecnica",
+    "pronunciation": "/ˌtoʊkənaɪˈzeɪʃən/",
+    "definition": "Il processo di suddividere il testo in unità più piccole (token) come parole, subword o caratteri per l'elaborazione.",
+    "explanation": "La tokenization è il primo step nelle pipeline NLP. I metodi includono word-level, character-level e subword tokenization (BPE, WordPiece). Bilancia dimensione vocabolario e qualità rappresentazione.",
+    "examples": ["BPE nei modelli GPT", "WordPiece in BERT", "SentencePiece per modelli multilingua"],
+    "relatedTerms": ["nlp", "bert", "gpt"]
+  },
+  {
+    "slug": "prompt-engineering-it",
+    "language": "it",
+    "term": "Prompt Engineering",
+    "category": "Tecnica",
+    "pronunciation": "/prɒmpt ˌɛndʒɪˈnɪərɪŋ/",
+    "definition": "La pratica di progettare prompt testuali efficaci per guidare i large language model verso output desiderati.",
+    "explanation": "Il prompt engineering coinvolge la creazione di istruzioni, esempi e contesto per ottimizzare le performance degli LLM. Tecniche includono few-shot prompting, chain-of-thought e role-playing.",
+    "examples": ["Few-shot prompting con esempi", "Chain-of-thought per reasoning", "System prompt per comportamento chatbot"],
+    "relatedTerms": ["llm", "gpt", "zero-shot-learning"]
+  },
+  {
+    "slug": "transfer-learning-en",
+    "language": "en",
+    "term": "Transfer Learning",
+    "category": "Training",
+    "definition": "A technique where knowledge learned from one task is applied to a different but related task, reducing training time and data requirements.",
+    "explanation": "Transfer learning leverages pre-trained models. Common approach: use a model trained on large dataset (e.g., ImageNet) as starting point for specific task.",
+    "examples": ["Using pre-trained ResNet for medical image classification", "Fine-tuning BERT for sentiment analysis", "Adapting GPT for code generation"],
+    "relatedTerms": ["fine-tuning", "pre-training", "neural-network"]
+  },
+  {
+    "slug": "self-attention-en",
+    "language": "en",
+    "term": "Self-Attention",
+    "category": "Technique",
+    "pronunciation": "/sɛlf əˈtɛnʃən/",
+    "definition": "An attention mechanism used in deep learning models that allows a neural network to weigh the importance of different parts of an input relative to each other.",
+    "explanation": "Self-attention is a fundamental technique in language and vision models. It allows models to consider relationships between elements within a single sequence, greatly improving comprehension and generation capabilities.",
+    "examples": ["Machine translation models using self-attention", "Recommendation systems", "Text generation models"],
+    "relatedTerms": ["transformer", "attention-mechanism", "deep-learning"]
+  },
+  {
+    "slug": "dropout-en",
+    "language": "en",
+    "term": "Dropout",
+    "category": "Technique",
+    "definition": "A regularization technique that randomly deactivates neurons during training to prevent overfitting.",
+    "explanation": "During each training iteration, dropout temporarily removes a random percentage of neurons. This forces the network to learn more robust and generalizable representations.",
+    "examples": ["Dropout with rate 0.5 in dense layers", "Reducing overfitting in deep networks", "Improving generalization"],
+    "relatedTerms": ["overfitting", "regularization", "neural-network"]
+  },
+  {
+    "slug": "embedding-en",
+    "language": "en",
+    "term": "Embedding",
+    "category": "Technique",
+    "definition": "A dense vector representation of discrete entities (words, images) in a continuous space.",
+    "explanation": "Embeddings map entities to vectors where similar elements are close in space. Word2Vec and GloVe create word embeddings. Essential for NLP and recommendation systems.",
+    "examples": ["Word2Vec for word representation", "Product embeddings for recommendations", "Sentence embeddings for semantic similarity"],
+    "relatedTerms": ["word2vec", "vector-space", "similarity"]
+  },
+  {
+    "slug": "optimization-en",
+    "language": "en",
+    "term": "Optimization",
+    "category": "Concept",
+    "definition": "The process of adjusting model parameters to minimize the loss function and improve performance.",
+    "explanation": "Optimization uses algorithms like gradient descent, Adam, and RMSprop to update model weights. The goal is to find optimal parameters that minimize prediction error.",
+    "examples": ["Adam optimizer for fast training", "SGD with momentum", "Learning rate scheduling"],
+    "relatedTerms": ["gradient-descent", "loss-function", "training"]
+  },
+  {
+    "slug": "multimodal-it",
+    "language": "it",
+    "term": "AI Multimodale",
+    "category": "Concetto",
+    "pronunciation": "/ˌmʌltɪˈmoʊdəl/",
+    "definition": "Sistemi AI che possono processare e correlare informazioni da modalità multiple come testo, immagini, audio e video.",
+    "explanation": "I modelli multimodali apprendono rappresentazioni congiunte tra modalità. Esempi includono CLIP (visione-linguaggio), Flamingo (visual question answering) e GPT-4V (comprensione visione).",
+    "examples": ["CLIP che matcha immagini a testo", "GPT-4V che descrive immagini", "Sistemi di image captioning"],
+    "relatedTerms": ["clip", "vision-language", "cross-modal"]
   }
 ]
