@@ -2924,5 +2924,105 @@
     "explanation": "Diviso in set train/validation/test. Qualità e dimensione cruciali per performance modello. Può essere etichettato o non etichettato.",
     "examples": ["Dataset ImageNet", "Training set di 1000 immagini", "Cifre scritte a mano MNIST"],
     "relatedTerms": ["training-data", "validation-set", "test-set"]
+  },
+  {
+    "slug": "label",
+    "language": "en",
+    "term": "Label",
+    "category": "Concept",
+    "definition": "The target output or ground truth associated with a training example in supervised learning.",
+    "explanation": "Labels indicate the correct answer. In classification: class names. In regression: numerical values. Required for supervised learning.",
+    "examples": ["Image label: 'cat'", "Spam label: 0 or 1", "House price: $250,000"],
+    "relatedTerms": ["supervised-learning", "ground-truth", "annotation"]
+  },
+  {
+    "slug": "label-it",
+    "language": "it",
+    "term": "Etichetta",
+    "category": "Concetto",
+    "definition": "L'output target o ground truth associato a un esempio di training nell'apprendimento supervisionato.",
+    "explanation": "Le etichette indicano la risposta corretta. Nella classificazione: nomi classi. Nella regressione: valori numerici. Richieste per apprendimento supervisionato.",
+    "examples": ["Etichetta immagine: 'gatto'", "Etichetta spam: 0 o 1", "Prezzo casa: €250.000"],
+    "relatedTerms": ["supervised-learning", "ground-truth", "annotation"]
+  },
+  {
+    "slug": "feature",
+    "language": "en",
+    "term": "Feature",
+    "category": "Concept",
+    "definition": "An individual measurable property or characteristic of data used as input to a model.",
+    "explanation": "Features represent data attributes. Can be raw (pixel values) or engineered (age, income). Quality of features impacts model performance.",
+    "examples": ["Image pixels as features", "Age and income features", "Word count in text"],
+    "relatedTerms": ["feature-engineering", "input", "attribute"]
+  },
+  {
+    "slug": "feature-it",
+    "language": "it",
+    "term": "Feature",
+    "category": "Concetto",
+    "definition": "Una proprietà o caratteristica misurabile individuale dei dati usata come input a un modello.",
+    "explanation": "Le feature rappresentano attributi dei dati. Possono essere grezze (valori pixel) o ingegnerizzate (età, reddito). Qualità delle feature impatta performance modello.",
+    "examples": ["Pixel immagine come feature", "Feature età e reddito", "Conteggio parole nel testo"],
+    "relatedTerms": ["feature-engineering", "input", "attribute"]
+  },
+  {
+    "slug": "model",
+    "language": "en",
+    "term": "Model",
+    "category": "Concept",
+    "definition": "A mathematical representation learned from data that makes predictions or decisions.",
+    "explanation": "Models learn patterns from training data. Can be neural networks, decision trees, linear models. Evaluated on test data.",
+    "examples": ["Neural network model", "Trained classifier", "Regression model"],
+    "relatedTerms": ["training", "prediction", "algorithm"]
+  },
+  {
+    "slug": "model-it",
+    "language": "it",
+    "term": "Modello",
+    "category": "Concetto",
+    "definition": "Una rappresentazione matematica appresa dai dati che fa predizioni o decisioni.",
+    "explanation": "I modelli apprendono pattern dai dati di training. Possono essere reti neurali, decision tree, modelli lineari. Valutati su dati test.",
+    "examples": ["Modello rete neurale", "Classificatore trained", "Modello regressione"],
+    "relatedTerms": ["training", "prediction", "algorithm"]
+  },
+  {
+    "slug": "prediction",
+    "language": "en",
+    "term": "Prediction",
+    "category": "Concept",
+    "definition": "The output produced by a trained model when given new input data.",
+    "explanation": "Models make predictions on unseen data. Accuracy compared to ground truth measures performance. Also called inference.",
+    "examples": ["Predicting 'dog' for image", "Forecasting stock price", "Classifying email as spam"],
+    "relatedTerms": ["inference", "output", "classification"]
+  },
+  {
+    "slug": "prediction-it",
+    "language": "it",
+    "term": "Predizione",
+    "category": "Concetto",
+    "definition": "L'output prodotto da un modello trained quando riceve nuovi dati di input.",
+    "explanation": "I modelli fanno predizioni su dati non visti. Accuracy comparata a ground truth misura performance. Chiamata anche inference.",
+    "examples": ["Predire 'cane' per immagine", "Prevedere prezzo azioni", "Classificare email come spam"],
+    "relatedTerms": ["inference", "output", "classification"]
+  },
+  {
+    "slug": "inference",
+    "language": "en",
+    "term": "Inference",
+    "category": "Concept",
+    "definition": "The process of using a trained model to make predictions on new data.",
+    "explanation": "Inference happens after training. Model processes input and generates output. Can be real-time or batch. Optimized for speed.",
+    "examples": ["Real-time image classification", "Batch prediction on 1000 samples", "Model deployment"],
+    "relatedTerms": ["prediction", "deployment", "serving"]
+  },
+  {
+    "slug": "inference-it",
+    "language": "it",
+    "term": "Inference",
+    "category": "Concetto",
+    "definition": "Il processo di usare un modello trained per fare predizioni su nuovi dati.",
+    "explanation": "L'inference avviene dopo il training. Il modello processa input e genera output. Può essere real-time o batch. Ottimizzato per velocità.",
+    "examples": ["Classificazione immagini real-time", "Predizione batch su 1000 campioni", "Deployment modello"],
+    "relatedTerms": ["prediction", "deployment", "serving"]
   }
 ]
