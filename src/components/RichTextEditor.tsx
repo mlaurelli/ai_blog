@@ -28,12 +28,17 @@ export default function RichTextEditor({
   editable = true 
 }: RichTextEditorProps) {
   const [showImagePicker, setShowImagePicker] = useState(false);
+  const [showSource, setShowSource] = useState(false);
+  const [sourceContent, setSourceContent] = useState('');
   
   const editor = useEditor({
     immediatelyRender: false, // Fix SSR hydration issues
     extensions: [
       StarterKit.configure({
         codeBlock: false, // We'll use CodeBlockLowlight instead
+        heading: {
+          levels: [1, 2, 3],
+        },
       }),
       Placeholder.configure({
         placeholder,
@@ -46,7 +51,7 @@ export default function RichTextEditor({
       }),
       Image.configure({
         HTMLAttributes: {
-          class: 'max-w-full h-auto rounded-lg',
+          class: 'max-w-full h-auto rounded-lg my-4',
         },
       }),
       CodeBlockLowlight.configure({
@@ -64,7 +69,7 @@ export default function RichTextEditor({
     },
     editorProps: {
       attributes: {
-        class: 'prose dark:prose-invert max-w-none min-h-[300px] p-4 focus:outline-none',
+        class: 'prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none min-h-[400px] p-4 focus:outline-none prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:my-3 prose-ul:my-4 prose-ol:my-4 prose-li:my-1',
       },
     },
   });
@@ -98,6 +103,21 @@ export default function RichTextEditor({
     setShowImagePicker(false);
   }, [editor]);
 
+  const toggleSource = useCallback(() => {
+    if (!editor) return;
+    
+    if (!showSource) {
+      // Switch to source view
+      setSourceContent(editor.getHTML());
+      setShowSource(true);
+    } else {
+      // Switch back to editor view
+      editor.commands.setContent(sourceContent);
+      onChange(sourceContent);
+      setShowSource(false);
+    }
+  }, [editor, showSource, sourceContent, onChange]);
+
   if (!editor) {
     return (
       <div className="border-2 border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900">
@@ -110,7 +130,8 @@ export default function RichTextEditor({
     <div className="border-2 border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900">
       {/* Toolbar */}
       {editable && (
-        <div className="border-b-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-2 flex flex-wrap gap-1">
+        <div className="border-b-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3">
+          <div className="flex flex-wrap gap-1 items-center">
           {/* Text formatting */}
           <button
             type="button"
@@ -300,11 +321,45 @@ export default function RichTextEditor({
           >
             ↷ Redo
           </button>
+
+          <div className="w-px bg-gray-300 dark:bg-gray-600 mx-1" />
+
+          {/* View Source */}
+          <button
+            type="button"
+            onClick={toggleSource}
+            className={`px-3 py-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors font-mono text-xs ${
+              showSource ? 'bg-gray-300 dark:bg-gray-600' : ''
+            }`}
+            title="View/Edit HTML Source"
+          >
+            {'<> HTML'}
+          </button>
+
+          {/* Clear formatting */}
+          <button
+            type="button"
+            onClick={() => editor.chain().focus().clearNodes().unsetAllMarks().run()}
+            className="px-3 py-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-red-600 dark:text-red-400"
+            title="Clear all formatting"
+          >
+            ✖ Clear
+          </button>
+          </div>
         </div>
       )}
 
-      {/* Editor content */}
-      <EditorContent editor={editor} />
+      {/* Editor content or source view */}
+      {showSource ? (
+        <textarea
+          value={sourceContent}
+          onChange={(e) => setSourceContent(e.target.value)}
+          className="w-full min-h-[400px] p-4 font-mono text-sm bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none border-none resize-y"
+          placeholder="HTML source code..."
+        />
+      ) : (
+        <EditorContent editor={editor} />
+      )}
       
       {/* Image Picker Modal */}
       {showImagePicker && (
