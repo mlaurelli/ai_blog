@@ -47,7 +47,7 @@ export default function ThemeToggle() {
     <div className="flex gap-0.5 items-center border-2 border-gray-400 dark:border-gray-600 rounded overflow-hidden">
       <button
         onClick={() => changeTheme('light')}
-        className={`w-[42px] sm:w-[52px] py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wide transition-all active:scale-95 touch-manipulation flex items-center justify-center ${
+        className={`w-[42px] h-[36px] sm:w-[52px] sm:h-[36px] text-xs sm:text-sm font-bold uppercase tracking-wide transition-all active:scale-95 touch-manipulation flex items-center justify-center ${
           theme === 'light'
             ? 'bg-black dark:bg-white text-white dark:text-black'
             : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
@@ -62,7 +62,7 @@ export default function ThemeToggle() {
       <div className="w-px bg-gray-400 dark:bg-gray-600 h-6"></div>
       <button
         onClick={() => changeTheme('dark')}
-        className={`w-[42px] sm:w-[52px] py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wide transition-all active:scale-95 touch-manipulation flex items-center justify-center ${
+        className={`w-[42px] h-[36px] sm:w-[52px] sm:h-[36px] text-xs sm:text-sm font-bold uppercase tracking-wide transition-all active:scale-95 touch-manipulation flex items-center justify-center ${
           theme === 'dark'
             ? 'bg-black dark:bg-white text-white dark:text-black'
             : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
