@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import ImagePicker from '@/components/ImagePicker';
+import RichTextEditor from '@/components/RichTextEditor';
 
 export default function NewPost() {
   const router = useRouter();
@@ -302,15 +303,12 @@ export default function NewPost() {
             <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
               Content *
             </label>
-            <textarea
-              name="content"
-              value={formData.content}
-              onChange={handleChange}
-              rows={15}
-              className="w-full px-4 py-3 border-2 border-gray-400 focus:border-black focus:outline-none font-mono text-sm"
-              required
+            <RichTextEditor
+              content={formData.content}
+              onChange={(content) => setFormData(prev => ({ ...prev, content }))}
+              placeholder="Write your article content here..."
             />
-            <p className="text-xs text-gray-500 mt-1">Full article content (supports Markdown-style formatting)</p>
+            <p className="text-xs text-gray-500 mt-1">Full article content with rich text editing</p>
           </div>
 
           <div className="grid grid-cols-2 gap-6 mb-6">
@@ -431,12 +429,9 @@ export default function NewPost() {
                 <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
                   Generated Content
                 </label>
-                <textarea
-                  name="content"
-                  value={formData.content}
-                  onChange={handleChange}
-                  rows={15}
-                  className="w-full px-4 py-3 border-2 border-gray-400 focus:border-black focus:outline-none font-mono text-sm"
+                <RichTextEditor
+                  content={formData.content}
+                  onChange={(content) => setFormData(prev => ({ ...prev, content }))}
                   placeholder="Content will appear here after AI generation..."
                 />
                 <p className="text-xs text-gray-500 mt-1">Full article content (editable)</p>

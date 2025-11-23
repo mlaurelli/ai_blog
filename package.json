@@ -9,8 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tiptap/extension-code-block-lowlight": "^3.11.0",
+    "@tiptap/extension-image": "^3.11.0",
+    "@tiptap/extension-link": "^3.11.0",
+    "@tiptap/extension-placeholder": "^3.11.0",
+    "@tiptap/extension-typography": "^3.11.0",
+    "@tiptap/react": "^3.11.0",
+    "@tiptap/starter-kit": "^3.11.0",
     "bcryptjs": "^3.0.3",
     "jsonwebtoken": "^9.0.2",
+    "lowlight": "^3.3.0",
     "lucide-react": "^0.554.0",
     "next": "16.0.3",
     "openai": "^6.9.1",

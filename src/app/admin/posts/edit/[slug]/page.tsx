@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import ImagePicker from '@/components/ImagePicker';
+import RichTextEditor from '@/components/RichTextEditor';
 
 export default function EditPost() {
   const router = useRouter();
@@ -204,14 +205,12 @@ export default function EditPost() {
             <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
               Content *
             </label>
-            <textarea
-              name="content"
-              value={formData.content}
-              onChange={handleChange}
-              rows={15}
-              className="w-full px-4 py-3 border-2 border-gray-400 focus:border-black focus:outline-none font-mono text-sm"
-              required
+            <RichTextEditor
+              content={formData.content}
+              onChange={(content) => setFormData(prev => ({ ...prev, content }))}
+              placeholder="Write your article content here..."
             />
+            <p className="text-xs text-gray-500 mt-1">Full article content with rich text editing</p>
           </div>
 
           <div className="grid grid-cols-2 gap-6 mb-6">

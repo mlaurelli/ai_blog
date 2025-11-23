@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect, use } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import RichTextEditor from '@/components/RichTextEditor';
 import { GlossaryTerm } from '@/lib/glossary';
 
 export default function EditGlossaryTerm({ params }: { params: Promise<{ slug: string }> }) {
@@ -246,13 +247,12 @@ export default function EditGlossaryTerm({ params }: { params: Promise<{ slug: s
               <label className="block text-sm font-semibold mb-2 uppercase tracking-wide">
                 Detailed Explanation <span className="text-red-600">*</span>
               </label>
-              <textarea
-                required
-                value={formData.explanation}
-                onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
-                rows={15}
-                className="w-full px-4 py-2 border-2 border-gray-300 focus:border-black focus:outline-none font-mono text-sm"
+              <RichTextEditor
+                content={formData.explanation || ''}
+                onChange={(explanation) => setFormData({ ...formData, explanation })}
+                placeholder="Provide a comprehensive explanation..."
               />
+              <p className="text-xs text-gray-500 mt-1">Rich text editor with full formatting support</p>
             </div>
           </div>
 

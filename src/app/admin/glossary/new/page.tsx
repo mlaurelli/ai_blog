@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import RichTextEditor from '@/components/RichTextEditor';
 
 export default function NewGlossaryTerm() {
   const router = useRouter();
@@ -319,17 +320,14 @@ export default function NewGlossaryTerm() {
 
             <div>
               <label className="block text-sm font-semibold mb-2 uppercase tracking-wide">
-                Detailed Explanation (Markdown supported) <span className="text-red-600">*</span>
+                Detailed Explanation <span className="text-red-600">*</span>
               </label>
-              <textarea
-                required
-                value={formData.explanation}
-                onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
-                rows={15}
-                placeholder="## Introduction&#10;&#10;Neural networks are...&#10;&#10;## How They Work&#10;&#10;..."
-                className="w-full px-4 py-2 border-2 border-gray-300 focus:border-black focus:outline-none font-mono text-sm"
+              <RichTextEditor
+                content={formData.explanation}
+                onChange={(explanation) => setFormData({ ...formData, explanation })}
+                placeholder="Provide a comprehensive explanation..."
               />
-              <p className="text-xs text-gray-500 mt-1">Use Markdown: ## Headings, **bold**, *italic*, - lists</p>
+              <p className="text-xs text-gray-500 mt-1">Rich text editor with full formatting support</p>
             </div>
           </div>
 
