@@ -10,9 +10,18 @@ import Typography from '@tiptap/extension-typography';
 import { createLowlight, common } from 'lowlight';
 import { useCallback, useEffect, useState } from 'react';
 import ImagePicker from './ImagePicker';
+import TurndownService from 'turndown';
+import { marked } from 'marked';
+import './RichTextEditor.css';
 
 // Create lowlight instance
 const lowlight = createLowlight(common);
+
+// Create turndown instance for HTML to Markdown
+const turndownService = new TurndownService({
+  headingStyle: 'atx',
+  codeBlockStyle: 'fenced',
+});
 
 interface RichTextEditorProps {
   content: string;
@@ -28,7 +37,7 @@ export default function RichTextEditor({
   editable = true 
 }: RichTextEditorProps) {
   const [showImagePicker, setShowImagePicker] = useState(false);
-  const [showSource, setShowSource] = useState(false);
+  const [viewMode, setViewMode] = useState<'editor' | 'html' | 'markdown'>('editor');
   const [sourceContent, setSourceContent] = useState('');
   
   const editor = useEditor({
@@ -69,7 +78,7 @@ export default function RichTextEditor({
     },
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none min-h-[400px] p-4 focus:outline-none prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:my-3 prose-ul:my-4 prose-ol:my-4 prose-li:my-1',
+        class: 'tiptap-editor prose prose-base dark:prose-invert max-w-none min-h-[400px] p-4 focus:outline-none',
       },
     },
   });
@@ -103,20 +112,31 @@ export default function RichTextEditor({
     setShowImagePicker(false);
   }, [editor]);
 
-  const toggleSource = useCallback(() => {
+  const switchView = useCallback(async (mode: 'editor' | 'html' | 'markdown') => {
     if (!editor) return;
     
-    if (!showSource) {
-      // Switch to source view
+    if (mode === 'editor' && viewMode !== 'editor') {
+      // Switching back to editor from source view
+      let htmlContent = sourceContent;
+      
+      // If coming from markdown view, convert markdown to HTML first
+      if (viewMode === 'markdown') {
+        htmlContent = await marked(sourceContent);
+      }
+      
+      editor.commands.setContent(htmlContent);
+      onChange(htmlContent);
+      setViewMode('editor');
+    } else if (mode === 'html') {
       setSourceContent(editor.getHTML());
-      setShowSource(true);
-    } else {
-      // Switch back to editor view
-      editor.commands.setContent(sourceContent);
-      onChange(sourceContent);
-      setShowSource(false);
+      setViewMode('html');
+    } else if (mode === 'markdown') {
+      const html = editor.getHTML();
+      const markdown = turndownService.turndown(html);
+      setSourceContent(markdown);
+      setViewMode('markdown');
     }
-  }, [editor, showSource, sourceContent, onChange]);
+  }, [editor, viewMode, sourceContent, onChange]);
 
   if (!editor) {
     return (
@@ -222,22 +242,38 @@ export default function RichTextEditor({
           {/* Lists */}
           <button
             type="button"
-            onClick={() => editor.chain().focus().toggleBulletList().run()}
+            onClick={() => {
+              if (!editor.isActive('bulletList')) {
+                // If not in a list, create one with initial content
+                editor.chain().focus().toggleBulletList().run();
+              } else {
+                // If already in a list, toggle off
+                editor.chain().focus().toggleBulletList().run();
+              }
+            }}
             className={`px-3 py-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors ${
               editor.isActive('bulletList') ? 'bg-gray-300 dark:bg-gray-600' : ''
             }`}
-            title="Bullet list - Click then start typing. Press Enter for new items"
+            title="Bullet list - Creates a bullet list"
           >
             • List
           </button>
 
           <button
             type="button"
-            onClick={() => editor.chain().focus().toggleOrderedList().run()}
+            onClick={() => {
+              if (!editor.isActive('orderedList')) {
+                // If not in a list, create one
+                editor.chain().focus().toggleOrderedList().run();
+              } else {
+                // If already in a list, toggle off
+                editor.chain().focus().toggleOrderedList().run();
+              }
+            }}
             className={`px-3 py-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors ${
               editor.isActive('orderedList') ? 'bg-gray-300 dark:bg-gray-600' : ''
             }`}
-            title="Numbered list - Click then start typing. Press Enter for new items"
+            title="Numbered list - Creates a numbered list"
           >
             1. List
           </button>
@@ -324,17 +360,41 @@ export default function RichTextEditor({
 
           <div className="w-px bg-gray-300 dark:bg-gray-600 mx-1" />
 
-          {/* View Source */}
+          {/* View Modes */}
           <button
             type="button"
-            onClick={toggleSource}
+            onClick={() => switchView(viewMode === 'editor' ? 'markdown' : 'editor')}
+            className={`px-3 py-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors font-mono text-xs font-bold ${
+              viewMode === 'markdown' ? 'bg-blue-500 text-white' : ''
+            }`}
+            title="View/Edit Markdown Source"
+          >
+            MD
+          </button>
+
+          <button
+            type="button"
+            onClick={() => switchView(viewMode === 'editor' ? 'html' : 'editor')}
             className={`px-3 py-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors font-mono text-xs ${
-              showSource ? 'bg-gray-300 dark:bg-gray-600' : ''
+              viewMode === 'html' ? 'bg-green-500 text-white' : ''
             }`}
             title="View/Edit HTML Source"
           >
             {'<> HTML'}
           </button>
+
+          {viewMode !== 'editor' && (
+            <button
+              type="button"
+              onClick={() => switchView('editor')}
+              className="px-3 py-1.5 rounded bg-gray-700 text-white hover:bg-gray-600 transition-colors text-xs"
+              title="Back to Editor"
+            >
+              ← Editor
+            </button>
+          )}
+
+          <div className="w-px bg-gray-300 dark:bg-gray-600 mx-1" />
 
           {/* Clear formatting */}
           <button
@@ -350,15 +410,31 @@ export default function RichTextEditor({
       )}
 
       {/* Editor content or source view */}
-      {showSource ? (
-        <textarea
-          value={sourceContent}
-          onChange={(e) => setSourceContent(e.target.value)}
-          className="w-full min-h-[400px] p-4 font-mono text-sm bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none border-none resize-y"
-          placeholder="HTML source code..."
-        />
-      ) : (
+      {viewMode === 'editor' ? (
         <EditorContent editor={editor} />
+      ) : viewMode === 'html' ? (
+        <div className="relative">
+          <div className="absolute top-2 right-2 text-xs bg-green-500 text-white px-2 py-1 rounded">HTML</div>
+          <textarea
+            value={sourceContent}
+            onChange={(e) => setSourceContent(e.target.value)}
+            className="w-full min-h-[400px] p-4 font-mono text-sm bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none border-none resize-y"
+            placeholder="HTML source code..."
+          />
+        </div>
+      ) : (
+        <div className="relative">
+          <div className="absolute top-2 right-2 text-xs bg-blue-500 text-white px-2 py-1 rounded z-10">MARKDOWN</div>
+          <textarea
+            value={sourceContent}
+            onChange={(e) => setSourceContent(e.target.value)}
+            className="w-full min-h-[400px] p-4 font-mono text-sm bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none border-none resize-y"
+            placeholder="# Heading 1&#10;&#10;Write markdown here..."
+          />
+          <div className="px-4 pb-4 text-xs text-gray-500 dark:text-gray-400">
+            Click "← Editor" to convert markdown back to rich text
+          </div>
+        </div>
       )}
       
       {/* Image Picker Modal */}

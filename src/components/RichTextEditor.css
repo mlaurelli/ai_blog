@@ -1,0 +1,133 @@
+/* TipTap Rich Text Editor Styles */
+
+/* Force heading styles with maximum specificity */
+.tiptap-editor h1 {
+  font-size: 2.5em !important;
+  font-weight: 900 !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.5em !important;
+  line-height: 1.2 !important;
+  color: inherit !important;
+}
+
+.tiptap-editor h2 {
+  font-size: 2em !important;
+  font-weight: 800 !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.5em !important;
+  line-height: 1.3 !important;
+  color: inherit !important;
+}
+
+.tiptap-editor h3 {
+  font-size: 1.5em !important;
+  font-weight: 700 !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.5em !important;
+  line-height: 1.4 !important;
+  color: inherit !important;
+}
+
+/* Paragraph styles */
+.tiptap-editor p {
+  margin: 0.75em 0 !important;
+  line-height: 1.6 !important;
+}
+
+/* List styles - FORCE BULLETS AND NUMBERS TO SHOW */
+.tiptap-editor ul {
+  margin: 1em 0 !important;
+  padding-left: 2em !important;
+  list-style-type: disc !important;
+}
+
+.tiptap-editor ol {
+  margin: 1em 0 !important;
+  padding-left: 2em !important;
+  list-style-type: decimal !important;
+}
+
+.tiptap-editor ul li {
+  display: list-item !important;
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+  margin: 0.5em 0 !important;
+  padding-left: 0.5em !important;
+}
+
+.tiptap-editor ol li {
+  display: list-item !important;
+  list-style-type: decimal !important;
+  list-style-position: outside !important;
+  margin: 0.5em 0 !important;
+  padding-left: 0.5em !important;
+}
+
+/* Nested lists */
+.tiptap-editor ul ul,
+.tiptap-editor ol ul {
+  list-style-type: circle !important;
+}
+
+.tiptap-editor ul ul ul,
+.tiptap-editor ol ul ul {
+  list-style-type: square !important;
+}
+
+/* Code blocks */
+.tiptap-editor pre {
+  background: #f4f4f4 !important;
+  border-radius: 0.5em !important;
+  padding: 1em !important;
+  margin: 1em 0 !important;
+  overflow-x: auto !important;
+}
+
+.tiptap-editor code {
+  background: #f4f4f4 !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 0.25em !important;
+  font-family: monospace !important;
+}
+
+/* Dark mode */
+.dark .tiptap-editor pre {
+  background: #2d2d2d !important;
+}
+
+.dark .tiptap-editor code {
+  background: #2d2d2d !important;
+}
+
+/* Blockquote */
+.tiptap-editor blockquote {
+  border-left: 4px solid #ccc !important;
+  padding-left: 1em !important;
+  margin: 1em 0 !important;
+  font-style: italic !important;
+}
+
+/* Links */
+.tiptap-editor a {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+}
+
+.dark .tiptap-editor a {
+  color: #60a5fa !important;
+}
+
+/* Images */
+.tiptap-editor img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 0.5em !important;
+  margin: 1em 0 !important;
+}
+
+/* Horizontal rule */
+.tiptap-editor hr {
+  border: none !important;
+  border-top: 2px solid #ccc !important;
+  margin: 2em 0 !important;
+}
