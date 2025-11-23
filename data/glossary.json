@@ -2194,5 +2194,145 @@
     "explanation": "Restringe sampling ai top K token per probabilità. Riduce token improbabili mantenendo diversità. Comune: K=40-50.",
     "examples": ["K=50 per generazione bilanciata", "Generazione testo diversa", "Evitare token rari"],
     "relatedTerms": ["text-generation", "nucleus-sampling", "llm"]
+  },
+  {
+    "slug": "nucleus-sampling",
+    "language": "en",
+    "term": "Nucleus Sampling (Top-P)",
+    "category": "Technique",
+    "definition": "Text generation sampling from smallest set of tokens whose cumulative probability exceeds threshold P.",
+    "explanation": "Dynamically adjusts vocabulary size based on probability distribution. More flexible than top-k. Common: P=0.9-0.95.",
+    "examples": ["P=0.9 for diverse generation", "Dynamic vocabulary selection", "Better than top-k"],
+    "relatedTerms": ["text-generation", "top-k-sampling", "llm"]
+  },
+  {
+    "slug": "nucleus-sampling-it",
+    "language": "it",
+    "term": "Nucleus Sampling (Top-P)",
+    "category": "Tecnica",
+    "definition": "Generazione testo campionando dal set più piccolo di token la cui probabilità cumulativa supera soglia P.",
+    "explanation": "Aggiusta dinamicamente dimensione vocabolario basandosi su distribuzione probabilità. Più flessibile di top-k. Comune: P=0.9-0.95.",
+    "examples": ["P=0.9 per generazione diversa", "Selezione vocabolario dinamica", "Migliore di top-k"],
+    "relatedTerms": ["text-generation", "top-k-sampling", "llm"]
+  },
+  {
+    "slug": "beam-search",
+    "language": "en",
+    "term": "Beam Search",
+    "category": "Algorithm",
+    "definition": "Decoding algorithm keeping top B most likely sequences at each step.",
+    "explanation": "Explores multiple hypotheses simultaneously. Beam width B controls quality-speed tradeoff. Produces more coherent but less diverse outputs.",
+    "examples": ["Beam width 5 for translation", "Deterministic decoding", "Machine translation"],
+    "relatedTerms": ["text-generation", "decoding", "sequence-to-sequence"]
+  },
+  {
+    "slug": "beam-search-it",
+    "language": "it",
+    "term": "Beam Search",
+    "category": "Algoritmo",
+    "definition": "Algoritmo di decoding mantenendo top B sequenze più probabili a ogni step.",
+    "explanation": "Esplora multiple ipotesi simultaneamente. Beam width B controlla tradeoff qualità-velocità. Produce output più coerenti ma meno diversi.",
+    "examples": ["Beam width 5 per traduzione", "Decoding deterministico", "Traduzione automatica"],
+    "relatedTerms": ["text-generation", "decoding", "sequence-to-sequence"]
+  },
+  {
+    "slug": "gru",
+    "language": "en",
+    "term": "GRU (Gated Recurrent Unit)",
+    "category": "Architecture",
+    "definition": "Simplified RNN variant with gating mechanisms, similar to LSTM but fewer parameters.",
+    "explanation": "Has reset and update gates (vs LSTM's 3 gates). Often performs similarly to LSTM with faster computation. Good for sequential data.",
+    "examples": ["Time series modeling", "Text generation", "Sequence prediction"],
+    "relatedTerms": ["lstm", "rnn", "sequence-modeling"]
+  },
+  {
+    "slug": "gru-it",
+    "language": "it",
+    "term": "GRU (Gated Recurrent Unit)",
+    "category": "Architettura",
+    "definition": "Variante RNN semplificata con meccanismi gating, simile a LSTM ma meno parametri.",
+    "explanation": "Ha gate reset e update (vs 3 gate di LSTM). Spesso performance simili a LSTM con computazione più veloce. Buono per dati sequenziali.",
+    "examples": ["Modellazione serie temporali", "Generazione testo", "Predizione sequenze"],
+    "relatedTerms": ["lstm", "rnn", "sequence-modeling"]
+  },
+  {
+    "slug": "attention-score",
+    "language": "en",
+    "term": "Attention Score",
+    "category": "Concept",
+    "definition": "Computed similarity between query and key vectors before softmax normalization in attention.",
+    "explanation": "Score = dot_product(Query, Key) / sqrt(d_k). Scaled dot-product prevents gradient issues. Higher scores mean more relevance.",
+    "examples": ["Scaled dot-product attention", "Query-key similarity", "Attention computation"],
+    "relatedTerms": ["attention-mechanism", "query-key-value", "softmax"]
+  },
+  {
+    "slug": "attention-score-it",
+    "language": "it",
+    "term": "Attention Score",
+    "category": "Concetto",
+    "definition": "Similarità calcolata tra vettori query e key prima della normalizzazione softmax nell'attention.",
+    "explanation": "Score = dot_product(Query, Key) / sqrt(d_k). Scaled dot-product previene problemi di gradiente. Score più alti significano più rilevanza.",
+    "examples": ["Scaled dot-product attention", "Similarità query-key", "Computazione attention"],
+    "relatedTerms": ["attention-mechanism", "query-key-value", "softmax"]
+  },
+  {
+    "slug": "causal-masking",
+    "language": "en",
+    "term": "Causal Masking",
+    "category": "Technique",
+    "definition": "Masking technique preventing attention to future positions in autoregressive models.",
+    "explanation": "Ensures token at position i can only attend to positions ≤ i. Essential for GPT-style models. Implemented as triangular mask.",
+    "examples": ["GPT autoregressive generation", "Decoder self-attention", "Preventing future leakage"],
+    "relatedTerms": ["autoregressive", "transformer", "gpt"]
+  },
+  {
+    "slug": "causal-masking-it",
+    "language": "it",
+    "term": "Causal Masking",
+    "category": "Tecnica",
+    "definition": "Tecnica di masking prevenendo attention a posizioni future in modelli autoregressivi.",
+    "explanation": "Assicura che token a posizione i può attendere solo posizioni ≤ i. Essenziale per modelli stile GPT. Implementato come mask triangolare.",
+    "examples": ["GPT generazione autoregressive", "Decoder self-attention", "Prevenire future leakage"],
+    "relatedTerms": ["autoregressive", "transformer", "gpt"]
+  },
+  {
+    "slug": "masked-language-modeling",
+    "language": "en",
+    "term": "Masked Language Modeling",
+    "category": "Task",
+    "definition": "Pre-training task where random tokens are masked and model predicts them from context.",
+    "explanation": "15% of tokens masked: 80% [MASK], 10% random, 10% unchanged. BERT's pre-training objective. Enables bidirectional context.",
+    "examples": ["BERT pre-training", "Cloze task", "Bidirectional language understanding"],
+    "relatedTerms": ["bert", "pre-training", "self-supervised-learning"]
+  },
+  {
+    "slug": "masked-language-modeling-it",
+    "language": "it",
+    "term": "Masked Language Modeling",
+    "category": "Task",
+    "definition": "Task di pre-training dove token random sono masked e il modello li predice dal contesto.",
+    "explanation": "15% token masked: 80% [MASK], 10% random, 10% invariati. Obiettivo pre-training di BERT. Permette contesto bidirezionale.",
+    "examples": ["Pre-training BERT", "Cloze task", "Comprensione linguaggio bidirezionale"],
+    "relatedTerms": ["bert", "pre-training", "self-supervised-learning"]
+  },
+  {
+    "slug": "next-sentence-prediction",
+    "language": "en",
+    "term": "Next Sentence Prediction",
+    "category": "Task",
+    "definition": "Pre-training task predicting whether sentence B follows sentence A.",
+    "explanation": "Binary classification: 50% consecutive, 50% random pairs. Originally used in BERT but later found less useful than MLM alone.",
+    "examples": ["BERT pre-training task", "Sentence relationship", "Discourse understanding"],
+    "relatedTerms": ["bert", "pre-training", "sentence-embeddings"]
+  },
+  {
+    "slug": "next-sentence-prediction-it",
+    "language": "it",
+    "term": "Next Sentence Prediction",
+    "category": "Task",
+    "definition": "Task di pre-training predicendo se frase B segue frase A.",
+    "explanation": "Classificazione binaria: 50% consecutive, 50% coppie random. Originalmente usato in BERT ma poi trovato meno utile di MLM solo.",
+    "examples": ["Task pre-training BERT", "Relazione frasi", "Comprensione discorso"],
+    "relatedTerms": ["bert", "pre-training", "sentence-embeddings"]
   }
 ]
