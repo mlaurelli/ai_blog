@@ -2434,5 +2434,105 @@
     "explanation": "Task sequence-to-sequence. Neural MT (NMT) usa encoder-decoder con attention. Transformer (come mT5, mBART) sono state-of-the-art.",
     "examples": ["Google Translate", "Inglese a Francese", "Modelli multilingua"],
     "relatedTerms": ["seq2seq", "transformer", "encoder-decoder"]
+  },
+  {
+    "slug": "inception-module",
+    "language": "en",
+    "term": "Inception Module",
+    "category": "Architecture",
+    "definition": "CNN building block applying multiple filter sizes in parallel and concatenating results.",
+    "explanation": "Captures features at different scales simultaneously. Uses 1x1, 3x3, 5x5 convolutions plus pooling. Reduces parameters with 1x1 bottleneck convolutions.",
+    "examples": ["GoogLeNet/Inception v1", "Multi-scale feature extraction", "Efficient CNN design"],
+    "relatedTerms": ["cnn", "googlenet", "multi-scale"]
+  },
+  {
+    "slug": "inception-module-it",
+    "language": "it",
+    "term": "Inception Module",
+    "category": "Architettura",
+    "definition": "Blocco CNN applicando dimensioni filtro multiple in parallelo e concatenando risultati.",
+    "explanation": "Cattura feature a scale diverse simultaneamente. Usa convoluzioni 1x1, 3x3, 5x5 più pooling. Riduce parametri con convoluzioni bottleneck 1x1.",
+    "examples": ["GoogLeNet/Inception v1", "Estrazione feature multi-scala", "Design CNN efficiente"],
+    "relatedTerms": ["cnn", "googlenet", "multi-scale"]
+  },
+  {
+    "slug": "vit",
+    "language": "en",
+    "term": "ViT (Vision Transformer)",
+    "category": "Architecture",
+    "definition": "Transformer architecture adapted for computer vision by treating image patches as tokens.",
+    "explanation": "Divides images into patches (16x16), flattens and projects them, adds positional encoding. Pure transformer without convolutions. Requires large datasets.",
+    "examples": ["Image classification", "Alternative to CNNs", "ViT-Base, ViT-Large"],
+    "relatedTerms": ["transformer", "computer-vision", "patch-embedding"]
+  },
+  {
+    "slug": "vit-it",
+    "language": "it",
+    "term": "ViT (Vision Transformer)",
+    "category": "Architettura",
+    "definition": "Architettura Transformer adattata per computer vision trattando patch immagini come token.",
+    "explanation": "Divide immagini in patch (16x16), le appiattisce e proietta, aggiunge positional encoding. Transformer puro senza convoluzioni. Richiede dataset grandi.",
+    "examples": ["Classificazione immagini", "Alternativa a CNN", "ViT-Base, ViT-Large"],
+    "relatedTerms": ["transformer", "computer-vision", "patch-embedding"]
+  },
+  {
+    "slug": "alexnet",
+    "language": "en",
+    "term": "AlexNet",
+    "category": "Architecture",
+    "definition": "Deep CNN that won ImageNet 2012, pioneering deep learning in computer vision.",
+    "explanation": "8 layers (5 conv, 3 FC), ReLU activation, dropout, data augmentation. First to use GPU training at scale. Sparked deep learning revolution.",
+    "examples": ["ImageNet 2012 winner", "Deep learning breakthrough", "GPU-accelerated training"],
+    "relatedTerms": ["cnn", "imagenet", "deep-learning"]
+  },
+  {
+    "slug": "alexnet-it",
+    "language": "it",
+    "term": "AlexNet",
+    "category": "Architettura",
+    "definition": "CNN profonda vincitrice ImageNet 2012, pioniera del deep learning in computer vision.",
+    "explanation": "8 layer (5 conv, 3 FC), attivazione ReLU, dropout, data augmentation. Prima a usare GPU training su larga scala. Ha innescato rivoluzione deep learning.",
+    "examples": ["Vincitore ImageNet 2012", "Breakthrough deep learning", "Training accelerato GPU"],
+    "relatedTerms": ["cnn", "imagenet", "deep-learning"]
+  },
+  {
+    "slug": "vgg",
+    "language": "en",
+    "term": "VGG",
+    "category": "Architecture",
+    "definition": "Deep CNN architecture using small 3x3 filters throughout, emphasizing depth.",
+    "explanation": "VGG-16 and VGG-19 with 16/19 layers. Simple, uniform architecture. Multiple 3x3 convs approximate larger receptive fields efficiently.",
+    "examples": ["VGG-16 for transfer learning", "Feature extraction backbone", "ImageNet classification"],
+    "relatedTerms": ["cnn", "deep-learning", "imagenet"]
+  },
+  {
+    "slug": "vgg-it",
+    "language": "it",
+    "term": "VGG",
+    "category": "Architettura",
+    "definition": "Architettura CNN profonda usando filtri piccoli 3x3 ovunque, enfatizzando profondità.",
+    "explanation": "VGG-16 e VGG-19 con 16/19 layer. Architettura semplice e uniforme. Più conv 3x3 approssimano campi ricettivi più grandi efficientemente.",
+    "examples": ["VGG-16 per transfer learning", "Backbone estrazione feature", "Classificazione ImageNet"],
+    "relatedTerms": ["cnn", "deep-learning", "imagenet"]
+  },
+  {
+    "slug": "mobilenet",
+    "language": "en",
+    "term": "MobileNet",
+    "category": "Architecture",
+    "definition": "Efficient CNN architecture using depthwise separable convolutions for mobile deployment.",
+    "explanation": "Separates spatial and channel-wise convolutions. Drastically reduces parameters and computation. Width multiplier controls model size.",
+    "examples": ["Mobile applications", "Edge AI", "Real-time inference"],
+    "relatedTerms": ["efficient-architecture", "edge-ai", "depthwise-convolution"]
+  },
+  {
+    "slug": "mobilenet-it",
+    "language": "it",
+    "term": "MobileNet",
+    "category": "Architettura",
+    "definition": "Architettura CNN efficiente usando convoluzioni depthwise separabili per deployment mobile.",
+    "explanation": "Separa convoluzioni spaziali e channel-wise. Riduce drasticamente parametri e computazione. Width multiplier controlla dimensione modello.",
+    "examples": ["Applicazioni mobile", "Edge AI", "Inference real-time"],
+    "relatedTerms": ["efficient-architecture", "edge-ai", "depthwise-convolution"]
   }
 ]
