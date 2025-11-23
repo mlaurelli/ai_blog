@@ -2094,5 +2094,105 @@
     "explanation": "MSE = (1/n) * Σ(y_true - y_pred)². Penalizza pesantemente errori grandi. Comune per regressione. Più basso è meglio.",
     "examples": ["Funzione loss regressione", "Training rete neurale", "Misurazione errore"],
     "relatedTerms": ["loss-function", "regression", "mae"]
+  },
+  {
+    "slug": "mae",
+    "language": "en",
+    "term": "MAE (Mean Absolute Error)",
+    "category": "Metric",
+    "definition": "Loss function measuring average absolute difference between predicted and actual values.",
+    "explanation": "MAE = (1/n) * Σ|y_true - y_pred|. More robust to outliers than MSE. Linear penalty for errors.",
+    "examples": ["Robust regression loss", "Outlier-resistant evaluation", "Error magnitude"],
+    "relatedTerms": ["loss-function", "regression", "mse"]
+  },
+  {
+    "slug": "mae-it",
+    "language": "it",
+    "term": "MAE (Mean Absolute Error)",
+    "category": "Metrica",
+    "definition": "Funzione di loss misurando differenza assoluta media tra valori predetti e reali.",
+    "explanation": "MAE = (1/n) * Σ|y_true - y_pred|. Più robusto agli outlier rispetto a MSE. Penalità lineare per errori.",
+    "examples": ["Loss regressione robusta", "Valutazione resistente outlier", "Magnitudine errore"],
+    "relatedTerms": ["loss-function", "regression", "mse"]
+  },
+  {
+    "slug": "perplexity",
+    "language": "en",
+    "term": "Perplexity",
+    "category": "Metric",
+    "definition": "Measurement of how well a probability model predicts a sample, for evaluating language models.",
+    "explanation": "Perplexity = exp(cross_entropy). Lower perplexity indicates better prediction. Commonly used for LM evaluation.",
+    "examples": ["Language model evaluation", "GPT performance metric", "Text generation quality"],
+    "relatedTerms": ["language-model", "cross-entropy", "nlp"]
+  },
+  {
+    "slug": "perplexity-it",
+    "language": "it",
+    "term": "Perplexity",
+    "category": "Metrica",
+    "definition": "Misurazione di quanto bene un modello probabilistico predice un campione, per valutare language model.",
+    "explanation": "Perplexity = exp(cross_entropy). Perplexity più bassa indica predizione migliore. Comunemente usata per valutazione LM.",
+    "examples": ["Valutazione language model", "Metrica performance GPT", "Qualità generazione testo"],
+    "relatedTerms": ["language-model", "cross-entropy", "nlp"]
+  },
+  {
+    "slug": "bleu-score",
+    "language": "en",
+    "term": "BLEU Score",
+    "category": "Metric",
+    "definition": "Metric for machine translation quality comparing n-gram overlap between generated and reference translations.",
+    "explanation": "Measures precision of n-grams (1-4) with brevity penalty. Score ranges 0-1 or 0-100. Higher is better.",
+    "examples": ["Machine translation evaluation", "Text generation quality", "MT model comparison"],
+    "relatedTerms": ["machine-translation", "nlp", "evaluation-metric"]
+  },
+  {
+    "slug": "bleu-score-it",
+    "language": "it",
+    "term": "BLEU Score",
+    "category": "Metrica",
+    "definition": "Metrica per qualità traduzione automatica comparando sovrapposizione n-gram tra traduzioni generate e riferimento.",
+    "explanation": "Misura precision n-gram (1-4) con penalità brevità. Score varia 0-1 o 0-100. Più alto è meglio.",
+    "examples": ["Valutazione traduzione automatica", "Qualità generazione testo", "Comparazione modelli MT"],
+    "relatedTerms": ["machine-translation", "nlp", "evaluation-metric"]
+  },
+  {
+    "slug": "accuracy",
+    "language": "en",
+    "term": "Accuracy",
+    "category": "Metric",
+    "definition": "Proportion of correct predictions out of total predictions made.",
+    "explanation": "Accuracy = (TP + TN) / (TP + TN + FP + FN). Simple metric but misleading for imbalanced datasets.",
+    "examples": ["Overall classification performance", "Balanced dataset evaluation", "Model comparison"],
+    "relatedTerms": ["classification", "precision-recall", "confusion-matrix"]
+  },
+  {
+    "slug": "accuracy-it",
+    "language": "it",
+    "term": "Accuracy",
+    "category": "Metrica",
+    "definition": "Proporzione di predizioni corrette sul totale delle predizioni fatte.",
+    "explanation": "Accuracy = (TP + TN) / (TP + TN + FP + FN). Metrica semplice ma fuorviante per dataset sbilanciati.",
+    "examples": ["Performance classificazione globale", "Valutazione dataset bilanciato", "Comparazione modelli"],
+    "relatedTerms": ["classification", "precision-recall", "confusion-matrix"]
+  },
+  {
+    "slug": "top-k-sampling",
+    "language": "en",
+    "term": "Top-K Sampling",
+    "category": "Technique",
+    "definition": "Text generation technique sampling from only the K most likely next tokens.",
+    "explanation": "Restricts sampling to top K tokens by probability. Reduces unlikely tokens while maintaining diversity. Common: K=40-50.",
+    "examples": ["K=50 for balanced generation", "Diverse text generation", "Avoiding rare tokens"],
+    "relatedTerms": ["text-generation", "nucleus-sampling", "llm"]
+  },
+  {
+    "slug": "top-k-sampling-it",
+    "language": "it",
+    "term": "Top-K Sampling",
+    "category": "Tecnica",
+    "definition": "Tecnica generazione testo campionando solo dai K token successivi più probabili.",
+    "explanation": "Restringe sampling ai top K token per probabilità. Riduce token improbabili mantenendo diversità. Comune: K=40-50.",
+    "examples": ["K=50 per generazione bilanciata", "Generazione testo diversa", "Evitare token rari"],
+    "relatedTerms": ["text-generation", "nucleus-sampling", "llm"]
   }
 ]
