@@ -3224,5 +3224,105 @@
     "explanation": "Singolo neurone con pesi, bias e attivazione. Fondamento delle reti neurali moderne. Può apprendere solo pattern linearmente separabili.",
     "examples": ["Gate AND binario", "Classificatore lineare semplice", "Rete neurale storica"],
     "relatedTerms": ["neuron", "neural-network", "linear-classifier"]
+  },
+  {
+    "slug": "epoch",
+    "language": "en",
+    "term": "Epoch",
+    "category": "Concept",
+    "definition": "One complete pass through the entire training dataset during training.",
+    "explanation": "Training typically involves multiple epochs. Each epoch: model sees all training data once. More epochs = more learning but risk overfitting.",
+    "examples": ["Train for 100 epochs", "Epoch 1/50 complete", "Early stopping at epoch 30"],
+    "relatedTerms": ["training", "iteration", "batch"]
+  },
+  {
+    "slug": "epoch-it",
+    "language": "it",
+    "term": "Epoca",
+    "category": "Concetto",
+    "definition": "Un passaggio completo attraverso l'intero dataset di training durante il training.",
+    "explanation": "Il training tipicamente coinvolge multiple epoche. Ogni epoca: il modello vede tutti i dati training una volta. Più epoche = più apprendimento ma rischio overfitting.",
+    "examples": ["Training per 100 epoche", "Epoca 1/50 completata", "Early stopping a epoca 30"],
+    "relatedTerms": ["training", "iteration", "batch"]
+  },
+  {
+    "slug": "batch-size",
+    "language": "en",
+    "term": "Batch Size",
+    "category": "Concept",
+    "definition": "Number of training examples processed together in one forward/backward pass.",
+    "explanation": "Larger batches: more stable gradients but more memory. Smaller batches: less memory but noisier gradients. Common: 32, 64, 128, 256.",
+    "examples": ["Batch size 32", "Mini-batch training", "Full batch vs mini-batch"],
+    "relatedTerms": ["mini-batch", "training", "memory"]
+  },
+  {
+    "slug": "batch-size-it",
+    "language": "it",
+    "term": "Batch Size",
+    "category": "Concetto",
+    "definition": "Numero di esempi di training processati insieme in un passaggio forward/backward.",
+    "explanation": "Batch più grandi: gradienti più stabili ma più memoria. Batch più piccoli: meno memoria ma gradienti più rumorosi. Comuni: 32, 64, 128, 256.",
+    "examples": ["Batch size 32", "Training mini-batch", "Full batch vs mini-batch"],
+    "relatedTerms": ["mini-batch", "training", "memory"]
+  },
+  {
+    "slug": "learning-rate-basic",
+    "language": "en",
+    "term": "Learning Rate",
+    "category": "Concept",
+    "definition": "Hyperparameter controlling how much to adjust model weights during training.",
+    "explanation": "Step size in gradient descent. Too high: unstable training. Too low: slow convergence. Typical values: 0.001, 0.01, 0.1.",
+    "examples": ["Learning rate 0.001", "LR too high causes divergence", "Adaptive learning rates"],
+    "relatedTerms": ["gradient-descent", "hyperparameter", "optimization"]
+  },
+  {
+    "slug": "learning-rate-basic-it",
+    "language": "it",
+    "term": "Learning Rate",
+    "category": "Concetto",
+    "definition": "Iperparametro controllando quanto aggiustare i pesi del modello durante il training.",
+    "explanation": "Dimensione passo nel gradient descent. Troppo alto: training instabile. Troppo basso: convergenza lenta. Valori tipici: 0.001, 0.01, 0.1.",
+    "examples": ["Learning rate 0.001", "LR troppo alto causa divergenza", "Learning rate adattivi"],
+    "relatedTerms": ["gradient-descent", "hyperparameter", "optimization"]
+  },
+  {
+    "slug": "loss-basic",
+    "language": "en",
+    "term": "Loss",
+    "category": "Concept",
+    "definition": "A measure of how wrong the model's predictions are, used to guide training.",
+    "explanation": "Loss function quantifies error. Training minimizes loss. Lower loss = better model. Different tasks use different loss functions.",
+    "examples": ["Cross-entropy loss", "Mean squared error", "Loss decreasing over epochs"],
+    "relatedTerms": ["loss-function", "error", "training"]
+  },
+  {
+    "slug": "loss-basic-it",
+    "language": "it",
+    "term": "Loss",
+    "category": "Concetto",
+    "definition": "Una misura di quanto sbagliate sono le predizioni del modello, usata per guidare il training.",
+    "explanation": "La funzione di loss quantifica l'errore. Il training minimizza la loss. Loss più bassa = modello migliore. Task diversi usano funzioni loss diverse.",
+    "examples": ["Cross-entropy loss", "Mean squared error", "Loss che diminuisce nelle epoche"],
+    "relatedTerms": ["loss-function", "error", "training"]
+  },
+  {
+    "slug": "gradient-basic",
+    "language": "en",
+    "term": "Gradient",
+    "category": "Concept",
+    "definition": "Direction and magnitude of steepest increase in loss function with respect to parameters.",
+    "explanation": "Gradients indicate how to adjust weights to reduce loss. Computed via backpropagation. Move in opposite direction (gradient descent).",
+    "examples": ["Weight gradient: -0.5", "Gradient flow through network", "Vanishing gradients"],
+    "relatedTerms": ["gradient-descent", "backpropagation", "derivative"]
+  },
+  {
+    "slug": "gradient-basic-it",
+    "language": "it",
+    "term": "Gradiente",
+    "category": "Concetto",
+    "definition": "Direzione e magnitudine dell'aumento più ripido nella funzione loss rispetto ai parametri.",
+    "explanation": "I gradienti indicano come aggiustare i pesi per ridurre la loss. Calcolati via backpropagation. Si muove in direzione opposta (gradient descent).",
+    "examples": ["Gradiente peso: -0.5", "Flusso gradiente attraverso rete", "Vanishing gradient"],
+    "relatedTerms": ["gradient-descent", "backpropagation", "derivative"]
   }
 ]
