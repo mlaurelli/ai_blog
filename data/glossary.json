@@ -2534,5 +2534,105 @@
     "explanation": "Separa convoluzioni spaziali e channel-wise. Riduce drasticamente parametri e computazione. Width multiplier controlla dimensione modello.",
     "examples": ["Applicazioni mobile", "Edge AI", "Inference real-time"],
     "relatedTerms": ["efficient-architecture", "edge-ai", "depthwise-convolution"]
+  },
+  {
+    "slug": "rmsprop",
+    "language": "en",
+    "term": "RMSprop",
+    "category": "Algorithm",
+    "definition": "Adaptive learning rate optimization algorithm using moving average of squared gradients.",
+    "explanation": "Divides learning rate by exponential moving average of squared gradients. Addresses Adagrad's diminishing learning rates. Good for RNNs and non-stationary problems.",
+    "examples": ["RNN training", "Non-convex optimization", "Adaptive learning"],
+    "relatedTerms": ["optimizer", "adam", "gradient-descent"]
+  },
+  {
+    "slug": "rmsprop-it",
+    "language": "it",
+    "term": "RMSprop",
+    "category": "Algoritmo",
+    "definition": "Algoritmo di ottimizzazione con learning rate adattivo usando media mobile di gradienti al quadrato.",
+    "explanation": "Divide learning rate per media mobile esponenziale di gradienti al quadrato. Affronta i learning rate diminuenti di Adagrad. Buono per RNN e problemi non-stazionari.",
+    "examples": ["Training RNN", "Ottimizzazione non-convessa", "Apprendimento adattivo"],
+    "relatedTerms": ["optimizer", "adam", "gradient-descent"]
+  },
+  {
+    "slug": "adagrad",
+    "language": "en",
+    "term": "Adagrad",
+    "category": "Algorithm",
+    "definition": "Adaptive learning rate optimizer that adapts rates per parameter based on historical gradients.",
+    "explanation": "Accumulates squared gradients, larger accumulation means smaller learning rate. Good for sparse data. Can have diminishing learning rates over time.",
+    "examples": ["Sparse gradient optimization", "NLP embeddings", "Convex problems"],
+    "relatedTerms": ["optimizer", "rmsprop", "adaptive-learning"]
+  },
+  {
+    "slug": "adagrad-it",
+    "language": "it",
+    "term": "Adagrad",
+    "category": "Algoritmo",
+    "definition": "Ottimizzatore con learning rate adattivo che adatta rate per parametro basandosi su gradienti storici.",
+    "explanation": "Accumula gradienti al quadrato, accumulazione più grande significa learning rate più piccolo. Buono per dati sparsi. Può avere learning rate diminuenti nel tempo.",
+    "examples": ["Ottimizzazione gradienti sparsi", "Embedding NLP", "Problemi convessi"],
+    "relatedTerms": ["optimizer", "rmsprop", "adaptive-learning"]
+  },
+  {
+    "slug": "imagenet",
+    "language": "en",
+    "term": "ImageNet",
+    "category": "Dataset",
+    "definition": "Large-scale image dataset with 14M images across 20k categories, used for ILSVRC competition.",
+    "explanation": "ILSVRC uses 1000-class subset. Benchmark for computer vision models. Pre-training on ImageNet enables transfer learning for vision tasks.",
+    "examples": ["ImageNet classification challenge", "Pre-training for transfer learning", "Benchmark dataset"],
+    "relatedTerms": ["computer-vision", "transfer-learning", "benchmark"]
+  },
+  {
+    "slug": "imagenet-it",
+    "language": "it",
+    "term": "ImageNet",
+    "category": "Dataset",
+    "definition": "Dataset immagini large-scale con 14M immagini attraverso 20k categorie, usato per competizione ILSVRC.",
+    "explanation": "ILSVRC usa subset 1000 classi. Benchmark per modelli computer vision. Pre-training su ImageNet permette transfer learning per task vision.",
+    "examples": ["Challenge classificazione ImageNet", "Pre-training per transfer learning", "Dataset benchmark"],
+    "relatedTerms": ["computer-vision", "transfer-learning", "benchmark"]
+  },
+  {
+    "slug": "coco-dataset",
+    "language": "en",
+    "term": "COCO (Common Objects in Context)",
+    "category": "Dataset",
+    "definition": "Large-scale dataset for object detection, segmentation, and captioning with 330k images.",
+    "explanation": "Contains 80 object categories with instance segmentation masks. Includes captions, keypoints. Standard benchmark for detection and segmentation.",
+    "examples": ["Object detection benchmark", "Instance segmentation", "Image captioning"],
+    "relatedTerms": ["object-detection", "segmentation", "benchmark"]
+  },
+  {
+    "slug": "coco-dataset-it",
+    "language": "it",
+    "term": "COCO (Common Objects in Context)",
+    "category": "Dataset",
+    "definition": "Dataset large-scale per object detection, segmentazione e captioning con 330k immagini.",
+    "explanation": "Contiene 80 categorie oggetti con mask segmentazione instance. Include caption, keypoint. Benchmark standard per detection e segmentazione.",
+    "examples": ["Benchmark object detection", "Segmentazione instance", "Image captioning"],
+    "relatedTerms": ["object-detection", "segmentation", "benchmark"]
+  },
+  {
+    "slug": "squad",
+    "language": "en",
+    "term": "SQuAD (Stanford Question Answering Dataset)",
+    "category": "Dataset",
+    "definition": "Reading comprehension dataset with 100k+ questions on Wikipedia articles.",
+    "explanation": "Extractive QA: answers are spans from context. SQuAD 2.0 includes unanswerable questions. Benchmark for question answering models.",
+    "examples": ["BERT fine-tuning for QA", "Extractive question answering", "Reading comprehension"],
+    "relatedTerms": ["question-answering", "nlp", "benchmark"]
+  },
+  {
+    "slug": "squad-it",
+    "language": "it",
+    "term": "SQuAD (Stanford Question Answering Dataset)",
+    "category": "Dataset",
+    "definition": "Dataset reading comprehension con 100k+ domande su articoli Wikipedia.",
+    "explanation": "QA estrattivo: risposte sono span dal contesto. SQuAD 2.0 include domande senza risposta. Benchmark per modelli question answering.",
+    "examples": ["Fine-tuning BERT per QA", "Question answering estrattivo", "Reading comprehension"],
+    "relatedTerms": ["question-answering", "nlp", "benchmark"]
   }
 ]
