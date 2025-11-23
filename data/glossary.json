@@ -2824,5 +2824,105 @@
     "explanation": "Interpola linearmente tra due campioni e loro etichette: x = λx₁ + (1-λ)x₂. Migliora generalizzazione e calibrazione. Regolarizzazione semplice ma efficace.",
     "examples": ["Augmentation classificazione immagini", "Tecnica regolarizzazione", "Generalizzazione migliorata"],
     "relatedTerms": ["data-augmentation", "regularization", "cutmix"]
+  },
+  {
+    "slug": "artificial-intelligence",
+    "language": "en",
+    "term": "Artificial Intelligence (AI)",
+    "category": "Concept",
+    "definition": "Field of computer science focused on creating systems capable of performing tasks requiring human intelligence.",
+    "explanation": "AI encompasses machine learning, deep learning, NLP, computer vision. Goal is to create machines that can reason, learn, perceive, and make decisions.",
+    "examples": ["Virtual assistants", "Self-driving cars", "Recommendation systems"],
+    "relatedTerms": ["machine-learning", "deep-learning", "intelligence"]
+  },
+  {
+    "slug": "artificial-intelligence-it",
+    "language": "it",
+    "term": "Intelligenza Artificiale (AI)",
+    "category": "Concetto",
+    "definition": "Campo dell'informatica focalizzato sulla creazione di sistemi capaci di eseguire task che richiedono intelligenza umana.",
+    "explanation": "L'AI comprende machine learning, deep learning, NLP, computer vision. Obiettivo è creare macchine che possano ragionare, apprendere, percepire e prendere decisioni.",
+    "examples": ["Assistenti virtuali", "Auto a guida autonoma", "Sistemi di raccomandazione"],
+    "relatedTerms": ["machine-learning", "deep-learning", "intelligence"]
+  },
+  {
+    "slug": "vector",
+    "language": "en",
+    "term": "Vector",
+    "category": "Concept",
+    "definition": "An ordered array of numbers representing a point in multi-dimensional space.",
+    "explanation": "Fundamental data structure in ML. Can represent features, embeddings, or any numerical data. Operations include dot product, norm, addition.",
+    "examples": ["Feature vector [1.2, 3.4, 5.6]", "Word embedding vector", "Image flattened to vector"],
+    "relatedTerms": ["tensor", "matrix", "embedding"]
+  },
+  {
+    "slug": "vector-it",
+    "language": "it",
+    "term": "Vettore",
+    "category": "Concetto",
+    "definition": "Un array ordinato di numeri rappresentante un punto nello spazio multi-dimensionale.",
+    "explanation": "Struttura dati fondamentale in ML. Può rappresentare feature, embedding o qualsiasi dato numerico. Operazioni includono prodotto scalare, norma, addizione.",
+    "examples": ["Vettore feature [1.2, 3.4, 5.6]", "Vettore word embedding", "Immagine appiattita a vettore"],
+    "relatedTerms": ["tensor", "matrix", "embedding"]
+  },
+  {
+    "slug": "matrix",
+    "language": "en",
+    "term": "Matrix",
+    "category": "Concept",
+    "definition": "A 2D array of numbers arranged in rows and columns.",
+    "explanation": "Used to represent data batches, weights in neural networks, transformations. Operations include multiplication, transpose, inverse.",
+    "examples": ["Weight matrix in neural networks", "Batch of data samples", "Image as matrix"],
+    "relatedTerms": ["vector", "tensor", "linear-algebra"]
+  },
+  {
+    "slug": "matrix-it",
+    "language": "it",
+    "term": "Matrice",
+    "category": "Concetto",
+    "definition": "Un array 2D di numeri organizzati in righe e colonne.",
+    "explanation": "Usata per rappresentare batch di dati, pesi nelle reti neurali, trasformazioni. Operazioni includono moltiplicazione, trasposta, inversa.",
+    "examples": ["Matrice pesi nelle reti neurali", "Batch di campioni dati", "Immagine come matrice"],
+    "relatedTerms": ["vector", "tensor", "linear-algebra"]
+  },
+  {
+    "slug": "scalar",
+    "language": "en",
+    "term": "Scalar",
+    "category": "Concept",
+    "definition": "A single numerical value, a zero-dimensional tensor.",
+    "explanation": "Simplest form of data. Examples: loss value, learning rate, temperature. Contrasts with vectors and matrices.",
+    "examples": ["Learning rate: 0.001", "Loss value: 2.5", "Temperature: 0.7"],
+    "relatedTerms": ["vector", "tensor", "number"]
+  },
+  {
+    "slug": "scalar-it",
+    "language": "it",
+    "term": "Scalare",
+    "category": "Concetto",
+    "definition": "Un singolo valore numerico, un tensore zero-dimensionale.",
+    "explanation": "Forma più semplice di dati. Esempi: valore loss, learning rate, temperature. Contrasta con vettori e matrici.",
+    "examples": ["Learning rate: 0.001", "Valore loss: 2.5", "Temperature: 0.7"],
+    "relatedTerms": ["vector", "tensor", "number"]
+  },
+  {
+    "slug": "dataset",
+    "language": "en",
+    "term": "Dataset",
+    "category": "Concept",
+    "definition": "A collection of data examples used for training, validation, or testing machine learning models.",
+    "explanation": "Split into train/validation/test sets. Quality and size crucial for model performance. Can be labeled or unlabeled.",
+    "examples": ["ImageNet dataset", "Training set of 1000 images", "MNIST handwritten digits"],
+    "relatedTerms": ["training-data", "validation-set", "test-set"]
+  },
+  {
+    "slug": "dataset-it",
+    "language": "it",
+    "term": "Dataset",
+    "category": "Concetto",
+    "definition": "Una collezione di esempi di dati usati per training, validation o testing di modelli machine learning.",
+    "explanation": "Diviso in set train/validation/test. Qualità e dimensione cruciali per performance modello. Può essere etichettato o non etichettato.",
+    "examples": ["Dataset ImageNet", "Training set di 1000 immagini", "Cifre scritte a mano MNIST"],
+    "relatedTerms": ["training-data", "validation-set", "test-set"]
   }
 ]
