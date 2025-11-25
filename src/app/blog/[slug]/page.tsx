@@ -193,76 +193,22 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </header>
 
         {/* Article Content */}
-        <div className="columns-1 md:columns-2 gap-8 text-justify">
-          {post.content.split('\n\n').map((paragraph, i) => {
-            // Skip the main heading
-            if (paragraph.startsWith('# ')) {
-              return null;
-            }
-            
-            // Simple markdown-like rendering for code blocks
-            if (paragraph.startsWith('```') && paragraph.endsWith('```')) {
-              const code = paragraph.slice(3, -3);
-              return (
-                <pre key={i} className="bg-gray-100 dark:bg-gray-800 p-4 border border-gray-300 dark:border-gray-700 overflow-x-auto my-6 text-sm break-inside-avoid">
-                  <code>{code}</code>
-                </pre>
-              );
-            }
-            
-            // Simple markdown-like rendering for headings
-            if (paragraph.startsWith('## ')) {
-              return (
-                <h2 key={i} className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 break-after-avoid">
-                  {paragraph.slice(3)}
-                </h2>
-              );
-            }
-            
-            if (paragraph.startsWith('### ')) {
-              return (
-                <h3 key={i} className="text-xl font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-3 break-after-avoid">
-                  {paragraph.slice(4)}
-                </h3>
-              );
-            }
-            
-            // Simple markdown-like rendering for lists
-            if (paragraph.startsWith('- ')) {
-              const items = paragraph.split('\n').filter(line => line.startsWith('- '));
-              return (
-                <ul key={i} className="mb-6 space-y-2 list-disc list-inside break-inside-avoid">
-                  {items.map((item, idx) => (
-                    <li key={idx} className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {item.slice(2).replace(/\*\*(.*?)\*\*/g, '$1')}
-                    </li>
-                  ))}
-                </ul>
-              );
-            }
-            
-            // First paragraph gets dropcap
-            const isDropcap = i === 0 || (i === 1 && post.content.startsWith('# '));
-            
-            // Simple markdown-like rendering for bold text
-            const parts = paragraph.split('**');
-            if (parts.length > 1) {
-              return (
-                <p key={i} className={`mb-6 text-gray-700 dark:text-gray-300 leading-relaxed ${isDropcap ? 'dropcap' : ''}`}>
-                  {parts.map((part, j) => 
-                    j % 2 === 0 ? part : <strong key={j}>{part}</strong>
-                  )}
-                </p>
-              );
-            }
-            
-            return (
-              <p key={i} className={`mb-6 text-gray-700 dark:text-gray-300 leading-relaxed ${isDropcap ? 'dropcap' : ''}`}>
-                {paragraph}
-              </p>
-            );
-          })}
-        </div>
+        <div 
+          className="columns-1 md:columns-2 gap-8 text-justify prose prose-lg dark:prose-invert max-w-none
+            [&>p]:mb-6 [&>p]:text-gray-700 [&>p]:dark:text-gray-300 [&>p]:leading-relaxed
+            [&>p:first-of-type]:dropcap
+            [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:dark:text-gray-100 [&>h2]:mt-8 [&>h2]:mb-4 [&>h2]:break-after-avoid
+            [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:dark:text-gray-100 [&>h3]:mt-6 [&>h3]:mb-3 [&>h3]:break-after-avoid
+            [&>ul]:mb-6 [&>ul]:space-y-2 [&>ul]:list-disc [&>ul]:list-inside [&>ul]:break-inside-avoid
+            [&>ol]:mb-6 [&>ol]:space-y-2 [&>ol]:list-decimal [&>ol]:list-inside [&>ol]:break-inside-avoid
+            [&>li]:text-gray-700 [&>li]:dark:text-gray-300 [&>li]:leading-relaxed
+            [&>pre]:bg-gray-100 [&>pre]:dark:bg-gray-800 [&>pre]:p-4 [&>pre]:border [&>pre]:border-gray-300 [&>pre]:dark:border-gray-700 [&>pre]:overflow-x-auto [&>pre]:my-6 [&>pre]:text-sm [&>pre]:break-inside-avoid
+            [&>blockquote]:border-l-4 [&>blockquote]:border-gray-400 [&>blockquote]:dark:border-gray-600 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:my-6
+            [&>strong]:font-bold [&>strong]:text-gray-900 [&>strong]:dark:text-gray-100
+            [&>em]:italic
+            [&>a]:underline [&>a]:text-gray-900 [&>a]:dark:text-gray-100 [&>a]:hover:text-black [&>a]:dark:hover:text-white"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
 
         {/* Article Footer */}
         <footer className="mt-12 pt-8 border-t-2 border-black dark:border-gray-600">

@@ -1,5 +1,21 @@
 [
   {
+    "slug": "test",
+    "language": "both",
+    "title": "test",
+    "excerpt": "test ",
+    "content": "<p>p&gt;It's hard to watch an AI demo these days and not be impressed they look perfect, which makes the real question even more urgent: what actually happens when these models face messy, unpredictable real-world data? The truth is rarely glamorous. Behind every AI system that works in production lies a huge amount of engineering effort—there’s no magic involved. Once a system goes live, one thing becomes clear: large language models can be incredibly powerful, but they’re also surprisingly fragile.&lt;/p&gt;&lt;p&gt;I learned this the hard way while building systems for real clients: what works in the lab rarely survives the chaos of a live production environment.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The</p>",
+    "date": "2025-11-25",
+    "author": {
+      "name": "Michele Laurelli",
+      "avatar": "/uploads/1763752568910-michele-laurelli.jpg"
+    },
+    "coverImage": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
+    "tags": [
+      "test"
+    ]
+  },
+  {
     "slug": "building-private-ai-systems",
     "language": "en",
     "title": "Building Private AI Systems: Why On-Premise Solutions Matter",
