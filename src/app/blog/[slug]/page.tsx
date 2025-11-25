@@ -207,7 +207,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             [&>strong]:font-bold [&>strong]:text-gray-900 [&>strong]:dark:text-gray-100
             [&>em]:italic
             [&>a]:underline [&>a]:text-gray-900 [&>a]:dark:text-gray-100 [&>a]:hover:text-black [&>a]:dark:hover:text-white"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ 
+            __html: post.content
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&amp;/g, '&')
+              .replace(/&quot;/g, '"')
+              .replace(/&#039;/g, "'")
+          }}
         />
 
         {/* Article Footer */}
