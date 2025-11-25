@@ -7,6 +7,12 @@ import { Post } from '@/lib/posts';
 import ImagePicker from '@/components/ImagePicker';
 import RichTextEditor from '@/components/RichTextEditor';
 
+type Author = {
+  id: string;
+  name: string;
+  avatar: string;
+};
+
 export default function EditPost() {
   const router = useRouter();
   const params = useParams();
@@ -14,6 +20,7 @@ export default function EditPost() {
   
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
+  const [authors, setAuthors] = useState<Author[]>([]);
   const [formData, setFormData] = useState({
     slug: '',
     language: 'both' as 'en' | 'it' | 'both',
@@ -33,6 +40,12 @@ export default function EditPost() {
       router.push('/admin/login');
       return;
     }
+
+    // Carica gli autori disponibili
+    fetch('/api/authors')
+      .then(res => res.json())
+      .then(data => setAuthors(data))
+      .catch(err => console.error('Errore caricamento autori:', err));
 
     fetchPost();
   }, [slug, router]);
@@ -230,16 +243,29 @@ export default function EditPost() {
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
-                Author Name *
+                Author *
               </label>
-              <input
-                type="text"
+              <select
                 name="authorName"
                 value={formData.authorName}
-                onChange={handleChange}
+                onChange={(e) => {
+                  const selectedAuthor = authors.find(a => a.name === e.target.value);
+                  setFormData(prev => ({
+                    ...prev,
+                    authorName: e.target.value,
+                    authorAvatar: selectedAuthor?.avatar || prev.authorAvatar,
+                  }));
+                }}
                 className="w-full px-4 py-3 border-2 border-gray-400 focus:border-black focus:outline-none"
                 required
-              />
+              >
+                <option value="">Seleziona un autore...</option>
+                {authors.map((author) => (
+                  <option key={author.id} value={author.name}>
+                    {author.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 

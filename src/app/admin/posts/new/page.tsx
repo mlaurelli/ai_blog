@@ -6,12 +6,19 @@ import Link from 'next/link';
 import ImagePicker from '@/components/ImagePicker';
 import RichTextEditor from '@/components/RichTextEditor';
 
+type Author = {
+  id: string;
+  name: string;
+  avatar: string;
+};
+
 export default function NewPost() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [aiMode, setAiMode] = useState(false);
   const [imageSource, setImageSource] = useState<'ai' | 'unsplash'>('unsplash');
   const [generating, setGenerating] = useState(false);
+  const [authors, setAuthors] = useState<Author[]>([]);
   const [formData, setFormData] = useState({
     slug: '',
     language: 'both' as 'en' | 'it' | 'both',
@@ -29,7 +36,24 @@ export default function NewPost() {
     const token = localStorage.getItem('admin_token');
     if (!token) {
       router.push('/admin/login');
+      return;
     }
+
+    // Carica gli autori disponibili
+    fetch('/api/authors')
+      .then(res => res.json())
+      .then(data => {
+        setAuthors(data);
+        // Imposta il primo autore come default se disponibile
+        if (data.length > 0 && !formData.authorName) {
+          setFormData(prev => ({
+            ...prev,
+            authorName: data[0].name,
+            authorAvatar: data[0].avatar,
+          }));
+        }
+      })
+      .catch(err => console.error('Errore caricamento autori:', err));
   }, [router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -328,16 +352,29 @@ export default function NewPost() {
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
-                Author Name *
+                Author *
               </label>
-              <input
-                type="text"
+              <select
                 name="authorName"
                 value={formData.authorName}
-                onChange={handleChange}
+                onChange={(e) => {
+                  const selectedAuthor = authors.find(a => a.name === e.target.value);
+                  setFormData(prev => ({
+                    ...prev,
+                    authorName: e.target.value,
+                    authorAvatar: selectedAuthor?.avatar || '/avatar.jpg',
+                  }));
+                }}
                 className="w-full px-4 py-3 border-2 border-gray-400 focus:border-black focus:outline-none"
                 required
-              />
+              >
+                <option value="">Seleziona un autore...</option>
+                {authors.map((author) => (
+                  <option key={author.id} value={author.name}>
+                    {author.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
