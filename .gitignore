@@ -49,3 +49,10 @@ next-env.d.ts
 *.rar
 *.7z
 Archivio*
+
+# Backups (local only)
+/backups/
+*.exp
+
+# Temporary files
+/tmp/
