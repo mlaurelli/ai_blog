@@ -116,7 +116,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
 
             {/* Info */}
             <div className="flex-1">
-              <h1 className="text-4xl md:text-5xl font-black mb-3 leading-tight tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-black mb-3 leading-tight tracking-tight text-gray-900 dark:text-white">
                 {author.name}
               </h1>
               
