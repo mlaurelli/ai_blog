@@ -124,7 +124,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                 {author.role}
               </p>
 
-              <p className="text-lg leading-relaxed mb-6">
+              <p className="text-lg leading-relaxed mb-6 text-gray-900 dark:text-gray-100">
                 {author.bio}
               </p>
 
@@ -133,7 +133,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                 {author.email && (
                   <a 
                     href={`mailto:${author.email}`}
-                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors"
+                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors text-gray-900 dark:text-gray-100"
                   >
                     Email
                   </a>
@@ -143,7 +143,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                     href={author.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors"
+                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors text-gray-900 dark:text-gray-100"
                   >
                     Website
                   </a>
@@ -153,7 +153,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                     href={`https://twitter.com/${author.twitter}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors"
+                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors text-gray-900 dark:text-gray-100"
                   >
                     Twitter
                   </a>
@@ -163,7 +163,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                     href={`https://linkedin.com/in/${author.linkedin}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors"
+                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors text-gray-900 dark:text-gray-100"
                   >
                     LinkedIn
                   </a>
@@ -173,7 +173,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                     href={`https://github.com/${author.github}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors"
+                    className="px-4 py-2 border-2 border-gray-400 dark:border-gray-600 hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold text-sm uppercase tracking-wide transition-colors text-gray-900 dark:text-gray-100"
                   >
                     GitHub
                   </a>
@@ -212,7 +212,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                           })}
                         </div>
                         
-                        <h3 className="text-2xl font-black mb-3 group-hover:underline leading-tight">
+                        <h3 className="text-2xl font-black mb-3 group-hover:underline leading-tight text-gray-900 dark:text-white">
                           {post.title}
                         </h3>
                         
@@ -224,7 +224,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                           {post.tags.map((tag, index) => (
                             <span 
                               key={index}
-                              className="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-xs font-semibold uppercase tracking-wide"
+                              className="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-xs font-semibold uppercase tracking-wide text-gray-900 dark:text-gray-100"
                             >
                               {tag}
                             </span>
