@@ -1536,7 +1536,7 @@ Optimization in deep learning funziona not despite the landscape's complexity, b
     tags: ['Architettura IA', 'Deep Learning', 'Ottimizzazione', 'Machine Learning']
   }];
 
-// Dynamic post loading from JSON file
+// Dynamic post loading from JSON file with author enrichment
 function loadPosts(): Post[] {
   // Only load from filesystem on server-side
   if (typeof window === 'undefined') {
@@ -1544,11 +1544,39 @@ function loadPosts(): Post[] {
       const fs = require('fs');
       const path = require('path');
       const postsPath = path.join(process.cwd(), 'data', 'posts.json');
+      const authorsPath = path.join(process.cwd(), 'data', 'authors.json');
       
-      // Read JSON file
-      const fileContent = fs.readFileSync(postsPath, 'utf-8');
-      const postsArray = JSON.parse(fileContent);
-      return postsArray;
+      // Read JSON files
+      const postsContent = fs.readFileSync(postsPath, 'utf-8');
+      const postsArray = JSON.parse(postsContent);
+      
+      // Try to load authors to enrich posts with updated avatars
+      let authorsMap: Map<string, string> = new Map();
+      try {
+        const authorsContent = fs.readFileSync(authorsPath, 'utf-8');
+        const authors = JSON.parse(authorsContent);
+        // Create a map of author name -> avatar
+        authors.forEach((author: any) => {
+          authorsMap.set(author.name, author.avatar);
+        });
+      } catch (e) {
+        console.warn('Could not load authors for enrichment:', e);
+      }
+      
+      // Enrich posts with current author avatars
+      return postsArray.map((post: Post) => {
+        const currentAvatar = authorsMap.get(post.author.name);
+        if (currentAvatar) {
+          return {
+            ...post,
+            author: {
+              ...post.author,
+              avatar: currentAvatar
+            }
+          };
+        }
+        return post;
+      });
     } catch (e) {
       console.error('Error loading posts from JSON:', e);
       // Fallback to hardcoded posts if JSON file doesn't exist
@@ -1589,4 +1617,11 @@ export function getAllPosts(lang: 'en' | 'it' = 'en'): Post[] {
 export function getAllPostsAdmin(): Post[] {
   return loadPosts()
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+// Get all posts without language filter (for author pages)
+export function getAllPostsWithoutFilter(lang: 'en' | 'it' = 'en'): Post[] {
+  return loadPosts()
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map(post => getLocalizedPost(post, lang));
 }

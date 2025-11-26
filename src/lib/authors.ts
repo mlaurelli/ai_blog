@@ -16,24 +16,7 @@ export type Author = {
   };
 };
 
-export const authors: Author[] = [
-{
-    id: 'michele-laurelli',
-    name: 'Michele Laurelli',
-    bio: 'AI Architect & Researcher specializing in private AI models and systems, autonomous agents, and AI architectures. Founder of Algoretico. University professor adj and author. ',
-    avatar: '/uploads/1763752568910-michele-laurelli.jpg',
-    role: 'Founder & AI Architect',
-    email: 'm.laurelli@algoretico.com',
-    website: 'https://michelelaurelli.com',
-    linkedin: 'michelelaurelli',
-    github: 'mlaurelli',
-    seo: {
-      title: 'Michele Laurelli - AI Expert',
-      description: 'Expert in private AI systems, autonomous agents, and deep learning architectures. University Professor and Author. ',
-      keywords: ['AI Architect', 'Machine Learning', 'Deep Learning', 'Private AI', 'Autonomous Agents', 'AI Research']
-    }
-  },
-];
+// No hardcoded authors - all data loaded dynamically from JSON file
 
 // Dynamic author loading from JSON file
 function loadAuthors(): Author[] {
@@ -50,12 +33,12 @@ function loadAuthors(): Author[] {
       return authorsArray;
     } catch (e) {
       console.error('Error loading authors from JSON:', e);
-      // Fallback to hardcoded authors if JSON file doesn't exist
-      return authors;
+      return [];
     }
   }
-  // Client-side: return hardcoded authors as fallback
-  return authors;
+  // Client-side: return empty array (client should use API instead)
+  console.warn('loadAuthors() called on client-side. Use /api/authors instead.');
+  return [];
 }
 
 export function getAuthorById(id: string): Author | undefined {

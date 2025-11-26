@@ -4,6 +4,8 @@ import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import { seoSettings } from '@/lib/seo';
 import { getAuthorByName } from '@/lib/authors';
 import Layout from '@/components/Layout';
+import AuthorAvatar from '@/components/AuthorAvatar';
+import CoverImage from '@/components/CoverImage';
 import Link from 'next/link';
 
 // Enable ISR - revalidate every 60 seconds
@@ -147,13 +149,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
           {/* Author & Meta Info */}
           <div className="flex items-center gap-4 pb-8 border-b border-gray-300 dark:border-gray-700 mb-8">
-            <div className="flex-shrink-0">
-              <div className="w-12 h-12 bg-black dark:bg-white rounded-full flex items-center justify-center">
-                <span className="text-white dark:text-black font-bold text-lg">
-                  {post.author.name.split(' ').map(n => n[0]).join('')}
-                </span>
-              </div>
-            </div>
+            <AuthorAvatar 
+              name={post.author.name}
+              avatar={post.author.avatar}
+              size="md"
+              shape="circle"
+            />
             <div className="flex-1">
               {author ? (
                 <Link 
@@ -183,7 +184,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
           {/* Cover Image */}
           <div className="mb-8 border-2 border-gray-400 dark:border-gray-600 overflow-hidden">
-            <img
+            <CoverImage
               src={post.coverImage}
               alt={post.title}
               className="w-full h-auto object-cover"

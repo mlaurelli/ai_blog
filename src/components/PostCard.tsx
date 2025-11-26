@@ -1,11 +1,17 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
+import AuthorAvatar from '@/components/AuthorAvatar';
 
 interface PostCardProps {
   post: Post;
 }
 
 export default function PostCard({ post }: PostCardProps) {
+  const [imageError, setImageError] = useState(false);
+  
   return (
     <article className="border-b border-gray-400 dark:border-gray-600 pb-8 mb-8 last:border-b-0 flex flex-col">
       <div className="flex items-baseline mb-3 text-xs">
@@ -25,12 +31,27 @@ export default function PostCard({ post }: PostCardProps) {
       </h2>
 
       <Link href={`/blog/${post.slug}`} className="block mb-4 border border-gray-400 dark:border-gray-600">
-        <div className="relative w-full h-48 bg-gray-100 dark:bg-gray-800 overflow-hidden">
-          <img
-            src={post.coverImage}
-            alt={post.title}
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
-          />
+        <div className="relative w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 overflow-hidden">
+          {!imageError ? (
+            <img
+              src={post.coverImage}
+              alt={post.title}
+              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              onError={() => {
+                if (process.env.NODE_ENV === 'development') {
+                  console.warn(`Cover image not found for post: ${post.slug}`);
+                }
+                setImageError(true);
+              }}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
+              <div className="text-center">
+                <div className="text-5xl mb-2">📄</div>
+                <div className="text-sm font-semibold">Image Not Available</div>
+              </div>
+            </div>
+          )}
         </div>
       </Link>
       
@@ -39,9 +60,17 @@ export default function PostCard({ post }: PostCardProps) {
       </p>
       
       <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-700 mt-auto">
-        <span className="text-xs text-gray-600 dark:text-gray-400 italic">
-          By {post.author.name}
-        </span>
+        <div className="flex items-center gap-2">
+          <AuthorAvatar 
+            name={post.author.name}
+            avatar={post.author.avatar}
+            size="sm"
+            shape="circle"
+          />
+          <span className="text-xs text-gray-600 dark:text-gray-400 italic">
+            By {post.author.name}
+          </span>
+        </div>
         <Link 
           href={`/blog/${post.slug}`}
           className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"

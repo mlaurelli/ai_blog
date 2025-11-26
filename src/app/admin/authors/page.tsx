@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Author } from '@/lib/authors';
+import AuthorAvatar from '@/components/AuthorAvatar';
 
 export default function AuthorsManagement() {
   const [authors, setAuthors] = useState<Author[]>([]);
   const [loading, setLoading] = useState(true);
-  const [cacheBuster, setCacheBuster] = useState(Date.now());
   const router = useRouter();
 
   useEffect(() => {
@@ -20,17 +20,6 @@ export default function AuthorsManagement() {
 
     fetchAuthors();
   }, [router]);
-
-  // Refresh cache buster when page becomes visible (after navigating back)
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (!document.hidden) {
-        setCacheBuster(Date.now());
-      }
-    };
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-  }, []);
 
   const fetchAuthors = async () => {
     try {
@@ -112,19 +101,14 @@ export default function AuthorsManagement() {
                 className="border-2 border-gray-400 hover:border-black transition-colors"
               >
                 {/* Avatar */}
-                <div className="h-48 bg-gray-200 overflow-hidden border-b-2 border-gray-400">
-                  {author.avatar.startsWith('http') || author.avatar.startsWith('/uploads') ? (
-                    <img 
-                      src={`${author.avatar}${author.avatar.includes('?') ? '&' : '?'}cb=${cacheBuster}`}
-                      alt={author.name}
-                      className="w-full h-full object-cover"
-                      key={`${author.avatar}-${cacheBuster}`}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-6xl font-bold text-gray-400">
-                      {author.name.charAt(0)}
-                    </div>
-                  )}
+                <div className="h-48 border-b-2 border-gray-400">
+                  <AuthorAvatar 
+                    name={author.name}
+                    avatar={author.avatar}
+                    size="xl"
+                    shape="square"
+                    className="!w-full !h-full !border-0"
+                  />
                 </div>
                 
                 {/* Info */}

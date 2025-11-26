@@ -1,10 +1,12 @@
 'use client';
 
 import { notFound } from 'next/navigation';
-import { getAuthorById } from '@/lib/authors';
-import { getAllPosts } from '@/lib/posts';
+import type { Author } from '@/lib/authors';
+import type { Post } from '@/lib/posts';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Layout from '@/components/Layout';
+import AuthorAvatar from '@/components/AuthorAvatar';
+import PostThumbnail from '@/components/PostThumbnail';
 import PostCard from '@/components/PostCard';
 import Link from 'next/link';
 import { Mail, Globe, Twitter, Linkedin, Github } from 'lucide-react';
@@ -14,12 +16,38 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
   const { id } = use(params);
   const { language } = useLanguage();
   const [cacheBuster, setCacheBuster] = useState(Date.now());
+  const [author, setAuthor] = useState<Author | null>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
   
-  const author = getAuthorById(id);
-
-  if (!author) {
-    notFound();
-  }
+  // Fetch author and posts data from API
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Fetch authors
+        const authorsResponse = await fetch('/api/authors');
+        if (authorsResponse.ok) {
+          const authors: Author[] = await authorsResponse.json();
+          const foundAuthor = authors.find(a => a.id === id);
+          setAuthor(foundAuthor || null);
+        }
+        
+        // Fetch posts
+        const postsResponse = await fetch('/api/posts');
+        if (postsResponse.ok) {
+          const allPosts: Post[] = await postsResponse.json();
+          setPosts(allPosts);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setAuthor(null);
+        setPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [id]);
 
   // Refresh cache buster when page becomes visible (after editing author)
   useEffect(() => {
@@ -32,11 +60,35 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
   }, []);
 
-  // Get all posts by this author
-  const allPosts = getAllPosts(language);
-  const authorPosts = allPosts.filter(post => 
-    post.author.name === author.name
-  );
+  if (loading) {
+    return (
+      <Layout title="Loading...">
+        <div className="max-w-4xl mx-auto py-16 text-center">
+          <p className="text-xl">Loading author...</p>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (!author) {
+    notFound();
+  }
+
+  // Filter posts by this author and deduplicate by slug
+  const authorPosts = posts
+    .filter(post => post.author.name.trim() === author.name.trim())
+    .reduce((acc, post) => {
+      // Keep only one version per slug (prefer current language, fallback to 'en')
+      const existing = acc.find(p => p.slug === post.slug);
+      if (!existing) {
+        acc.push(post);
+      } else if (post.language === language || (post.language === 'both' && existing.language !== language)) {
+        // Replace if current post is in preferred language
+        const index = acc.findIndex(p => p.slug === post.slug);
+        acc[index] = post;
+      }
+      return acc;
+    }, [] as Post[]);
 
   return (
     <Layout title={author.seo.title}>
@@ -55,22 +107,12 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
         <header className="mb-16">
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Avatar */}
-            <div className="flex-shrink-0">
-              <div className="w-32 h-32 md:w-40 md:h-40 relative border-4 border-black dark:border-white">
-                {author.avatar.startsWith('http') || author.avatar.startsWith('/uploads') ? (
-                  <img 
-                    src={`${author.avatar}${author.avatar.includes('?') ? '&' : '?'}cb=${cacheBuster}`}
-                    alt={author.name}
-                    className="w-full h-full object-cover"
-                    key={`${author.avatar}-${cacheBuster}`}
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center text-4xl font-bold text-gray-600 dark:text-gray-400">
-                    {author.name.charAt(0)}
-                  </div>
-                )}
-              </div>
-            </div>
+            <AuthorAvatar 
+              name={author.name}
+              avatar={author.avatar}
+              size="xl"
+              shape="square"
+            />
 
             {/* Info */}
             <div className="flex-1">
@@ -144,10 +186,6 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
         {/* Articles Section */}
         {authorPosts.length > 0 && (
           <section>
-            <h2 className="text-3xl font-black mb-8 tracking-tight">
-              Articles by {author.name.split(' ')[0]} ({authorPosts.length})
-            </h2>
-            
             <div className="space-y-8">
               {authorPosts.map((post) => (
                 <article key={post.slug} className="border-b-2 border-gray-300 dark:border-gray-700 pb-8 last:border-b-0">
@@ -156,7 +194,7 @@ export default function AuthorPage({ params }: { params: Promise<{ id: string }>
                       {/* Thumbnail */}
                       {post.coverImage && (
                         <div className="w-48 h-32 flex-shrink-0 border-2 border-gray-400 group-hover:border-black dark:group-hover:border-white transition-colors overflow-hidden">
-                          <img 
+                          <PostThumbnail 
                             src={post.coverImage} 
                             alt={post.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
