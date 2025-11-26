@@ -49,10 +49,11 @@ echo ""
 
 echo "${YELLOW}🚀 Step 4: Deploying to production...${NC}"
 ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'ENDSSH'
+source ~/.nvm/nvm.sh
 cd /home/ubuntu/michelelaurelli.it
 git stash
 git pull origin main
-npm install --production
+npm install
 npm run build
 pm2 restart all
 echo "✅ Deployment complete"
