@@ -141,7 +141,7 @@ export default function AdminDashboard() {
             className="bg-white border-2 border-gray-400 p-6 font-bold uppercase tracking-wide hover:border-black hover:bg-gray-50 transition-colors text-center"
           >
             <div className="text-2xl mb-2">🔍</div>
-            <div>SEO Management</div>
+            <div>SEO</div>
           </Link>
           <Link
             href="/"
