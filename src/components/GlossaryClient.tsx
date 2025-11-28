@@ -140,6 +140,18 @@ export default function GlossaryClient({ termsEn, termsIt, categoriesEn, categor
               </li>
               <li className="text-gray-300 dark:text-gray-600">|</li>
               <li>
+                <Link href="/papers" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
+                  Papers
+                </Link>
+              </li>
+              <li className="text-gray-300 dark:text-gray-600">|</li>
+              <li>
+                <Link href="/press" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
+                  Press
+                </Link>
+              </li>
+              <li className="text-gray-300 dark:text-gray-600">|</li>
+              <li>
                 <Link href="/about" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
                   About
                 </Link>
@@ -198,6 +210,24 @@ export default function GlossaryClient({ termsEn, termsIt, categoriesEn, categor
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Glossary
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/papers" 
+                    className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Papers
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/press" 
+                    className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Press
                   </Link>
                 </li>
                 <li>
