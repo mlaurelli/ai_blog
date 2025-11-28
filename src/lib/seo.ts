@@ -17,22 +17,31 @@ export type Category = {
 };
 
 export const seoSettings: SEOSettings = {
-  siteName: 'AI Blog - by Michele Laurelli',
-  siteDescription: 'Artificial intelligence treated with scientific integrity, engineering precision, and human depth. Insights from an AI architect who builds systems that matter.',
-  siteUrl: 'https://ai-blog.it',
-  defaultOgImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop',
+  siteName: 'Michele Laurelli - AI Research & Engineering',
+  siteDescription: 'Artificial intelligence research, engineering insights, and technical analysis. Exploring LLMs, machine learning systems, AI architectures, and practical implementations by Michele Laurelli.',
+  siteUrl: 'https://michelelaurelli.it',
+  defaultOgImage: 'https://michelelaurelli.it/preview.png',
   twitterHandle: '@MicheleLaurelli',
   keywords: [
-    'AI',
+    'Michele Laurelli',
+    'AI Research',
     'Artificial Intelligence',
     'Machine Learning',
-    'Technology',
-    'Innovation',
+    'LLM',
+    'Large Language Models',
+    'Deep Learning',
+    'Neural Networks',
+    'AI Engineering',
     'Private AI',
     'Enterprise AI',
     'AI Architecture',
     'Autonomous Agents',
-    'Deep Learning'
+    'NLP',
+    'Computer Vision',
+    'MLOps',
+    'AI Papers',
+    'AI Glossary',
+    'Technical Blog'
   ],
   categories: [
     {
@@ -134,6 +143,153 @@ export function getBreadcrumbJsonLd(items: { name: string; url: string }[]) {
       position: index + 1,
       name: item.name,
       item: item.url,
+    })),
+  };
+}
+
+// Generate JSON-LD for BlogPosting
+export function getBlogPostJsonLd(post: {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  author: { name: string; url?: string };
+  tags?: string[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    url: post.url,
+    image: post.image || seoSettings.defaultOgImage,
+    datePublished: post.datePublished,
+    dateModified: post.dateModified || post.datePublished,
+    author: {
+      '@type': 'Person',
+      name: post.author.name,
+      url: post.author.url || seoSettings.siteUrl,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Michele Laurelli',
+      url: seoSettings.siteUrl,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': post.url,
+    },
+    keywords: post.tags?.join(', '),
+    inLanguage: 'en-US',
+  };
+}
+
+// Generate JSON-LD for ScholarlyArticle (Research Papers)
+export function getScholarlyArticleJsonLd(paper: {
+  title: string;
+  abstract: string;
+  url: string;
+  arxivUrl: string;
+  pdfUrl: string;
+  publishedDate: string;
+  authors: string[];
+  keywords?: string[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ScholarlyArticle',
+    headline: paper.title,
+    abstract: paper.abstract,
+    url: paper.url,
+    sameAs: paper.arxivUrl,
+    encoding: {
+      '@type': 'MediaObject',
+      contentUrl: paper.pdfUrl,
+      encodingFormat: 'application/pdf',
+    },
+    datePublished: paper.publishedDate,
+    author: paper.authors.map(name => ({
+      '@type': 'Person',
+      name,
+    })),
+    keywords: paper.keywords?.join(', '),
+    publisher: {
+      '@type': 'Organization',
+      name: 'arXiv',
+      url: 'https://arxiv.org',
+    },
+    inLanguage: 'en',
+  };
+}
+
+// Generate JSON-LD for NewsArticle (Press Coverage)
+export function getNewsArticleJsonLd(article: {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+  publishedDate: string;
+  siteName: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: article.title,
+    description: article.description,
+    url: article.url,
+    image: article.image,
+    datePublished: article.publishedDate,
+    publisher: {
+      '@type': 'Organization',
+      name: article.siteName,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': article.url,
+    },
+  };
+}
+
+// Generate JSON-LD for DefinedTerm (Glossary)
+export function getDefinedTermJsonLd(term: {
+  term: string;
+  definition: string;
+  url: string;
+  category?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: term.term,
+    description: term.definition,
+    url: term.url,
+    inDefinedTermSet: {
+      '@type': 'DefinedTermSet',
+      name: 'AI Glossary',
+      description: 'Comprehensive glossary of artificial intelligence terms and concepts',
+      url: `${seoSettings.siteUrl}/glossary`,
+    },
+    ...(term.category && { termCode: term.category }),
+  };
+}
+
+// Generate JSON-LD for ItemList
+export function getItemListJsonLd(items: { name: string; url: string; description?: string }[], listType: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: listType,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Thing',
+        name: item.name,
+        url: item.url,
+        ...(item.description && { description: item.description }),
+      },
     })),
   };
 }

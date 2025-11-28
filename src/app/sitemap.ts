@@ -1,12 +1,14 @@
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/posts';
 import { getAllTermsAdmin } from '@/lib/glossary';
+import { getAllPapers } from '@/lib/papers';
+import { getAllPressItems } from '@/lib/press';
 import { seoSettings } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = seoSettings.siteUrl;
   
-  // Homepage
+  // Homepage and main pages
   const routes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -21,10 +23,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/categories`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/glossary`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/papers`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/press`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
   ];
 
@@ -64,11 +84,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // Research papers
+  const papers = getAllPapers();
+  const paperRoutes = papers.map((paper) => ({
+    url: `${baseUrl}/papers/${paper.slug}`,
+    lastModified: new Date(paper.publishedDate),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  // Press coverage
+  const pressItems = getAllPressItems();
+  const pressRoutes = pressItems.map((item) => ({
+    url: `${baseUrl}/press`,
+    lastModified: new Date(item.publishedDate),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  // Category pages
+  const categories = seoSettings.categories;
+  const categoryRoutes = categories.map((category) => ({
+    url: `${baseUrl}/categories/${category.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
   return [
     ...routes,
     ...postRoutesEn,
     ...postRoutesIt,
     ...glossaryRoutesEn,
     ...glossaryRoutesIt,
+    ...paperRoutes,
+    ...pressRoutes,
+    ...categoryRoutes,
   ];
 }
