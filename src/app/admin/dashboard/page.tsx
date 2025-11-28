@@ -93,7 +93,7 @@ export default function AdminDashboard() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-4 mb-8">
           <Link
             href="/admin/posts/new"
             className="bg-black text-white p-6 font-bold uppercase tracking-wide hover:bg-gray-800 transition-colors border-2 border-black text-center"
@@ -114,6 +114,13 @@ export default function AdminDashboard() {
           >
             <div className="text-2xl mb-2">👤</div>
             <div>Authors</div>
+          </Link>
+          <Link
+            href="/admin/papers"
+            className="bg-white border-2 border-gray-400 p-6 font-bold uppercase tracking-wide hover:border-black hover:bg-gray-50 transition-colors text-center"
+          >
+            <div className="text-2xl mb-2">📄</div>
+            <div>Papers</div>
           </Link>
           <Link
             href="/admin/press"
