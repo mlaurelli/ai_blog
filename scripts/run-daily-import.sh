@@ -12,10 +12,17 @@ cd /home/ubuntu/michelelaurelli.it
 # Load NVM
 source ~/.nvm/nvm.sh
 
+# Load environment variables from .env.local
+if [ -f .env.local ]; then
+  export $(grep -v '^#' .env.local | xargs)
+fi
+
 # Log start
 echo "========================================"
 echo "Daily Paper Import - $(date)"
 echo "========================================"
+echo "Environment variables loaded from .env.local"
+echo ""
 
 # Run the import script
 npm run daily-import-papers

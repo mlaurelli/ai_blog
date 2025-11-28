@@ -3,8 +3,16 @@ import path from 'path';
 import OpenAI from 'openai';
 import * as dotenv from 'dotenv';
 
-// Load environment variables
-dotenv.config({ path: '.env.local' });
+// Load environment variables - use absolute path for cron jobs
+const envPath = path.join(process.cwd(), '.env.local');
+dotenv.config({ path: envPath });
+
+// Verify API key is loaded
+if (!process.env.OPENAI_API_KEY) {
+  console.error('❌ ERROR: OPENAI_API_KEY not found in environment variables');
+  console.error(`Tried to load from: ${envPath}`);
+  process.exit(1);
+}
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
