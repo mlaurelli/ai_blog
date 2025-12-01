@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "import-papers": "tsx scripts/import-arxiv-papers.ts",
-    "daily-import-papers": "tsx scripts/daily-import-papers.ts"
+    "daily-import-papers": "tsx scripts/daily-import-papers.ts",
+    "translate-posts": "tsx scripts/translate-missing-posts.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

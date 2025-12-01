@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { getAllPostsAdmin } from '@/lib/posts';
 import { verifyToken, getTokenFromHeaders } from '@/lib/auth';
+import { translatePost } from '@/lib/translate';
 import fs from 'fs';
 import path from 'path';
 
@@ -32,8 +33,46 @@ export async function POST(request: Request) {
       posts = [];
     }
 
-    // Add the new post at the beginning of the array
-    posts.unshift(newPost);
+    // Auto-translate if post is single-language and OpenAI is configured
+    if (process.env.OPENAI_API_KEY && (newPost.language === 'en' || newPost.language === 'it')) {
+      try {
+        const targetLang = newPost.language === 'en' ? 'it' : 'en';
+        console.log(`Auto-translating new post "${newPost.title}" to ${targetLang}...`);
+        
+        const translation = await translatePost(
+          {
+            title: newPost.title,
+            excerpt: newPost.excerpt || '',
+            content: newPost.content,
+            tags: newPost.tags || [],
+          },
+          targetLang
+        );
+
+        // Create the translated version post
+        const translatedPost = {
+          ...newPost,
+          language: targetLang,
+          title: translation.title,
+          excerpt: translation.excerpt,
+          content: translation.content,
+          tags: translation.tags,
+        };
+
+        // Add both posts: original first, then translated
+        posts.unshift(translatedPost);
+        posts.unshift(newPost);
+        
+        console.log(`✓ Auto-translation completed. Added both ${newPost.language} and ${targetLang} versions.`);
+      } catch (translateError) {
+        console.error('Auto-translation failed, saving original only:', translateError);
+        // If translation fails, just save the original post
+        posts.unshift(newPost);
+      }
+    } else {
+      // No translation needed or OpenAI not configured
+      posts.unshift(newPost);
+    }
 
     // Write back to JSON file
     fs.writeFileSync(postsPath, JSON.stringify(posts, null, 2), 'utf-8');
