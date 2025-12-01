@@ -7,6 +7,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 import CookieConsent from './CookieConsent';
 import NewsletterModal from './NewsletterModal';
 import GoogleAnalytics from './GoogleAnalytics';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,8 +16,10 @@ interface LayoutProps {
 
 export default function Layout({ children, title = 'AI Blog - by Michele Laurelli' }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, t } = useLanguage();
   
-  const today = new Date().toLocaleDateString('en-US', { 
+  const dateLocale = language === 'it' ? 'it-IT' : 'en-US';
+  const today = new Date().toLocaleDateString(dateLocale, { 
     weekday: 'long', 
     year: 'numeric', 
     month: 'long', 
@@ -65,37 +68,37 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
             <ul className="flex justify-center space-x-8 py-3 text-sm font-semibold uppercase tracking-wide">
               <li>
                 <Link href="/" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
-                  Home
+                  {t('nav.home')}
                 </Link>
               </li>
               <li className="text-gray-300 dark:text-gray-600">|</li>
               <li>
                 <Link href="/categories" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
-                  Categories
+                  {t('nav.categories')}
                 </Link>
               </li>
               <li className="text-gray-300 dark:text-gray-600">|</li>
               <li>
                 <Link href="/glossary" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
-                  Glossary
+                  {t('nav.glossary')}
                 </Link>
               </li>
               <li className="text-gray-300 dark:text-gray-600">|</li>
               <li>
                 <Link href="/papers" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
-                  Papers
+                  {t('nav.papers')}
                 </Link>
               </li>
               <li className="text-gray-300 dark:text-gray-600">|</li>
               <li>
                 <Link href="/press" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
-                  Press
+                  {t('nav.press')}
                 </Link>
               </li>
               <li className="text-gray-300 dark:text-gray-600">|</li>
               <li>
                 <Link href="/about" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors">
-                  About
+                  {t('nav.about')}
                 </Link>
               </li>
             </ul>
@@ -119,7 +122,7 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                   )}
                 </svg>
-                <span>Menu</span>
+                <span>{t('nav.menu')}</span>
               </button>
               <span className="text-xs text-gray-600 dark:text-gray-400">{today.split(',')[0]}</span>
             </div>
@@ -133,7 +136,7 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
                     className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Home
+                    {t('nav.home')}
                   </Link>
                 </li>
                 <li>
@@ -142,7 +145,7 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
                     className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Categories
+                    {t('nav.categories')}
                   </Link>
                 </li>
                 <li>
@@ -151,7 +154,7 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
                     className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Glossary
+                    {t('nav.glossary')}
                   </Link>
                 </li>
                 <li>
@@ -160,7 +163,7 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
                     className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Papers
+                    {t('nav.papers')}
                   </Link>
                 </li>
                 <li>
@@ -169,7 +172,7 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
                     className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Press
+                    {t('nav.press')}
                   </Link>
                 </li>
                 <li>
@@ -178,7 +181,7 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
                     className="block py-2 text-sm font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    About
+                    {t('nav.about')}
                   </Link>
                 </li>
               </ul>
@@ -197,22 +200,22 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
             {/* Policy Links */}
             <div className="mb-4 flex flex-wrap justify-center gap-4 text-xs">
               <Link href="/privacy-policy" className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white underline font-semibold uppercase tracking-wide">
-                Privacy Policy
+                {t('footer.privacyPolicy')}
               </Link>
               <span className="text-gray-400">•</span>
               <Link href="/cookie-policy" className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white underline font-semibold uppercase tracking-wide">
-                Cookie Policy
+                {t('footer.cookiePolicy')}
               </Link>
               <span className="text-gray-400">•</span>
               <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white underline font-semibold uppercase tracking-wide">
-                About
+                {t('nav.about')}
               </Link>
             </div>
             
             {/* Copyright */}
             <div className="text-xs text-gray-600 dark:text-gray-400">
-              <p className="mb-2">© {new Date().getFullYear()} Michele Laurelli. All rights reserved.</p>
-              <p className="italic">Artificial intelligence treated with scientific integrity, engineering precision, and human depth.</p>
+              <p className="mb-2">© {new Date().getFullYear()} Michele Laurelli. {t('footer.rights')}</p>
+              <p className="italic">{t('footer.slogan')}</p>
             </div>
           </div>
         </div>

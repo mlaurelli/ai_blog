@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import type { PressItem } from '@/lib/press';
 import { ExternalLink, Calendar, Globe } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function PressPage() {
   const [pressItems, setPressItems] = useState<PressItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const { language, t } = useLanguage();
 
   useEffect(() => {
     async function fetchPressItems() {
@@ -26,26 +28,28 @@ export default function PressPage() {
     fetchPressItems();
   }, []);
 
+  const dateLocale = language === 'it' ? 'it-IT' : 'en-US';
+
   if (loading) {
     return (
-      <Layout title="Press">
+      <Layout title={t('press.title')}>
         <div className="max-w-6xl mx-auto">
-          <p className="text-xl">Loading press coverage...</p>
+          <p className="text-xl">{t('press.loading')}</p>
         </div>
       </Layout>
     );
   }
 
   return (
-    <Layout title="Press - Michele Laurelli in the News">
+    <Layout title={`${t('press.title')} - Michele Laurelli`}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <header className="mb-12">
           <h1 className="text-5xl md:text-6xl font-black mb-4 leading-tight tracking-tight text-gray-900 dark:text-white">
-            Press
+            {t('press.title')}
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-            Media coverage and mentions about Michele Laurelli and his work in AI.
+            {t('press.subtitle')}
           </p>
         </header>
 
@@ -53,7 +57,7 @@ export default function PressPage() {
         {pressItems.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              No press coverage yet.
+              {t('common.noPressYet')}
             </p>
           </div>
         ) : (
@@ -111,7 +115,7 @@ export default function PressPage() {
                         <div className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
                           <span>
-                            {new Date(item.publishedDate).toLocaleDateString('en-US', {
+                            {new Date(item.publishedDate).toLocaleDateString(dateLocale, {
                               year: 'numeric',
                               month: 'long',
                               day: 'numeric',
@@ -120,7 +124,7 @@ export default function PressPage() {
                         </div>
                         <div className="flex items-center gap-1">
                           <ExternalLink className="w-4 h-4" />
-                          <span>Read on {item.siteName}</span>
+                          <span>{t('common.readOn')} {item.siteName}</span>
                         </div>
                       </div>
                     </div>

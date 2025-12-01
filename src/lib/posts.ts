@@ -1602,7 +1602,7 @@ export function getLocalizedPost(post: Post, lang: 'en' | 'it'): Post {
 }
 
 export function getPostBySlug(slug: string, lang: 'en' | 'it' = 'en'): Post | undefined {
-  const post = loadPosts().find((post) => post.slug === slug);
+  const post = loadPosts().find((post) => post.slug === slug && (post.language === 'both' || post.language === lang));
   return post ? getLocalizedPost(post, lang) : undefined;
 }
 

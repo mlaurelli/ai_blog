@@ -43,7 +43,7 @@ export default function AuthorAvatar({
       .slice(0, 2);
   };
   
-  const hasValidAvatar = avatar && !imageError && (avatar.startsWith('http') || avatar.startsWith('/uploads'));
+  const hasValidAvatar = avatar && !imageError && (avatar.startsWith('http') || avatar.startsWith('/'));
   
   return (
     <div className={`${sizeClasses[size]} ${shapeClasses[shape]} overflow-hidden flex-shrink-0 ${className}`}>

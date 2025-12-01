@@ -19,6 +19,11 @@ const translations = {
     'nav.blog': 'Blog',
     'nav.about': 'About',
     'nav.authors': 'Authors',
+    'nav.categories': 'Categories',
+    'nav.glossary': 'Glossary',
+    'nav.papers': 'Papers',
+    'nav.press': 'Press',
+    'nav.menu': 'Menu',
     
     // Common
     'common.readMore': 'Read More',
@@ -28,10 +33,21 @@ const translations = {
     'common.on': 'on',
     'common.articles': 'Articles',
     'common.allPosts': 'All Posts',
+    'common.loading': 'Loading...',
+    'common.noPressYet': 'No press coverage yet.',
+    'common.readOn': 'Read on',
     
     // Footer
     'footer.tagline': 'AI Blog - by Michele Laurelli',
     'footer.rights': 'All rights reserved.',
+    'footer.privacyPolicy': 'Privacy Policy',
+    'footer.cookiePolicy': 'Cookie Policy',
+    'footer.slogan': 'Artificial intelligence treated with scientific integrity, engineering precision, and human depth.',
+    
+    // Press page
+    'press.title': 'Press',
+    'press.subtitle': 'Media coverage and mentions about Michele Laurelli and his work in AI.',
+    'press.loading': 'Loading press coverage...',
     
     // Author page
     'author.articlesBy': 'Articles by',
@@ -90,6 +106,11 @@ const translations = {
     'nav.blog': 'Blog',
     'nav.about': 'Chi Sono',
     'nav.authors': 'Autori',
+    'nav.categories': 'Categorie',
+    'nav.glossary': 'Glossario',
+    'nav.papers': 'Papers',
+    'nav.press': 'Rassegna Stampa',
+    'nav.menu': 'Menu',
     
     // Common
     'common.readMore': 'Leggi di più',
@@ -99,10 +120,21 @@ const translations = {
     'common.on': 'il',
     'common.articles': 'Articoli',
     'common.allPosts': 'Tutti gli Articoli',
+    'common.loading': 'Caricamento...',
+    'common.noPressYet': 'Nessuna copertura stampa ancora.',
+    'common.readOn': 'Leggi su',
     
     // Footer
     'footer.tagline': 'Blog AI - di Michele Laurelli',
     'footer.rights': 'Tutti i diritti riservati.',
+    'footer.privacyPolicy': 'Privacy Policy',
+    'footer.cookiePolicy': 'Cookie Policy',
+    'footer.slogan': 'Intelligenza artificiale trattata con integrità scientifica, precisione ingegneristica e profondità umana.',
+    
+    // Press page
+    'press.title': 'Rassegna Stampa',
+    'press.subtitle': 'Copertura mediatica e menzioni su Michele Laurelli e il suo lavoro nell\'AI.',
+    'press.loading': 'Caricamento rassegna stampa...',
     
     // Author page
     'author.articlesBy': 'Articoli di',
@@ -165,22 +197,23 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const saved = localStorage.getItem('language') as Language;
     if (saved && (saved === 'en' || saved === 'it')) {
       setLanguageState(saved);
+      // Also save in cookie for server-side access
+      document.cookie = `language=${saved}; path=/; max-age=31536000`; // 1 year
     } else {
       // Auto-detect browser language
       const browserLang = navigator.language.toLowerCase();
-      if (browserLang.startsWith('it')) {
-        setLanguageState('it');
-        localStorage.setItem('language', 'it');
-      } else {
-        setLanguageState('en');
-        localStorage.setItem('language', 'en');
-      }
+      const detectedLang = browserLang.startsWith('it') ? 'it' : 'en';
+      setLanguageState(detectedLang);
+      localStorage.setItem('language', detectedLang);
+      document.cookie = `language=${detectedLang}; path=/; max-age=31536000`; // 1 year
     }
   }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('language', lang);
+    // Also save in cookie for server-side access
+    document.cookie = `language=${lang}; path=/; max-age=31536000`; // 1 year
   };
 
   const t = (key: string): string => {
