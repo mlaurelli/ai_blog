@@ -19,12 +19,16 @@ export default function Layout({ children, title = 'AI Blog - by Michele Laurell
   const { language, t } = useLanguage();
   
   const dateLocale = language === 'it' ? 'it-IT' : 'en-US';
-  const today = new Date().toLocaleDateString(dateLocale, { 
+  const rawDate = new Date().toLocaleDateString(dateLocale, { 
     weekday: 'long', 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 
   });
+  // Capitalize first letter of each word for Italian (to match English style)
+  const today = language === 'it' 
+    ? rawDate.replace(/\b\w/g, (char) => char.toUpperCase())
+    : rawDate;
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200">
